@@ -1,13 +1,14 @@
 package de.neuefische.nannyway.security;
-
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
 
+@Service
 public class JwtUtils {
 
     private final String secret = "top-secret";

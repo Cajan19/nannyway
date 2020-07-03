@@ -6,12 +6,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
+@RestController
+@RequestMapping("auth/login")
 public class LoginController {
 
     private final AuthenticationManager authenticationManager;
@@ -26,7 +29,7 @@ public class LoginController {
     public String login(@RequestBody LoginData data) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(data.getUsername(), data.getPassword()));
-            return jwtUtils.createToken(new HashMap<>(Map.of("dumbo","yeah")), data.getUsername());
+            return jwtUtils.createToken(new HashMap<>(), data.getUsername());
         }catch (Exception e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "invalid credentials");
         }
