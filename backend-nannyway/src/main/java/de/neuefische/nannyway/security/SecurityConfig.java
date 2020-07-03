@@ -1,5 +1,6 @@
 package de.neuefische.nannyway.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,11 +12,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final MongoUserDetailsService userDetailsService;
+
+    @Autowired
+    public SecurityConfig(MongoUserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("einhorn")
-                .password("securityftw").roles("ADMIN");
+        auth.userDetailsService(userDetailsService);
     }
 
     @Bean
