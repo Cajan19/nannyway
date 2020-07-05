@@ -1,10 +1,16 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import {performLogin} from "../utils/auth-utils";
+import {getDecodedJWTToken, setJWTToken} from "../utils/jwt-utils";
+import {LOGIN, LOGIN_FAILED, LOGIN_SUCCESS} from "../context/UserContextProvider";
+import {UserDispatchContext} from "../context/UserContext";
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const dispatch = useContext(UserDispatchContext);
 
     function login() {
         dispatch({type: LOGIN})
