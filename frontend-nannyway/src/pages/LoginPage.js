@@ -3,8 +3,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {performLogin} from "../utils/auth-utils";
 import {getDecodedJWTToken, setJWTToken} from "../utils/jwt-utils";
-import {LOGIN, LOGIN_FAILED, LOGIN_SUCCESS} from "../context/UserContextProvider";
-import {UserDispatchContext} from "../context/UserContext";
+import {LOGIN, LOGIN_FAILED, LOGIN_SUCCESS} from "../context/user/UserContextProvider";
+import {UserDispatchContext, UserStateContext} from "../context/user/UserContext";
+import {Redirect} from "react-router";
 
 export default function LoginPage() {
     const [username, setUsername] = useState("");
@@ -22,6 +23,11 @@ export default function LoginPage() {
             }).catch(() => {
             dispatch({type: LOGIN_FAILED})
         })
+    }
+
+    const {authStatus} = useContext(UserStateContext);
+    if (authStatus === 'SUCCESS') {
+        return <Redirect to={"/"}/>
     }
 
     return <div>
