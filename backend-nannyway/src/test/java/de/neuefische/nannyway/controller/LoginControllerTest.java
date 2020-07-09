@@ -47,12 +47,25 @@ class LoginControllerTest {
         userDb.save(testUser);
 
 //        when
-        String url = "http://localhost:8080:" + port + "auth/login";
+        String url = "http://localhost:" + port + "/auth/login";
         ResponseEntity<String> tokenResponse = restTemplate.postForEntity(url, new LoginData("madonna", "music"), String.class);
 
 //        then
-        assertEquals(tokenResponse.getStatusCode(), HttpStatus.OK);
+        assertEquals(HttpStatus.OK, tokenResponse.getStatusCode());
         assertTrue(jwtUtils.validateToken(tokenResponse.getBody(),"madonna"));
+    }
+    @Test
+    public void loginWithInvalidCredentials(){
+//        given
+        NannywayUser testUser = new NannywayUser("madonna", encoder.encode("music"), "admin");
+        userDb.save(testUser);
+
+//        when
+        String url = "http://localhost:" + port + "/auth/login";
+        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(url, new LoginData("madonna", "auto"), String.class);
+
+//        then
+        assertEquals(HttpStatus.BAD_REQUEST, tokenResponse.getStatusCode());
     }
 }
 
