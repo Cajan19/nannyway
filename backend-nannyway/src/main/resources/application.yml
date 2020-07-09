@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      database: nannyway
+
+auth:
+  jwt:
+    secret: top-secret-token
