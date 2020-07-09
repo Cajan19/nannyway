@@ -10,15 +10,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final MongoUserDetailsService userDetailsService;
+    private final JwtAuthFilter authFilter;
 
     @Autowired
-    public SecurityConfig(MongoUserDetailsService userDetailsService) {
+    public SecurityConfig(MongoUserDetailsService userDetailsService, JwtAuthFilter authFilter) {
         this.userDetailsService = userDetailsService;
+        this.authFilter = authFilter;
     }
 
     @Override
@@ -36,9 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/**").authenticated()
-//                .antMatchers("/**").permitAll()
+                .antMatchers("/**").permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
