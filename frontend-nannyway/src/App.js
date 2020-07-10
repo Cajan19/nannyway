@@ -7,6 +7,7 @@ import PrivateRoute from "./pages/PrivateRoute";
 import ChildInCareOverview from "./pages/ChildInCareOverview";
 import LoginPage from "./pages/LoginPage";
 import UserContextProvider, {LOGIN_SUCCESS} from "./context/user/UserContextProvider";
+import ProminentAppBar from "./components/ProminentAppBar";
 
 
 function Navigation() {
@@ -19,6 +20,7 @@ function Navigation() {
     }, [dispatch])
 
     return <BrowserRouter>
+        <ProminentAppBar />
         <Switch>
             <PrivateRoute path="/" component={ChildInCareOverview} exact/>
             <Route path="/login" exact>
