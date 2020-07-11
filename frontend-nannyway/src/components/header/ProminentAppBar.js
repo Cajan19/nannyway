@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(2),
     },
     toolbar: {
-        minHeight: 128,
+        minHeight: 72,
         alignItems: 'flex-start',
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(2),
@@ -44,9 +44,8 @@ export default function ProminentAppBar() {
                     >
                         <MenuIcon/>
                     </IconButton>
-
                     <Typography className={classes.typography} variant="h5" noWrap align={"justify"}>
-                       nannyway
+                        nannyway
                     </Typography>
                 </Toolbar>
             </AppBar>
