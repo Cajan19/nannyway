@@ -7,9 +7,7 @@ import {Route, Switch} from "react-router";
 import PrivateRoute from "../pages/contentPages/PrivateRoute";
 import ChildInCareOverview from "../pages/contentPages/ChildInCareOverview";
 import Container from "@material-ui/core/Container";
-import Header from "../header/Header";
 import LandingPage from "../pages/landingpage/LandingPage";
-
 
 export default function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -21,12 +19,11 @@ export default function Navigation() {
     }, [dispatch])
 
     return <BrowserRouter>
-        <Header />
         <Container maxWidth={"md"} component={"main"}>
             <Switch>
                 <PrivateRoute path="/" component={ChildInCareOverview} exact/>
                 <Route path="/login" exact>
-                    <LandingPage />
+                    <LandingPage/>
                 </Route>
             </Switch>
         </Container>
