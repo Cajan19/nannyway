@@ -98,8 +98,26 @@ class ChildInCareControllerTest {
         ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, ChildInCare.class);
 
 //    then
-
         assertEquals(HttpStatus.FORBIDDEN, putResponse.getStatusCode());
+    }
+
+    @Test
+    public void checkForFirstNameFieldNotEmpty() {
+//    given
+        String token = loginUser();
+
+        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("", "Wurschtlhuber", LocalDate.of(2018, 1, 17));
+        String url = "http://localhost:" + port + "/api/kids";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto, headers);
+
+//    when
+        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, ChildInCare.class);
+
+//    then
+        assertEquals(HttpStatus.BAD_REQUEST, putResponse.getStatusCode());
     }
 }
 
