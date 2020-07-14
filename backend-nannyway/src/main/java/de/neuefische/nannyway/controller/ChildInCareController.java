@@ -6,6 +6,8 @@ import de.neuefische.nannyway.service.ChildInCareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/kids")
@@ -24,7 +26,7 @@ public class ChildInCareController {
     }
 
     @PutMapping
-    public ChildInCare addChildInCare(@RequestBody AddChildInCareDto data){
+    public ChildInCare addChildInCare(@Valid @RequestBody AddChildInCareDto data){
         return childInCareService.addChildInCare(data.getFirstName(), data.getLastName(), data.getBirthDate());
     }
 }
