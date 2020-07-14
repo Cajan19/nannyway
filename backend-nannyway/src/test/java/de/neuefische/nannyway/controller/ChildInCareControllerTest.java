@@ -69,7 +69,7 @@ class ChildInCareControllerTest {
         when(randomIdUtils.generateRandomID()).thenReturn("some-Id");
 
         AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018,1,17));
-        String url = "http://localhost:" + port + "/api/tageskinder";
+        String url = "http://localhost:" + port + "/api/kids";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
