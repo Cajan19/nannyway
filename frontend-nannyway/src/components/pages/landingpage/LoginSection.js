@@ -14,6 +14,7 @@ import {makeStyles} from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
     textfield: {
         paddingTop: theme.spacing(1),
+        fontFamily: "Open Sans",
     },
 }));
 
@@ -46,18 +47,18 @@ export default function LoginSection() {
         <Grid container justify={"space-around"} alignItems={"center"} spacing={2}>
             <Grid item>
                     <FormControl margin={"normal"} >
-                        <TextField color={"secondary"} label="Username" type="text" variant={"filled"}
+                        <TextField color={"secondary"} label="Benutzername" type="text" variant={"filled"}
                                    value={username} className={classes.textfield}
                                    onChange={(event) => setUsername(event.target.value)}/>
-                        <TextField color={"secondary"} label="Password" type="password" variant={"filled"}
+                        <TextField color={"secondary"} label="Passwort" type="password" variant={"filled"}
                                    value={password} className={classes.textfield}
                                    onChange={(event) => setPassword(event.target.value)}/>
                     </FormControl>
                 <Box m={1}>
-                    <Button fullWidth variant={"contained"} onClick={login} color={"secondary"} >Login</Button>
+                    <Button fullWidth onClick={login}>Login</Button>
                 </Box>
                 <Box m={1}>
-                    <Button fullWidth variant={"contained"} onClick={login} color={"secondary"} >Registrierung</Button>
+                    <Button fullWidth onClick={login} >Registrierung</Button>
                 </Box>
             </Grid>
         </Grid>
