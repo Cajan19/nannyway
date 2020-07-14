@@ -6,7 +6,6 @@ import {BrowserRouter} from "react-router-dom";
 import {Route, Switch} from "react-router";
 import PrivateRoute from "../pages/contentPages/PrivateRoute";
 import ChildInCareOverview from "../pages/contentPages/ChildInCareOverview";
-import Container from "@material-ui/core/Container";
 import LandingPage from "../pages/landingpage/LandingPage";
 
 export default function Navigation() {
@@ -19,13 +18,11 @@ export default function Navigation() {
     }, [dispatch])
 
     return <BrowserRouter>
-        <Container maxWidth={"md"} component={"main"}>
             <Switch>
                 <PrivateRoute path="/" component={ChildInCareOverview} exact/>
                 <Route path="/login" exact>
                     <LandingPage/>
                 </Route>
             </Switch>
-        </Container>
     </BrowserRouter>;
 }
