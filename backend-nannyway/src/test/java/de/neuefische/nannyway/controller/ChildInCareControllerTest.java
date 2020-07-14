@@ -48,7 +48,7 @@ class ChildInCareControllerTest {
     public JwtUtils jwtUtils;
 
     @BeforeEach
-    public void resetDb(){
+    public void resetDb() {
         kidsDb.deleteAll();
     }
 
@@ -62,13 +62,13 @@ class ChildInCareControllerTest {
     }
 
     @Test
-    public void addFunctionShouldAddNewChildInCareToOverview(){
+    public void addFunctionShouldAddNewChildInCareToOverview() {
 //    given
         String token = loginUser();
 
         when(randomIdUtils.generateRandomID()).thenReturn("some-Id");
 
-        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018,1,17));
+        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17));
         String url = "http://localhost:" + port + "/api/kids";
 
         HttpHeaders headers = new HttpHeaders();
@@ -80,10 +80,26 @@ class ChildInCareControllerTest {
 
 //    then
 
-        ChildInCare expectedChild = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018,1,17));
+        ChildInCare expectedChild = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17));
         assertEquals(HttpStatus.OK, putResponse.getStatusCode());
         assertNotNull(putResponse.getBody());
         assertEquals(expectedChild, putResponse.getBody());
+    }
+
+    @Test
+    public void addFunctionShouldReturnForbiddenErrorWhenNotLoggedIn() {
+//    given
+        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17));
+        String url = "http://localhost:" + port + "/api/kids";
+
+        HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto);
+
+//    when
+        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, ChildInCare.class);
+
+//    then
+
+        assertEquals(HttpStatus.FORBIDDEN, putResponse.getStatusCode());
     }
 }
 
