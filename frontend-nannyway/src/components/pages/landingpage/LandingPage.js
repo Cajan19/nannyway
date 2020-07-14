@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
+import myTheme from "../../../styling/muiTheme";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: "center",
         minHeight: '100vh',
     },
+    darkColor: {
+        color: myTheme.palette.primary.dark,
+    }
 }));
 
 export default function LandingPage() {
@@ -63,7 +67,7 @@ export default function LandingPage() {
                     </section>
                     <Grid item m={3}>
                     <Typography className={classes.basictypo} align={"center"}>
-                        <Link href={"#"} color={"primary"} underline={"always"}> Passwort vergessen?
+                        <Link href={"#"} className={classes.darkColor} underline={"always"}> Passwort vergessen?
                         </Link>
                     </Typography>
                     </Grid>
