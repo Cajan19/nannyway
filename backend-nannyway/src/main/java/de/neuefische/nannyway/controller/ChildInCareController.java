@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/tageskinder")
+@RequestMapping("/api/kids")
 public class ChildInCareController {
 
     private final ChildInCareService childInCareService;
