@@ -4,7 +4,6 @@ import Navigation from "./components/navigation/Navigation";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import ChildInCareContextProvider from "./context/childInCare/ChildInCareContextProvider";
 
-
 function App() {
     return (
         <div className="App">
