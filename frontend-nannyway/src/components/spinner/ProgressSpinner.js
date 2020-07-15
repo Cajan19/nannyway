@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import myTheme from "../../styling/muiTheme";
 
@@ -18,7 +18,7 @@ export default function ProgressSpinner() {
 
     return (
         <div className={classes.root}>
-            <CircularProgress />
+            <CircularProgress/>
         </div>
     );
 }

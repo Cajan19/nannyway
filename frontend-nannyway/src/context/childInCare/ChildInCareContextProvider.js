@@ -8,12 +8,11 @@ export default function ChildInCareContextProvider({children}) {
         fetchStatus: undefined,
     });
 
-    return(
+    return (
         <ChildInCareStateContext.Provider value={state}>
             <ChildInCareDispatchContext.Provider value={dispatch}>
                 {children}
             </ChildInCareDispatchContext.Provider>
         </ChildInCareStateContext.Provider>
     )
-
 }

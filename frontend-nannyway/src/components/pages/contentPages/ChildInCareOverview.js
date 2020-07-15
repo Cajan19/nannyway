@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         textAlign: 'center',
         backgroundColor: myTheme.palette.primary.light,
-
     },
     paperTop: {
         padding: theme.spacing(2),
@@ -71,7 +70,7 @@ export default function ChildInCareOverview() {
                             Meine Tageskinder
                         </Typography>
                     </Paper>
-                    {fetchStatus === "PENDING" && <ProgressSpinner/> }
+                    {fetchStatus === "PENDING" && <ProgressSpinner/>}
                     {fetchStatus === "FAILED" && (
                         <Typography className={classes.error}>
                             Daten konnten nicht geladen werden
@@ -84,7 +83,7 @@ export default function ChildInCareOverview() {
                         <Grid item xs={10}>
                             <Paper className={classes.paper}>
                                 {kids.map((kid) => (
-                                    <ChildInCareCard key={kid.firstName} kid={kid} />
+                                    <ChildInCareCard key={kid.firstName} kid={kid}/>
                                 ))}
                                 <Typography className={classes.basictypo}>
                                     placeholder card
