@@ -51,7 +51,7 @@ export default function ChildInCareOverview() {
             <main className={classes.root}>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
-                        <Typography variant={"h4"}>
+                        <Typography variant={"h4"} className={classes.nannywaytypo}>
                             Meine Tageskinder
                         </Typography>
                     </Paper>
@@ -60,10 +60,18 @@ export default function ChildInCareOverview() {
                           justify="space-around"
                           alignItems="center">
                         <Grid item xs={10}>
-                            <Paper className={classes.paper}>placeholder card</Paper>
+                            <Paper className={classes.paper}>
+                                <Typography className={classes.basictypo}>
+                                    placeholder card
+                                </Typography>
+                            </Paper>
                         </Grid>
                         <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}>placeholder mini card</Paper>
+                            <Paper className={classes.paper}>
+                                <Typography className={classes.basictypo}>
+                                    placeholder mini card
+                                </Typography>
+                            </Paper>
                         </Grid>
                     </Grid>
                 </div>
