@@ -11,11 +11,6 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    main: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '70vh',
-    },
     nannywaytypo: {
         fontFamily: "Finger Paint",
     },
