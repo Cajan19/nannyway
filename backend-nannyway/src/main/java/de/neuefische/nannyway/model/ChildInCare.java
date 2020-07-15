@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "childInCare")
+@Document(collection = "kids")
 public class ChildInCare {
     @Id
     private String id;
