@@ -7,6 +7,9 @@ import {Route, Switch} from "react-router";
 import PrivateRoute from "../pages/contentPages/PrivateRoute";
 import ChildInCareOverview from "../pages/contentPages/ChildInCareOverview";
 import LandingPage from "../pages/landingpage/LandingPage";
+import ChildInCareDetails from "../pages/contentPages/ChildInCareDetails";
+import WaitingListDetails from "../pages/contentPages/WaitinglistDetails";
+import WaitingList from "../pages/contentPages/WaitingList";
 
 export default function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -19,6 +22,9 @@ export default function Navigation() {
 
     return <BrowserRouter>
             <Switch>
+                <PrivateRoute path="/waitinglist/:id" component={WaitingListDetails} exact/>
+                <PrivateRoute path="/waitinglist" component={WaitingList} exact/>
+                <PrivateRoute path="/kids/:id" component={ChildInCareDetails} exact/>
                 <PrivateRoute path="/" component={ChildInCareOverview} exact/>
                 <Route path="/login" exact>
                     <LandingPage/>
