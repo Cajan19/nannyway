@@ -2,15 +2,13 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import MenuIcon from '@material-ui/icons/Menu';
-
+import NavMenu from "./NavMenu";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: '#00d2ff',
+        backgroundColor: '#dfe2e7',
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -21,12 +19,6 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(2),
     },
-    typography: {
-        fontFamily: "Finger Paint",
-        flexGrow: 1,
-        alignSelf: "flex-end",
-        flexBasis: "auto",
-    }
 }));
 
 export default function ProminentAppBar() {
@@ -34,19 +26,19 @@ export default function ProminentAppBar() {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" className={classes.root}>
+            <AppBar position={"static"} className={classes.root}>
                 <Toolbar className={classes.toolbar}>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="open drawer"
-                    >
-                        <MenuIcon/>
-                    </IconButton>
-                    <Typography className={classes.typography} variant="h5" noWrap align={"justify"}>
-                        nannyway
-                    </Typography>
+                    <Grid container
+                          direction="row"
+                          justify="space-between"
+                          alignItems="center">
+                        <Grid item>
+                            <NavMenu/>
+                        </Grid>
+                        <Grid item>
+                            <img src={"images/nwLogo-200.png"} alt={"nannyway logo"}/>
+                        </Grid>
+                    </Grid>
                 </Toolbar>
             </AppBar>
         </div>

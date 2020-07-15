@@ -52,7 +52,7 @@ export default function LandingPage() {
                 <Grid item>
                     <Container className={classes.main} maxWidth="sm">
                         <Grid item container xs={12} justify={"center"}>
-                            <img src={"images/nwLogo200px.png"} alt={"bunte Hand"}/>
+                            <img src={"images/nwLogo-dark-200.png"} alt={"bunte Hand"}/>
                         </Grid>
                         <Typography variant="h5" gutterBottom align={"center"} className={classes.basictypo}>
                             Der digitale KTP-Planer!
@@ -65,7 +65,8 @@ export default function LandingPage() {
                             <LoginSection/>
                         </Container>
                     </section>
-                    <Grid item m={3}>
+                    <Grid item>
+                        <Box m={1}/>
                     <Typography className={classes.basictypo} align={"center"}>
                         <Link href={"#"} className={classes.darkColor} underline={"always"}> Passwort vergessen?
                         </Link>
