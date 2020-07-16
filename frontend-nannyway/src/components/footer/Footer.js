@@ -10,20 +10,31 @@ const useStyles = makeStyles((theme) => ({
     darkColor: {
         color: myTheme.palette.primary.dark,
     },
-    footer: {
-        padding: theme.spacing(3),
-        backgroundColor: myTheme.palette.primary.light,
-    },
     basictypo: {
         fontFamily: "Open Sans",
     },
+    footerPrimary: {
+        padding: theme.spacing(3),
+        backgroundColor: myTheme.palette.primary.light,
+    },
+    footerSecondary: {
+        padding: theme.spacing(3),
+        backgroundColor: myTheme.palette.secondary.light,
+    },
 }));
 
-export default function Footer() {
+export default function Footer({colorStyle}) {
     const classes = useStyles();
 
+    const activeFooter = ()=>{
+        if (colorStyle === "secondary"){
+            return classes.footerSecondary
+        }
+        return classes.footerPrimary;
+    }
+
     return (
-        <footer className={classes.footer}>
+        <footer className={activeFooter()}>
             <Toolbar>
                 <Grid container
                       direction="row"
@@ -32,7 +43,7 @@ export default function Footer() {
                 <Typography variant="h6" align="center" gutterBottom className={classes.basictypo}>
                     Footer
                 </Typography>
-                <LogoutButton />
+                <LogoutButton colorStyle={colorStyle}/>
                 </Grid>
             </Toolbar>
         </footer>
