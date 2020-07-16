@@ -4,7 +4,8 @@ import {UserDispatchContext} from "../../context/user/UserContext";
 import {LOGOUT} from "../../context/user/UserContextProvider";
 import {removeJWTToken} from "../../utils/jwt-utils";
 
-export default function LogoutButton() {
+export default function LogoutButton({colorStyle}) {
+
     const dispatch = useContext(UserDispatchContext);
 
     function logout() {
@@ -13,7 +14,7 @@ export default function LogoutButton() {
     }
 
     return (
-        <Button onClick={logout} color={"primary"} variant={"contained"} size={"small"}>
+        <Button onClick={logout} color={colorStyle} variant={"contained"} size={"small"}>
             Logout
         </Button>
     );
