@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NavMenu() {
+export default function NavMenuPrimaryColor() {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
