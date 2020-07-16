@@ -2,7 +2,7 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import NavMenu from "./NavMenu";
+import NavMenuPrimaryColor from "./NavMenuPrimaryColor";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function ProminentAppBar() {
+export default function AppBarPrimaryColor() {
     const classes = useStyles();
 
     return (
@@ -33,7 +33,7 @@ export default function ProminentAppBar() {
                           justify="space-between"
                           alignItems="center">
                         <Grid item>
-                            <NavMenu/>
+                            <NavMenuPrimaryColor/>
                         </Grid>
                         <Grid item>
                             <img src={"images/nwLogo-200.png"} alt={"nannyway logo"}/>
