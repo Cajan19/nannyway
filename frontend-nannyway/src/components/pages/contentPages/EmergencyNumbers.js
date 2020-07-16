@@ -8,9 +8,6 @@ import Footer from "../../footer/Footer";
 import AppBarSecondaryColor from "../../header/AppBarSecondaryColor";
 
 const useStyles = makeStyles((theme) =>({
-    root: {
-        flexGrow: 1,
-    },
     nannywaytypo: {
         fontFamily: "Finger Paint",
     },
@@ -44,7 +41,7 @@ export default function EmergencyNumbers() {
     return (
         <div>
             <AppBarSecondaryColor/>
-            <main className={classes.root}>
+            <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
                         <Typography variant={"h4"} className={classes.nannywaytypo}>

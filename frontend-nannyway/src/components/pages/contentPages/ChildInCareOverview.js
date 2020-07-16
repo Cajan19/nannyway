@@ -12,9 +12,6 @@ import ProgressSpinner from "../../spinner/ProgressSpinner";
 import ChildInCareCard from "../../cards/ChildInCareCard";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
     nannywaytypo: {
         fontFamily: "Finger Paint",
     },
@@ -63,7 +60,7 @@ export default function ChildInCareOverview() {
     return (
         <div>
             <AppBarPrimaryColor/>
-            <main className={classes.root}>
+            <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
                         <Typography variant={"h4"} className={classes.nannywaytypo}>
