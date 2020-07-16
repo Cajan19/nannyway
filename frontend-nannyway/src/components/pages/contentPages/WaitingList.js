@@ -1,11 +1,11 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import ProminentAppBar from "../../header/ProminentAppBar";
+import AppBarPrimaryColor from "../../header/AppBarPrimaryColor";
 
 export default function WaitingList() {
     return (
         <>
-            <ProminentAppBar/>
+            <AppBarPrimaryColor/>
             <Typography>
                 WaitingList
             </Typography>
