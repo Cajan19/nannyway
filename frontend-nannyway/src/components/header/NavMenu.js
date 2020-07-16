@@ -46,6 +46,9 @@ export default function NavMenu() {
                 <MenuItem onClick={handleClose}>
                     <Link to={"/waitinglist"} className={classes.darkColor}>Warteliste</Link>
                 </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <Link to={"/emergency"} className={classes.darkColor}>Notfallnummern</Link>
+                </MenuItem>
             </Menu>
         </div>
     );
