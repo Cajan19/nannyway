@@ -2,8 +2,8 @@ import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import NannyNavMenu from "./NannyNavMenu";
 import Grid from "@material-ui/core/Grid";
-import NavMenuSecondaryColor from "./NavMenuSecondaryColor";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function AppBarSecondaryColor() {
+export default function NannyAppBar({colorStyle}) {
     const classes = useStyles();
 
     return (
@@ -33,7 +33,7 @@ export default function AppBarSecondaryColor() {
                           justify="space-between"
                           alignItems="center">
                         <Grid item>
-                            <NavMenuSecondaryColor/>
+                            <NannyNavMenu colorStyle={colorStyle}/>
                         </Grid>
                         <Grid item>
                             <img src={"images/nwLogo-200.png"} alt={"nannyway logo"}/>
