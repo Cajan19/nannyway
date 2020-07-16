@@ -5,7 +5,10 @@ import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
 
 const useStyles = makeStyles((theme) => ({
-    darkColor: {
+    menuTextPrimary: {
+        color: myTheme.palette.primary.dark,
+    },
+    menuTextSecondary: {
         color: myTheme.palette.secondary.dark,
     },
     buttonMenu: {
@@ -14,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function NavMenuSecondaryColor() {
+export default function NannyNavMenu({colorStyle}) {
     const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,9 +30,16 @@ export default function NavMenuSecondaryColor() {
         setAnchorEl(null);
     };
 
+    const activeTextClass = ()=>{
+        if (colorStyle === "secondary"){
+            return classes.menuTextSecondary
+        }
+        return classes.menuTextPrimary;
+    }
+
     return (
         <div className={classes.buttonMenu}>
-            <Button color={"secondary"} variant={"contained"} aria-controls="simple-menu" aria-haspopup="true"
+            <Button color={colorStyle} variant={"contained"} aria-controls="simple-menu" aria-haspopup="true"
                     onClick={handleClick}>
                 Menü
             </Button>
@@ -41,13 +51,13 @@ export default function NavMenuSecondaryColor() {
                 onClose={handleClose}
             >
                 <MenuItem onClick={handleClose}>
-                    <Link to={"/"} className={classes.darkColor}>Home</Link>
+                    <Link to={"/"} className={activeTextClass()}>Home</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                    <Link to={"/waitinglist"} className={classes.darkColor}>Warteliste</Link>
+                    <Link to={"/waitinglist"} className={activeTextClass()}>Warteliste</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                    <Link to={"/emergency"} className={classes.darkColor}>Notfallnummern</Link>
+                    <Link to={"/emergency"} className={activeTextClass()}>Notfallnummern</Link>
                 </MenuItem>
             </Menu>
         </div>
