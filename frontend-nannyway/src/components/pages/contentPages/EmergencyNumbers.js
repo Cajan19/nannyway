@@ -1,11 +1,11 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import ProminentAppBar from "../../header/ProminentAppBar";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Footer from "../../footer/Footer";
+import AppBarSecondaryColor from "../../header/AppBarSecondaryColor";
 
 const useStyles = makeStyles((theme) =>({
     root: {
@@ -43,7 +43,7 @@ export default function EmergencyNumbers() {
 
     return (
         <div>
-            <ProminentAppBar/>
+            <AppBarSecondaryColor/>
             <main className={classes.root}>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
