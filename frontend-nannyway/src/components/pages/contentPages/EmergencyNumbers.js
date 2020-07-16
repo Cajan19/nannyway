@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) =>({
     },
 }));
 
-export default function EmergencyNumbers() {
+export default function EmergencyNumbers({colorStyle}) {
     const classes = useStyles();
 
     return (
@@ -70,7 +70,7 @@ export default function EmergencyNumbers() {
                     </Grid>
                 </div>
             </main>
-            <Footer/>
+            <Footer colorStyle={"secondary"}/>
         </div>
     )
 }
