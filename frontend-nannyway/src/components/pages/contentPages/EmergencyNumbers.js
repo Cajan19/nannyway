@@ -5,7 +5,7 @@ import myTheme from "../../../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Footer from "../../footer/Footer";
-import AppBarSecondaryColor from "../../header/AppBarSecondaryColor";
+import NannyAppBar from "../../header/NannyAppBar";
 
 const useStyles = makeStyles((theme) =>({
     nannywaytypo: {
@@ -40,7 +40,7 @@ export default function EmergencyNumbers() {
 
     return (
         <div>
-            <AppBarSecondaryColor/>
+           <NannyAppBar colorStyle={"secondary"}/>
             <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>

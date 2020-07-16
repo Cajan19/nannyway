@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from "react";
-import AppBarPrimaryColor from "../../header/AppBarPrimaryColor";
+import NannyAppBar from "../../header/NannyAppBar";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../../styling/muiTheme";
 import Typography from "@material-ui/core/Typography";
@@ -59,7 +59,7 @@ export default function ChildInCareOverview() {
 
     return (
         <div>
-            <AppBarPrimaryColor/>
+            <NannyAppBar colorStyle={"primary"}/>
             <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
