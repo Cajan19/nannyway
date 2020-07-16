@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from "react";
-import ProminentAppBar from "../../header/ProminentAppBar";
+import AppBarPrimaryColor from "../../header/AppBarPrimaryColor";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../../styling/muiTheme";
 import Typography from "@material-ui/core/Typography";
@@ -62,7 +62,7 @@ export default function ChildInCareOverview() {
 
     return (
         <div>
-            <ProminentAppBar/>
+            <AppBarPrimaryColor/>
             <main className={classes.root}>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
