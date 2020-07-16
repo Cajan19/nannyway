@@ -1,16 +1,13 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import ProminentAppBar from "../../header/ProminentAppBar";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Footer from "../../footer/Footer";
+import NannyAppBar from "../../header/NannyAppBar";
 
 const useStyles = makeStyles((theme) =>({
-    root: {
-        flexGrow: 1,
-    },
     nannywaytypo: {
         fontFamily: "Finger Paint",
     },
@@ -43,8 +40,8 @@ export default function EmergencyNumbers() {
 
     return (
         <div>
-            <ProminentAppBar/>
-            <main className={classes.root}>
+           <NannyAppBar colorStyle={"secondary"}/>
+            <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
                         <Typography variant={"h4"} className={classes.nannywaytypo}>

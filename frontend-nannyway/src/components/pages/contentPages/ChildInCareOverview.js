@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from "react";
-import ProminentAppBar from "../../header/ProminentAppBar";
+import NannyAppBar from "../../header/NannyAppBar";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../../styling/muiTheme";
 import Typography from "@material-ui/core/Typography";
@@ -12,9 +12,6 @@ import ProgressSpinner from "../../spinner/ProgressSpinner";
 import ChildInCareCard from "../../cards/ChildInCareCard";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
     nannywaytypo: {
         fontFamily: "Finger Paint",
     },
@@ -62,8 +59,8 @@ export default function ChildInCareOverview() {
 
     return (
         <div>
-            <ProminentAppBar/>
-            <main className={classes.root}>
+            <NannyAppBar colorStyle={"primary"}/>
+            <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
                         <Typography variant={"h4"} className={classes.nannywaytypo}>
