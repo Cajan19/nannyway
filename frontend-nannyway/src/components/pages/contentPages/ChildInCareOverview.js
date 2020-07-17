@@ -97,7 +97,7 @@ export default function ChildInCareOverview() {
                     </Grid>
                 </div>
             </main>
-            <Footer/>
+            <Footer colorStyle={"primary"}/>
         </div>
     )
 
