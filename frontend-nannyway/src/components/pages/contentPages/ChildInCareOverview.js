@@ -100,5 +100,4 @@ export default function ChildInCareOverview() {
             <Footer colorStyle={"primary"}/>
         </div>
     )
-
 }

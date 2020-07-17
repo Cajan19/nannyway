@@ -8,7 +8,7 @@ export default function PrivateRoute({component: Component, ...rest}) {
     const {authStatus, userData} = useContext(UserStateContext);
     const dispatch = useContext(UserDispatchContext);
     useEffect(() => {
-        if(authStatus === 'SUCCESS' && (new Date().getTime() / 1000) >= userData.exp){
+        if (authStatus === 'SUCCESS' && (new Date().getTime() / 1000) >= userData.exp) {
             removeJWTToken();
             dispatch({type: LOGOUT});
         }

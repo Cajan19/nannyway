@@ -22,15 +22,15 @@ export default function Navigation() {
     }, [dispatch])
 
     return <BrowserRouter>
-            <Switch>
-                <PrivateRoute path="/waitinglist/:id" component={WaitingListDetails} exact/>
-                <PrivateRoute path="/waitinglist" component={WaitingList} exact/>
-                <PrivateRoute path="/emergency" component={EmergencyNumbers} exact/>
-                <PrivateRoute path="/kids/:id" component={ChildInCareDetails} exact/>
-                <PrivateRoute path="/" component={ChildInCareOverview} exact/>
-                <Route path="/login" exact>
-                    <LandingPage/>
-                </Route>
-            </Switch>
+        <Switch>
+            <PrivateRoute path="/waitinglist/:id" component={WaitingListDetails} exact/>
+            <PrivateRoute path="/waitinglist" component={WaitingList} exact/>
+            <PrivateRoute path="/emergency" component={EmergencyNumbers} exact/>
+            <PrivateRoute path="/kids/:id" component={ChildInCareDetails} exact/>
+            <PrivateRoute path="/" component={ChildInCareOverview} exact/>
+            <Route path="/login" exact>
+                <LandingPage/>
+            </Route>
+        </Switch>
     </BrowserRouter>;
 }
