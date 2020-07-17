@@ -13,7 +13,7 @@ import ChildInCareAccordion from "../../accordion/ChildInCareAccordion";
 import AddIcon from '@material-ui/icons/Add';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import AddChildDialog from "../../AddChildDialog/AddChildDialog";
+import AddChildInCareForm from "../../AddChildInCareForm/AddChildInCareForm";
 
 const useStyles = makeStyles((theme) => ({
     nannywaytypo: {
@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TestPage() {
-    const [showAddDialog, setShowAddDialog] = useState(false);
+    const [showAddForm, setShowAddForm] = useState(false);
 
     const {kids, fetchStatus} = useContext(ChildInCareStateContext);
     const dispatch = useContext(ChildInCareDispatchContext);
@@ -84,14 +84,14 @@ export default function TestPage() {
                             variant="contained"
                             color="primary"
                             className={classes.button}
-                            onClick={() => setShowAddDialog(true)}
+                            onClick={() => setShowAddForm(true)}
                             startIcon={<AddIcon/>}
                         >
                             Kind hinzufügen
                         </Button>
-                        <AddChildDialog
-                            open={showAddDialog}
-                            handleClose={() => setShowAddDialog(false)}
+                        <AddChildInCareForm
+                            open={showAddForm}
+                            handleClose={() => setShowAddForm(false)}
                         />
                     </Box>
                     <Grid container spacing={3}
