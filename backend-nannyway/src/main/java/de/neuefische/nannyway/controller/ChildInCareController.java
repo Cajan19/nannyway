@@ -25,7 +25,7 @@ public class ChildInCareController {
         return childInCareService.getAllKids();
     }
 
-    @PutMapping
+    @PostMapping
     public ChildInCare addChildInCare(@Valid @RequestBody AddChildInCareDto data){
         return childInCareService.addChildInCare(data.getFirstName(), data.getLastName(), data.getBirthDate());
     }
