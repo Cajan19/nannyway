@@ -76,7 +76,7 @@ class ChildInCareControllerTest {
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto, headers);
 
 //    when
-        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, ChildInCare.class);
+        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildInCare.class);
 
 //    then
 
@@ -95,7 +95,7 @@ class ChildInCareControllerTest {
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto);
 
 //    when
-        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, ChildInCare.class);
+        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildInCare.class);
 
 //    then
         assertEquals(HttpStatus.FORBIDDEN, putResponse.getStatusCode());
@@ -114,7 +114,7 @@ class ChildInCareControllerTest {
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto, headers);
 
 //    when
-        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, ChildInCare.class);
+        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildInCare.class);
 
 //    then
         assertEquals(HttpStatus.BAD_REQUEST, putResponse.getStatusCode());
