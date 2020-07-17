@@ -16,4 +16,6 @@ public class AddChildInCareDto {
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
+    private String infoText;
+    private String pickUpPerson;
 }

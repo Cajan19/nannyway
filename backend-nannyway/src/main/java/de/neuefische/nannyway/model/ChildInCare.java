@@ -18,4 +18,6 @@ public class ChildInCare {
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
+    private String infoText;
+    private String pickUpPerson;
 }

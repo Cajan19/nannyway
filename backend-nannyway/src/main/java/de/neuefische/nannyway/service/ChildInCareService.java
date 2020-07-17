@@ -23,13 +23,14 @@ public class ChildInCareService {
         return kidsDb.findAll();
     }
 
-    public ChildInCare addChildInCare(String firstName, String lastName, LocalDate birthDate){
+    public ChildInCare addChildInCare(String firstName, String lastName, LocalDate birthDate, String infoText, String pickUpPerson){
         ChildInCare kid = new ChildInCare();
         kid.setId(randomIdUtils.generateRandomID());
         kid.setFirstName(firstName);
         kid.setLastName(lastName);
         kid.setBirthDate(birthDate);
+        kid.setInfoText(infoText);
+        kid.setPickUpPerson(pickUpPerson);
         return kidsDb.save(kid);
-
     }
 }
