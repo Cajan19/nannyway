@@ -68,7 +68,7 @@ class ChildInCareControllerTest {
 
         when(randomIdUtils.generateRandomID()).thenReturn("some-Id");
 
-        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17));
+        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte");
         String url = "http://localhost:" + port + "/api/kids";
 
         HttpHeaders headers = new HttpHeaders();
@@ -80,7 +80,7 @@ class ChildInCareControllerTest {
 
 //    then
 
-        ChildInCare expectedChild = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17));
+        ChildInCare expectedChild = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte");
         assertEquals(HttpStatus.OK, putResponse.getStatusCode());
         assertNotNull(putResponse.getBody());
         assertEquals(expectedChild, putResponse.getBody());
@@ -89,7 +89,7 @@ class ChildInCareControllerTest {
     @Test
     public void addFunctionShouldReturnForbiddenErrorWhenNotLoggedIn() {
 //    given
-        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17));
+        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte");
         String url = "http://localhost:" + port + "/api/kids";
 
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto);
@@ -106,7 +106,7 @@ class ChildInCareControllerTest {
 //    given
         String token = loginUser();
 
-        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("", "Wurschtlhuber", LocalDate.of(2018, 1, 17));
+        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte");
         String url = "http://localhost:" + port + "/api/kids";
 
         HttpHeaders headers = new HttpHeaders();
