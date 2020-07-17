@@ -45,7 +45,7 @@ export default function EmergencyNumbers() {
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
                         <Typography variant={"h4"} className={classes.nannywaytypo}>
-                            Notrufnummern
+                            NOTRUFNUMMERN
                         </Typography>
                     </Paper>
                     )}
