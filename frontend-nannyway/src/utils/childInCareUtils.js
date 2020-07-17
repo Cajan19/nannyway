@@ -14,3 +14,25 @@ export async function fetchAllKids() {
     }
     return await response.json();
 }
+
+export function putKid(firstName, lastName, birthDate) {
+    const token = getJWTToken();
+    const ChildInCareData = {
+        firstName: firstName,
+        lastName: lastName,
+        birthDate: birthDate,
+    }
+    return fetch('/api/kids', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ChildInCareData}),
+    }).then((response) => {
+        if (response.status !== 200) {
+            throw new Error('invalid response');
+        }
+        return response.json();
+    });
+}
