@@ -27,6 +27,6 @@ public class ChildInCareController {
 
     @PostMapping
     public ChildInCare addChildInCare(@Valid @RequestBody AddChildInCareDto data){
-        return childInCareService.addChildInCare(data.getFirstName(), data.getLastName(), data.getBirthDate());
+        return childInCareService.addChildInCare(data.getFirstName(), data.getLastName(), data.getBirthDate(), data.getInfoText(), data.getPickUpPerson());
     }
 }
