@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Footer from "../../footer/Footer";
 import NannyAppBar from "../../header/NannyAppBar";
 
-const useStyles = makeStyles((theme) =>({
+const useStyles = makeStyles((theme) => ({
     nannywaytypo: {
         fontFamily: "Finger Paint",
     },
@@ -35,12 +35,12 @@ const useStyles = makeStyles((theme) =>({
     },
 }));
 
-export default function EmergencyNumbers({colorStyle}) {
+export default function EmergencyNumbers() {
     const classes = useStyles();
 
     return (
         <div>
-           <NannyAppBar colorStyle={"secondary"}/>
+            <NannyAppBar colorStyle={"secondary"}/>
             <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>

@@ -30,8 +30,8 @@ export default function NannyNavMenu({colorStyle}) {
         setAnchorEl(null);
     };
 
-    const activeTextClass = ()=>{
-        if (colorStyle === "secondary"){
+    const activeTextClass = () => {
+        if (colorStyle === "secondary") {
             return classes.menuTextSecondary
         }
         return classes.menuTextPrimary;
