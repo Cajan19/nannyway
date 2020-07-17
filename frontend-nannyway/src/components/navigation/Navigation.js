@@ -5,7 +5,6 @@ import {LOGIN_SUCCESS} from "../../context/user/UserContextProvider";
 import {BrowserRouter} from "react-router-dom";
 import {Route, Switch} from "react-router";
 import PrivateRoute from "../pages/contentPages/PrivateRoute";
-import ChildInCareOverview from "../pages/contentPages/ChildInCareOverview";
 import LandingPage from "../pages/landingpage/LandingPage";
 import ChildInCareDetails from "../pages/contentPages/ChildInCareDetails";
 import WaitingListDetails from "../pages/contentPages/WaitinglistDetails";
