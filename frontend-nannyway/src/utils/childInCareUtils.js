@@ -15,12 +15,14 @@ export async function fetchAllKids() {
     return await response.json();
 }
 
-export function putKid(firstName, lastName, birthDate) {
+export function putKid(firstName, lastName, birthDate, infoText, pickUpPerson) {
     const token = getJWTToken();
     const childInCareData = {
         firstName: firstName,
         lastName: lastName,
         birthDate: birthDate,
+        infoText: infoText,
+        pickUpPerson: pickUpPerson,
     }
     return fetch("api/kids", {
         method: 'POST',

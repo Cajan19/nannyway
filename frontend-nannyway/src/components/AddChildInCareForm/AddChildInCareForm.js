@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useReducer, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -27,6 +27,8 @@ export default function AddChildInCareForm({open, handleClose}) {
                 firstName: "",
                 lastName: "",
                 birthDate: "",
+                infoText: "",
+                pickUpPerson: "",
             });
             handleClose();
         }
@@ -35,7 +37,7 @@ export default function AddChildInCareForm({open, handleClose}) {
     const dispatch = useContext(ChildInCareDispatchContext);
 
     function handleSubmit() {
-        addKid(dispatch, childInCareInput.firstName, childInCareInput.lastName, childInCareInput.birthDate)
+        addKid(dispatch, childInCareInput.firstName, childInCareInput.lastName, childInCareInput.birthDate, childInCareInput.infoText, childInCareInput.pickUpPerson)
             .then(handleClose);
     }
 
@@ -81,6 +83,20 @@ export default function AddChildInCareForm({open, handleClose}) {
                         onChange={handleChange}
                         type="date"
                     />
+                    <TextField
+                        fullWidth={true}
+                        label="autorisierte Abholperson"
+                        name={"pickUpPerson"}
+                        value={childInCareInput.pickUpPerson}
+                        onChange={handleChange}
+                    /> <TextField
+                    fullWidth={true}
+                    label="freier Infotext"
+                    name={"infoText"}
+                    value={childInCareInput.infoText}
+                    onChange={handleChange}
+                    multiline={true}
+                />
                 </form>
                 {addStatus === 'PENDING' && <ProgressSpinner/>}
                 {addStatus === 'FAILED' && (

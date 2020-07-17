@@ -166,7 +166,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <EmojiPeopleIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        Weitere abholberechtigte Person
+                                        {kid.pickUpPerson}
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -178,7 +178,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <DescriptionIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        Xaver hat eine Erdnussallergie und kann den Buchstaben "X" noch nicht richtig aussprechen
+                                        {kid.infoText}
                                     </Typography>
                                 </ListItem>
                             </List>
