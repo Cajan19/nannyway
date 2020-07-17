@@ -10,12 +10,16 @@ import Grid from "@material-ui/core/Grid";
 import {Box} from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import {makeStyles} from "@material-ui/core/styles";
+import myTheme from "../../../styling/muiTheme";
 
 const useStyles = makeStyles((theme) => ({
     textfield: {
         paddingTop: theme.spacing(1),
         fontFamily: "Open Sans",
     },
+    textfieldFontColor: {
+        color: myTheme.palette.secondary.dark,
+    }
 }));
 
 export default function LoginSection() {
@@ -47,11 +51,11 @@ export default function LoginSection() {
         <Grid container justify={"space-around"} alignItems={"center"} spacing={2}>
             <Grid item>
                     <FormControl margin={"normal"} >
-                        <TextField color={"secondary"} label="Benutzername" type="text" variant={"filled"}
-                                   value={username} className={classes.textfield}
+                        <TextField label="Benutzername" type="text" variant={"filled"} InputProps={{className: classes.textfieldFontColor}}
+                                   value={username} className={classes.textfield} color={"secondary"}
                                    onChange={(event) => setUsername(event.target.value)}/>
-                        <TextField color={"secondary"} label="Passwort" type="password" variant={"filled"}
-                                   value={password} className={classes.textfield}
+                        <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
+                                   value={password} className={classes.textfield} InputProps={{className: classes.textfieldFontColor}}
                                    onChange={(event) => setPassword(event.target.value)}/>
                     </FormControl>
                 <Box m={1}>
