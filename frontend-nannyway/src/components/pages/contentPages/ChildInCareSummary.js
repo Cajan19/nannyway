@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/1679618/pexels-photo-1679618.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        backgroundImage: 'url(https://images.pexels.com/photos/3661246/pexels-photo-3661246.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
@@ -47,9 +47,14 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
         marginBottom: "20px",
     },
+    button: {
+        fontFamily: "Open Sans",
+        fontWeight: "bold",
+        backgroundColor: myTheme.palette.secondary.main,
+    },
 }));
 
-export default function TestPage() {
+export default function ChildInCareSummary() {
     const [showAddForm, setShowAddForm] = useState(false);
 
     const {kids, fetchStatus} = useContext(ChildInCareStateContext);
@@ -70,7 +75,7 @@ export default function TestPage() {
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
                         <Typography variant={"h4"} className={classes.nannywaytypo}>
-                            TESTSEITE
+                            TAGESKINDER
                         </Typography>
                     </Paper>
                     {fetchStatus === "PENDING" && <ProgressSpinner/>}
@@ -82,7 +87,6 @@ export default function TestPage() {
                     <Box m={2}>
                         <Button
                             variant="contained"
-                            color="primary"
                             className={classes.button}
                             onClick={() => setShowAddForm(true)}
                             startIcon={<AddIcon/>}
