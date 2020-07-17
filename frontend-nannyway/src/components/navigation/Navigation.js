@@ -11,6 +11,7 @@ import ChildInCareDetails from "../pages/contentPages/ChildInCareDetails";
 import WaitingListDetails from "../pages/contentPages/WaitinglistDetails";
 import WaitingList from "../pages/contentPages/WaitingList";
 import EmergencyNumbers from "../pages/contentPages/EmergencyNumbers";
+import TestPage from "../pages/contentPages/TestPage";
 
 export default function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -26,6 +27,7 @@ export default function Navigation() {
             <PrivateRoute path="/waitinglist/:id" component={WaitingListDetails} exact/>
             <PrivateRoute path="/waitinglist" component={WaitingList} exact/>
             <PrivateRoute path="/emergency" component={EmergencyNumbers} exact/>
+            <PrivateRoute path="/test" component={TestPage} exact/>
             <PrivateRoute path="/kids/:id" component={ChildInCareDetails} exact/>
             <PrivateRoute path="/" component={ChildInCareOverview} exact/>
             <Route path="/login" exact>
