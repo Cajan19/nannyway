@@ -17,21 +17,21 @@ export async function fetchAllKids() {
 
 export function putKid(firstName, lastName, birthDate) {
     const token = getJWTToken();
-    const ChildInCareData = {
+    const childInCareData = {
         firstName: firstName,
         lastName: lastName,
         birthDate: birthDate,
     }
-    return fetch('/api/kids', {
-        method: 'PUT',
+    return fetch("api/kids", {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ChildInCareData}),
+        body: JSON.stringify(childInCareData),
     }).then((response) => {
         if (response.status !== 200) {
-            throw new Error('invalid response');
+            throw new Error(response.statusText);
         }
         return response.json();
     });
