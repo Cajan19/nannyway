@@ -17,6 +17,7 @@ import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import DescriptionIcon from '@material-ui/icons/Description';
 import ChildCareIcon from '@material-ui/icons/ChildCare';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -27,10 +28,13 @@ const useStyles = makeStyles((theme) => ({
     },
     heading: {
         fontSize: theme.typography.pxToRem(25),
-        fontFamily: "Open Sans",
+        fontFamily: "Finger Paint",
+        fontWeight: "bold",
+        color: myTheme.palette.secondary.light,
     },
     accordionBackGround: {
         backgroundColor: myTheme.palette.primary.dark,
+        marginBottom: 15,
     },
     listBackGround: {
         backgroundColor: myTheme.palette.primary.main,
@@ -68,14 +72,14 @@ export default function ChildInCareAccordion({kid}) {
                           justify="center"
                           alignItems="center"
                     >
-                        <Typography className={classes.heading}>MAX</Typography>
+                        <Typography className={classes.heading}>{kid.firstName}</Typography>
                     </Grid>
                 </AccordionSummary>
                 <AccordionDetails>
                     <div className={classes.list}>
                         <Paper className={classes.listBackGround}>
                             <List>
-                                <ListItem button>
+                                <ListItem>
                                     <ListItemIcon>
                                         <ChildCareIcon/>
                                     </ListItemIcon>
@@ -96,7 +100,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <CakeIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        Geburtsdatum
+                                        {kid.birthDate}
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -121,7 +125,19 @@ export default function ChildInCareAccordion({kid}) {
                                         Namen der Eltern
                                     </Typography>
                                 </ListItem>
-                            </List><Divider/>
+                            </List>
+                            <Divider/>
+                            <List>
+                                <ListItem>
+                                    <ListItemIcon>
+                                        <MailOutlineIcon/>
+                                    </ListItemIcon>
+                                    <Typography>
+                                        E-Mail
+                                    </Typography>
+                                </ListItem>
+                            </List>
+                            <Divider/>
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
@@ -131,7 +147,8 @@ export default function ChildInCareAccordion({kid}) {
                                         Stunden/Woche in Betreuung
                                     </Typography>
                                 </ListItem>
-                            </List><Divider/>
+                            </List>
+                            <Divider/>
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
@@ -141,28 +158,27 @@ export default function ChildInCareAccordion({kid}) {
                                         Vertragslaufzeit
                                     </Typography>
                                 </ListItem>
-                            </List><Divider/>
+                            </List>
+                            <Divider/>
                             <List>
-                                <ListItem button>
+                                <ListItem>
                                     <ListItemIcon>
                                         <EmojiPeopleIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        Abholberechtigte
+                                        Weitere abholberechtigte Person
                                     </Typography>
                                 </ListItem>
-                            </List><Divider/>
+                            </List>
+                            <Divider/>
                             <List>
-                                <ListItem button>
+                                <ListItem>
+                                {/*<ListItem button>*/}
                                     <ListItemIcon>
                                         <DescriptionIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        Freitext: Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                                        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                                        aliquyam erat, sed diam voluptua. At vero eos et accusam et justo
-                                        duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
-                                        sanctus est.
+                                        Xaver hat eine Erdnussallergie und kann den Buchstaben "X" noch nicht richtig aussprechen
                                     </Typography>
                                 </ListItem>
                             </List>

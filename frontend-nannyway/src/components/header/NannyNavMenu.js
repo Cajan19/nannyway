@@ -14,7 +14,14 @@ const useStyles = makeStyles((theme) => ({
     buttonMenu: {
         display: "flex",
         justifyContent: "center",
-    }
+    },
+    backgroundColor: {
+        backgroundColor: '#dfe2e7',
+    },
+    basicTypoButton: {
+        fontFamily: "Open Sans",
+        fontWeight: "bold",
+    },
 }));
 
 export default function NannyNavMenu({colorStyle}) {
@@ -39,7 +46,7 @@ export default function NannyNavMenu({colorStyle}) {
 
     return (
         <div className={classes.buttonMenu}>
-            <Button color={colorStyle} variant={"contained"} aria-controls="simple-menu" aria-haspopup="true"
+            <Button color={colorStyle} className={classes.basicTypoButton} variant={"contained"} aria-controls="simple-menu" aria-haspopup="true"
                     onClick={handleClick}>
                 Menü
             </Button>
@@ -50,17 +57,14 @@ export default function NannyNavMenu({colorStyle}) {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleClose} className={classes.backgroundColor}>
                     <Link to={"/"} className={activeTextClass()}>Home</Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleClose} className={classes.backgroundColor}>
                     <Link to={"/waitinglist"} className={activeTextClass()}>Warteliste</Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleClose} className={classes.backgroundColor}>
                     <Link to={"/emergency"} className={activeTextClass()}>Notfallnummern</Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link to={"/test"} className={activeTextClass()}>Testseite</Link>
                 </MenuItem>
             </Menu>
         </div>
