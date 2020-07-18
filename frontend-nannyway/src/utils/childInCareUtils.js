@@ -15,7 +15,8 @@ export async function fetchAllKids() {
     return await response.json();
 }
 
-export function putKid(firstName, lastName, birthDate, infoText, pickUpPerson) {
+export function putKid(firstName, lastName, birthDate, infoText, pickUpPerson, hoursInCarePerWeek,
+                       contractTerm, phoneNumber, nameParents, email) {
     const token = getJWTToken();
     const childInCareData = {
         firstName: firstName,
@@ -23,6 +24,11 @@ export function putKid(firstName, lastName, birthDate, infoText, pickUpPerson) {
         birthDate: birthDate,
         infoText: infoText,
         pickUpPerson: pickUpPerson,
+        hoursInCarePerWeek: hoursInCarePerWeek,
+        contractTerm: contractTerm,
+        phoneNumber: phoneNumber,
+        nameParents: nameParents,
+        email: email,
     }
     return fetch("api/kids", {
         method: 'POST',
