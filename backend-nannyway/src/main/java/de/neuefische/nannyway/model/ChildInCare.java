@@ -20,4 +20,9 @@ public class ChildInCare {
     private LocalDate birthDate;
     private String infoText;
     private String pickUpPerson;
+    private String hoursInCarePerWeek;
+    private LocalDate contractTerm;
+    private String phoneNumber;
+    private String parents;
+    private String email;
 }
