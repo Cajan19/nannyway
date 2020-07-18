@@ -82,6 +82,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         value={childInCareInput.birthDate}
                         onChange={handleChange}
                         type="date"
+                        InputLabelProps={{shrink: true}}
                     />
                     <TextField
                         fullWidth={true}
