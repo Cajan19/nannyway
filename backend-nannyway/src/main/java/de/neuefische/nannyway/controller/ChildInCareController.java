@@ -29,6 +29,6 @@ public class ChildInCareController {
     public ChildInCare addChildInCare(@Valid @RequestBody AddChildInCareDto data){
         return childInCareService.addChildInCare(data.getFirstName(), data.getLastName(), data.getBirthDate(),
                 data.getInfoText(), data.getPickUpPerson(), data.getHoursInCarePerWeek(), data.getContractTerm(),
-                data.getPhoneNumber(), data.getParents(), data.getEmail());
+                data.getPhoneNumber(), data.getNameParents(), data.getEmail());
     }
 }

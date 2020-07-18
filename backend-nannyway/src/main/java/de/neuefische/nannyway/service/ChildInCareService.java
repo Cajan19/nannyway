@@ -25,7 +25,7 @@ public class ChildInCareService {
 
     public ChildInCare addChildInCare(String firstName, String lastName, LocalDate birthDate, String infoText,
                                       String pickUpPerson, String hoursInCarePerWeek, LocalDate contractTerm,
-                                      String phoneNumber, String parents, String email){
+                                      String phoneNumber, String nameParents, String email){
         ChildInCare kid = new ChildInCare();
         kid.setId(randomIdUtils.generateRandomID());
         kid.setFirstName(firstName);
@@ -36,7 +36,7 @@ public class ChildInCareService {
         kid.setHoursInCarePerWeek(hoursInCarePerWeek);
         kid.setContractTerm(contractTerm);
         kid.setPhoneNumber(phoneNumber);
-        kid.setParents(parents);
+        kid.setNameParents(nameParents);
         kid.setEmail(email);
         return kidsDb.save(kid);
     }
