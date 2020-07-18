@@ -23,7 +23,9 @@ public class ChildInCareService {
         return kidsDb.findAll();
     }
 
-    public ChildInCare addChildInCare(String firstName, String lastName, LocalDate birthDate, String infoText, String pickUpPerson){
+    public ChildInCare addChildInCare(String firstName, String lastName, LocalDate birthDate, String infoText,
+                                      String pickUpPerson, String hoursInCarePerWeek, LocalDate contractTerm,
+                                      String phoneNumber, String parents, String email){
         ChildInCare kid = new ChildInCare();
         kid.setId(randomIdUtils.generateRandomID());
         kid.setFirstName(firstName);
@@ -31,6 +33,11 @@ public class ChildInCareService {
         kid.setBirthDate(birthDate);
         kid.setInfoText(infoText);
         kid.setPickUpPerson(pickUpPerson);
+        kid.setHoursInCarePerWeek(hoursInCarePerWeek);
+        kid.setContractTerm(contractTerm);
+        kid.setPhoneNumber(phoneNumber);
+        kid.setParents(parents);
+        kid.setEmail(email);
         return kidsDb.save(kid);
     }
 }
