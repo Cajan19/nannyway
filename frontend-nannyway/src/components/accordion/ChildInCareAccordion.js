@@ -83,7 +83,7 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <ChildCareIcon/>
                                     </ListItemIcon>
-                                    <Grid spacing={6}>
+                                    <Grid>
                                         <Typography>
                                             {kid.firstName}
                                         </Typography>
@@ -111,7 +111,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <PhoneInTalkIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        0941-9876543
+                                        {kid.phoneNumber}
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -122,7 +122,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <PeopleIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        Namen der Eltern
+                                        {kid.nameParents}
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -133,7 +133,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <MailOutlineIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        E-Mail
+                                        {kid.email}
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -144,7 +144,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <QueryBuilderIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        Stunden/Woche in Betreuung
+                                        {kid.hoursInCarePerWeek}
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -155,7 +155,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <HourglassEmptyIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        Vertragslaufzeit
+                                        {kid.contractTerm}
                                     </Typography>
                                 </ListItem>
                             </List>
