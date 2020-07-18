@@ -17,6 +17,13 @@ export default function AddChildInCareForm({open, handleClose}) {
         firstName: "",
         lastName: "",
         birthDate: "",
+        infoText: "",
+        pickUpPerson: "",
+        hoursInCarePerWeek: "",
+        contractTerm: "",
+        phoneNumber: "",
+        nameParents: "",
+        email: "",
     });
 
     const {addStatus} = useContext(ChildInCareStateContext);
@@ -29,6 +36,11 @@ export default function AddChildInCareForm({open, handleClose}) {
                 birthDate: "",
                 infoText: "",
                 pickUpPerson: "",
+                hoursInCarePerWeek: "",
+                contractTerm: "",
+                phoneNumber: "",
+                nameParents: "",
+                email: "",
             });
             handleClose();
         }
@@ -37,7 +49,9 @@ export default function AddChildInCareForm({open, handleClose}) {
     const dispatch = useContext(ChildInCareDispatchContext);
 
     function handleSubmit() {
-        addKid(dispatch, childInCareInput.firstName, childInCareInput.lastName, childInCareInput.birthDate, childInCareInput.infoText, childInCareInput.pickUpPerson)
+        addKid(dispatch, childInCareInput.firstName, childInCareInput.lastName, childInCareInput.birthDate, childInCareInput.infoText, childInCareInput.pickUpPerson,
+            childInCareInput.hoursInCarePerWeek, childInCareInput.contractTerm, childInCareInput.phoneNumber,
+            childInCareInput.nameParents, childInCareInput.email)
             .then(handleClose);
     }
 
@@ -62,7 +76,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                     <TextField
                         fullWidth={true}
                         label="Vorname"
-                        name={"firstName"}
+                        name="firstName"
                         value={childInCareInput.firstName}
                         onChange={handleChange}
                         error={childInCareInput.firstName.length < 1}
@@ -71,14 +85,14 @@ export default function AddChildInCareForm({open, handleClose}) {
                     <TextField
                         fullWidth={true}
                         label="Nachname"
-                        name={"lastName"}
+                        name="lastName"
                         value={childInCareInput.lastName}
                         onChange={handleChange}
                     />
                     <TextField
                         fullWidth={true}
                         label="Geburtsdatum"
-                        name={"birthDate"}
+                        name="birthDate"
                         value={childInCareInput.birthDate}
                         onChange={handleChange}
                         type="date"
@@ -86,18 +100,59 @@ export default function AddChildInCareForm({open, handleClose}) {
                     />
                     <TextField
                         fullWidth={true}
+                        label="Telefonnummer"
+                        name="phoneNumber"
+                        value={childInCareInput.phoneNumber}
+                        onChange={handleChange}
+                        type="tel"
+                    />
+                    <TextField
+                        fullWidth={true}
+                        label="Eltern"
+                        name="nameParents"
+                        value={childInCareInput.nameParents}
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        fullWidth={true}
+                        label="E-Mail"
+                        name="email"
+                        value={childInCareInput.email}
+                        onChange={handleChange}
+                        type="email"
+                    />
+                    <TextField
+                        fullWidth={true}
+                        label="Betreuungsstunden pro Woche"
+                        name="hoursInCarePerWeek"
+                        value={childInCareInput.hoursInCarePerWeek}
+                        onChange={handleChange}
+                        type="number"
+                    />
+                    <TextField
+                        fullWidth={true}
+                        label="Vertragslaufzeit bis"
+                        name="contractTerm"
+                        value={childInCareInput.contractTerm}
+                        onChange={handleChange}
+                        type="date"
+                        InputLabelProps={{shrink: true}}
+                    />
+                    <TextField
+                        fullWidth={true}
                         label="autorisierte Abholperson"
-                        name={"pickUpPerson"}
+                        name="pickUpPerson"
                         value={childInCareInput.pickUpPerson}
                         onChange={handleChange}
-                    /> <TextField
-                    fullWidth={true}
-                    label="freier Infotext"
-                    name={"infoText"}
-                    value={childInCareInput.infoText}
-                    onChange={handleChange}
-                    multiline={true}
-                />
+                    />
+                    <TextField
+                        fullWidth={true}
+                        label="freier Infotext"
+                        name="infoText"
+                        value={childInCareInput.infoText}
+                        onChange={handleChange}
+                        multiline={true}
+                    />
                 </form>
                 {addStatus === 'PENDING' && <ProgressSpinner/>}
                 {addStatus === 'FAILED' && (
