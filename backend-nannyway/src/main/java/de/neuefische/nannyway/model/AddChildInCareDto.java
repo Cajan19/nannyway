@@ -21,6 +21,6 @@ public class AddChildInCareDto {
     private String hoursInCarePerWeek;
     private LocalDate contractTerm;
     private String phoneNumber;
-    private String parents;
+    private String nameParents;
     private String email;
 }

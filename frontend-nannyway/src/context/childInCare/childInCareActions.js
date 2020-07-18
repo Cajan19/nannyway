@@ -18,10 +18,12 @@ export async function fetchKids(dispatch) {
     }
 }
 
-export async function addKid(dispatch, firstName, lastName, birthDate, infoText, pickUpPerson) {
+export async function addKid(dispatch, firstName, lastName, birthDate, infoText, pickUpPerson,
+                             hoursInCarePerWeek, contractTerm, phoneNumber, nameParents, email) {
     dispatch({ type: ADD_KID});
     try {
-        const kid = await putKid(firstName, lastName, birthDate, infoText, pickUpPerson);
+        const kid = await putKid(firstName, lastName, birthDate, infoText, pickUpPerson,
+            hoursInCarePerWeek, contractTerm, phoneNumber, nameParents, email);
         dispatch({ type: ADD_KID_SUCCESS, payload: kid});
     } catch (error) {
         dispatch({ type: ADD_KID_FAIL, payload: error});
