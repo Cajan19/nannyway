@@ -1,19 +1,19 @@
 import React, {useContext, useEffect, useState} from "react";
-import NannyAppBar from "../../header/NannyAppBar";
+import NannyAppBar from "../../components/header/NannyAppBar";
 import {makeStyles} from "@material-ui/core/styles";
-import myTheme from "../../../styling/muiTheme";
+import myTheme from "../../styling/muiTheme";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Footer from "../../footer/Footer";
-import {ChildInCareDispatchContext, ChildInCareStateContext} from "../../../context/childInCare/ChildInCareContext";
-import {fetchKids} from "../../../context/childInCare/childInCareActions";
-import ProgressSpinner from "../../spinner/ProgressSpinner";
-import ChildInCareAccordion from "../../accordion/ChildInCareAccordion";
+import Footer from "../../components/footer/Footer";
+import {ChildInCareDispatchContext, ChildInCareStateContext} from "../../context/childInCare/ChildInCareContext";
+import {fetchKids} from "../../context/childInCare/childInCareActions";
+import ProgressSpinner from "../../components/spinner/ProgressSpinner";
+import ChildInCareAccordion from "../../components/accordion/ChildInCareAccordion";
 import AddIcon from '@material-ui/icons/Add';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import AddChildInCareForm from "../../AddChildInCareForm/AddChildInCareForm";
+import AddChildInCareForm from "../../components/AddChildInCareForm/AddChildInCareForm";
 
 const useStyles = makeStyles((theme) => ({
     nannywaytypo: {
