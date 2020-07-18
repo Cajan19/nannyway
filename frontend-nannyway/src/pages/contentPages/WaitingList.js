@@ -1,11 +1,11 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+import NannyAppBar from "../../components/header/NannyAppBar";
+import Footer from "../../components/footer/Footer";
 import {makeStyles} from "@material-ui/core/styles";
-import myTheme from "../../../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Footer from "../../footer/Footer";
-import NannyAppBar from "../../header/NannyAppBar";
+import myTheme from "../../styling/muiTheme";
 
 const useStyles = makeStyles((theme) => ({
     nannywaytypo: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        backgroundImage: 'url(https://images.pexels.com/photos/19678/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
@@ -24,28 +24,28 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        backgroundColor: myTheme.palette.secondary.light,
+        backgroundColor: myTheme.palette.primary.light,
     },
     paperTop: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        backgroundColor: myTheme.palette.secondary.main,
+        backgroundColor: myTheme.palette.primary.main,
         fontFamily: "Open Sans",
         marginBottom: "20px",
     },
 }));
 
-export default function EmergencyNumbers() {
+export default function WaitingList() {
     const classes = useStyles();
 
     return (
-        <div>
-            <NannyAppBar colorStyle={"secondary"}/>
+        <>
+            <NannyAppBar colorStyle={"primary"}/>
             <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
                         <Typography variant={"h4"} className={classes.nannywaytypo}>
-                            NOTRUFNUMMERN
+                            WARTELISTE
                         </Typography>
                     </Paper>
                     )}
@@ -70,7 +70,8 @@ export default function EmergencyNumbers() {
                     </Grid>
                 </div>
             </main>
-            <Footer colorStyle={"secondary"}/>
-        </div>
+            <Footer colorStyle={"primary"}/>
+        </>
     )
 }
+
