@@ -50,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
     },
     list: {
         width: '100%',
-        // maxWidth: 360,
         backgroundColor: myTheme.palette.primary.light,
     },
     basictypo: {
@@ -70,11 +69,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ChildInCareAccordion({kid}) {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-
-    const handleChange = (panel) => (event, isExpanded) => {
-        setExpanded(isExpanded ? panel : false);
-    };
 
     const [open, setOpen] = React.useState(false);
 
@@ -88,8 +82,7 @@ export default function ChildInCareAccordion({kid}) {
 
     return (
         <div className={classes.root}>
-            <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}
-                       className={classes.accordionBackGround}>
+            <Accordion className={classes.accordionBackGround}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon/>}
                     aria-controls="panel1bh-content"
