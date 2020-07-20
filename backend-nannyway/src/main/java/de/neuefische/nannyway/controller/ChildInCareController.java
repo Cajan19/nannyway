@@ -31,4 +31,10 @@ public class ChildInCareController {
                 data.getInfoText(), data.getPickUpPerson(), data.getHoursInCarePerWeek(), data.getContractTerm(),
                 data.getPhoneNumber(), data.getNameParents(), data.getEmail());
     }
+
+    @DeleteMapping("{id}")
+    public void deleteKid(@PathVariable String id){
+        childInCareService.deleteKidById(id);
+    }
+
 }
