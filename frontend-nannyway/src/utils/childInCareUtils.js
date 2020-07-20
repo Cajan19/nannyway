@@ -15,8 +15,8 @@ export async function fetchAllKids() {
     return await response.json();
 }
 
-export function putKid(firstName, lastName, birthDate, infoText, pickUpPerson, hoursInCarePerWeek,
-                       contractTerm, phoneNumber, nameParents, email) {
+export function postKid(firstName, lastName, birthDate, infoText, pickUpPerson, hoursInCarePerWeek,
+                        contractTerm, phoneNumber, nameParents, email) {
     const token = getJWTToken();
     const childInCareData = {
         firstName: firstName,
@@ -42,5 +42,16 @@ export function putKid(firstName, lastName, birthDate, infoText, pickUpPerson, h
             throw new Error(response.statusText);
         }
         return response.json();
+    });
+}
+
+export function removeKid(id) {
+    const token = getJWTToken();
+
+    return fetch(`/api/kids/${id}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
     });
 }
