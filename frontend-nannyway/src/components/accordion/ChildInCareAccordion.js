@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -29,6 +29,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import {Box} from "@material-ui/core";
+import {ChildInCareDispatchContext} from "../../context/childInCare/ChildInCareContext";
+import {deleteKid} from "../../context/childInCare/childInCareActions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -79,6 +81,13 @@ export default function ChildInCareAccordion({kid}) {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const dispatch = useContext(ChildInCareDispatchContext);
+    function handleDelete(event) {
+        event.stopPropagation();
+        deleteKid(dispatch, kid.id);
+        setOpen(false);
+    }
 
     return (
         <div className={classes.root}>
@@ -239,7 +248,7 @@ export default function ChildInCareAccordion({kid}) {
                                                 className={classes.confirmAction}>
                                             Zurück
                                         </Button>
-                                        <Button onClick={handleClose} autoFocus variant={"outlined"}
+                                        <Button onClick={handleDelete} autoFocus variant={"outlined"}
                                                 className={classes.deleteButton}>
                                             löschen
                                         </Button>
