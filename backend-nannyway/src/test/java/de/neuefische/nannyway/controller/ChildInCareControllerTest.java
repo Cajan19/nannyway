@@ -78,15 +78,15 @@ class ChildInCareControllerTest {
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto, headers);
 
 //    when
-        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildInCare.class);
+        ResponseEntity<ChildInCare> postResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildInCare.class);
 
 //    then
 
         ChildInCare expectedChild = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte",
                 "35", LocalDate.of(2021, 8, 31), "77777", "Peter und Petra", "kid@nannyway.de");
-        assertEquals(HttpStatus.OK, putResponse.getStatusCode());
-        assertNotNull(putResponse.getBody());
-        assertEquals(expectedChild, putResponse.getBody());
+        assertEquals(HttpStatus.OK, postResponse.getStatusCode());
+        assertNotNull(postResponse.getBody());
+        assertEquals(expectedChild, postResponse.getBody());
     }
 
     @Test
