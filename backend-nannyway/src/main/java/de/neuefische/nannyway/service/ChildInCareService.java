@@ -40,4 +40,8 @@ public class ChildInCareService {
         kid.setEmail(email);
         return kidsDb.save(kid);
     }
+
+    public void deleteKidById(String id){
+        kidsDb.deleteById(id);
+    }
 }
