@@ -202,7 +202,6 @@ export default function ChildInCareAccordion({kid}) {
                             <Divider/>
                             <List>
                                 <ListItem>
-                                    {/*<ListItem button>*/}
                                     <ListItemIcon>
                                         <DescriptionIcon/>
                                     </ListItemIcon>
@@ -236,7 +235,7 @@ export default function ChildInCareAccordion({kid}) {
                                     className={classes.basictypo}
                                 >
                                     <DialogTitle id="alert-dialog-title"
-                                                 className={classes.basictypo}>{"Wirklich löschen?"}</DialogTitle>
+                                                 className={classes.basictypo}>{"Daten wirklich löschen?"}</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText id="alert-dialog-description" className={classes.basictypo}>
                                             Bist Du sicher, dass du diesen Eintrag unwiderruflich löschen möchtest?
