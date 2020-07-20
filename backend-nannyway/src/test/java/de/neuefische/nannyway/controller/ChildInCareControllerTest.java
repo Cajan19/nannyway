@@ -126,6 +126,27 @@ class ChildInCareControllerTest {
 //    then
         assertEquals(HttpStatus.BAD_REQUEST, putResponse.getStatusCode());
     }
+
+    @Test
+    public void deleteFunctionShouldDeleteKidById(){
+//        given
+        String token = loginUser();
+
+        kidsDb.save(new ChildInCare("123", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte",
+                "35", LocalDate.of(2021, 8, 31), "77777", "Peter und Petra", "kid@nannyway.de"));
+        kidsDb.save(new ChildInCare("234", "Ingo", "Meier", LocalDate.of(2017, 11, 11), "Quarkallergie", "Oma Inge",
+                "35", LocalDate.of(2021, 8, 31), "99999", "Erna und Manfred", "kid2@nannyway.de"));
+
+//        when
+        String url = "http://localhost:" + port + "/api/kids/123";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity httpEntity = new HttpEntity(headers);
+        restTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Void.class);
+
+//        then
+        assertTrue(kidsDb.findById("123").isEmpty());
+    }
 }
 
 
