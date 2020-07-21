@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from "react";
 import {UserDispatchContext} from "../../context/user/UserContext";
 import {getDecodedJWTToken, isJWTTokenValid} from "../../utils/jwt-utils";
-import {LOGIN_SUCCESS} from "../../context/user/UserContextProvider";
+import {LOGIN_FAILED, LOGIN_SUCCESS} from "../../context/user/UserContextProvider";
 import {BrowserRouter} from "react-router-dom";
 import {Route, Switch} from "react-router";
 import PrivateRoute from "../../pages/contentPages/PrivateRoute";
@@ -18,6 +18,8 @@ export default function Navigation() {
     useEffect(() => {
         if (isJWTTokenValid()) {
             dispatch({type: LOGIN_SUCCESS, payload: getDecodedJWTToken()})
+        } else {
+            dispatch({type: LOGIN_FAILED})
         }
     }, [dispatch])
 
