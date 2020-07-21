@@ -3,6 +3,7 @@ import {Redirect, Route} from "react-router-dom";
 import {UserDispatchContext, UserStateContext} from "../../context/user/UserContext";
 import {LOGOUT} from "../../context/user/UserContextProvider";
 import {removeJWTToken} from "../../utils/jwt-utils";
+import ProgressSpinner from "../../components/spinner/ProgressSpinner";
 
 export default function PrivateRoute({component: Component, ...rest}) {
     const {authStatus, userData} = useContext(UserStateContext);
@@ -16,15 +17,17 @@ export default function PrivateRoute({component: Component, ...rest}) {
 
     return <Route {...rest} render={
         (props) => {
-            if (authStatus !== 'SUCCESS') {
-                return <Redirect to={"/login"}/>
+            if (authStatus === 'FAILED' || !authStatus) {
+                return <Redirect to={{pathname:"/login", state:{from:props.location}}}/>
             }
+            if (authStatus === "SUCCESS") {
 
-            if ((new Date().getTime() / 1000) >= userData.exp) {
-                return <Redirect to={"/login"}/>
+                if ((new Date().getTime() / 1000) >= userData.exp) {
+                    return <Redirect to={{pathname:"/login", state:{from:props.location}}}/>
+                }
+                return <Component {...props}/>
             }
-
-            return <Component {...props}/>
+            return <ProgressSpinner/>
         }
     }/>
 }
