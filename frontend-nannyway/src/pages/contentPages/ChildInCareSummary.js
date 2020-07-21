@@ -13,7 +13,7 @@ import ChildInCareAccordion from "../../components/accordion/ChildInCareAccordio
 import AddIcon from '@material-ui/icons/Add';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import AddChildInCareForm from "../../components/AddChildInCareForm/AddChildInCareForm";
+import AddChildInCareForm from "../../components/addChildInCareForm/AddChildInCareForm";
 
 const useStyles = makeStyles((theme) => ({
     nannywaytypo: {
