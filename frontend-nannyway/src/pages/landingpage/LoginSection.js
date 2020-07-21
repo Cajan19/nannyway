@@ -46,26 +46,28 @@ export default function LoginSection() {
     const location = useLocation();
     console.log(location);
     if (authStatus === 'SUCCESS') {
-        const locationState = location.state || {from:{pathname: "/"}};
+        const locationState = location.state || {from: {pathname: "/"}};
         return <Redirect to={locationState.from.pathname}/>
     }
 
     return (
         <Grid container justify={"space-around"} alignItems={"center"} spacing={2}>
             <Grid item>
-                    <FormControl margin={"normal"} >
-                        <TextField label="Benutzername" type="text" variant={"filled"} InputProps={{className: classes.textfieldFontColor}}
-                                   value={username} className={classes.textfield} color={"secondary"}
-                                   onChange={(event) => setUsername(event.target.value)}/>
-                        <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
-                                   value={password} className={classes.textfield} InputProps={{className: classes.textfieldFontColor}}
-                                   onChange={(event) => setPassword(event.target.value)}/>
-                    </FormControl>
+                <FormControl margin={"normal"}>
+                    <TextField label="Benutzername" type="text" variant={"filled"}
+                               InputProps={{className: classes.textfieldFontColor}}
+                               value={username} className={classes.textfield} color={"secondary"}
+                               onChange={(event) => setUsername(event.target.value)}/>
+                    <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
+                               value={password} className={classes.textfield}
+                               InputProps={{className: classes.textfieldFontColor}}
+                               onChange={(event) => setPassword(event.target.value)}/>
+                </FormControl>
                 <Box m={1}>
                     <Button fullWidth onClick={login}>Login</Button>
                 </Box>
                 <Box m={1}>
-                    <Button fullWidth onClick={login} >Registrierung</Button>
+                    <Button fullWidth onClick={login}>Registrierung</Button>
                 </Box>
             </Grid>
         </Grid>

@@ -18,12 +18,12 @@ export default function PrivateRoute({component: Component, ...rest}) {
     return <Route {...rest} render={
         (props) => {
             if (authStatus === 'FAILED' || !authStatus) {
-                return <Redirect to={{pathname:"/login", state:{from:props.location}}}/>
+                return <Redirect to={{pathname: "/login", state: {from: props.location}}}/>
             }
             if (authStatus === "SUCCESS") {
 
                 if ((new Date().getTime() / 1000) >= userData.exp) {
-                    return <Redirect to={{pathname:"/login", state:{from:props.location}}}/>
+                    return <Redirect to={{pathname: "/login", state: {from: props.location}}}/>
                 }
                 return <Component {...props}/>
             }
