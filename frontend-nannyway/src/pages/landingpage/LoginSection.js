@@ -3,7 +3,7 @@ import {UserDispatchContext, UserStateContext} from "../../context/user/UserCont
 import {LOGIN, LOGIN_FAILED, LOGIN_SUCCESS} from "../../context/user/UserContextProvider";
 import {performLogin} from "../../utils/auth-utils";
 import {getDecodedJWTToken, setJWTToken} from "../../utils/jwt-utils";
-import {Redirect} from "react-router";
+import {Redirect, useLocation} from "react-router";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -43,8 +43,11 @@ export default function LoginSection() {
     }
 
     const {authStatus} = useContext(UserStateContext);
+    const location = useLocation();
+    console.log(location);
     if (authStatus === 'SUCCESS') {
-        return <Redirect to={"/"}/>
+        const locationState = location.state || {from:{pathname: "/"}};
+        return <Redirect to={locationState.from.pathname}/>
     }
 
     return (
