@@ -3,7 +3,7 @@ import {UserDispatchContext, UserStateContext} from "../../context/user/UserCont
 import {LOGIN, LOGIN_FAILED, LOGIN_SUCCESS} from "../../context/user/UserContextProvider";
 import {performLogin} from "../../utils/auth-utils";
 import {getDecodedJWTToken, setJWTToken} from "../../utils/jwt-utils";
-import {Redirect} from "react-router";
+import {Redirect, useLocation} from "react-router";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -43,26 +43,31 @@ export default function LoginSection() {
     }
 
     const {authStatus} = useContext(UserStateContext);
+    const location = useLocation();
+    console.log(location);
     if (authStatus === 'SUCCESS') {
-        return <Redirect to={"/"}/>
+        const locationState = location.state || {from: {pathname: "/"}};
+        return <Redirect to={locationState.from.pathname}/>
     }
 
     return (
         <Grid container justify={"space-around"} alignItems={"center"} spacing={2}>
             <Grid item>
-                    <FormControl margin={"normal"} >
-                        <TextField label="Benutzername" type="text" variant={"filled"} InputProps={{className: classes.textfieldFontColor}}
-                                   value={username} className={classes.textfield} color={"secondary"}
-                                   onChange={(event) => setUsername(event.target.value)}/>
-                        <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
-                                   value={password} className={classes.textfield} InputProps={{className: classes.textfieldFontColor}}
-                                   onChange={(event) => setPassword(event.target.value)}/>
-                    </FormControl>
+                <FormControl margin={"normal"}>
+                    <TextField label="Benutzername" type="text" variant={"filled"}
+                               InputProps={{className: classes.textfieldFontColor}}
+                               value={username} className={classes.textfield} color={"secondary"}
+                               onChange={(event) => setUsername(event.target.value)}/>
+                    <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
+                               value={password} className={classes.textfield}
+                               InputProps={{className: classes.textfieldFontColor}}
+                               onChange={(event) => setPassword(event.target.value)}/>
+                </FormControl>
                 <Box m={1}>
                     <Button fullWidth onClick={login}>Login</Button>
                 </Box>
                 <Box m={1}>
-                    <Button fullWidth onClick={login} >Registrierung</Button>
+                    <Button fullWidth onClick={login}>Registrierung</Button>
                 </Box>
             </Grid>
         </Grid>
