@@ -51,9 +51,12 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
         fontWeight: "bold",
         backgroundColor: myTheme.palette.secondary.main,
+        '&:hover': {
+            backgroundColor: myTheme.palette.secondary.dark,
+        }
     },
-}));
 
+}));
 export default function ChildInCareSummary() {
     const [showAddForm, setShowAddForm] = useState(false);
 
@@ -78,12 +81,14 @@ export default function ChildInCareSummary() {
                             TAGESKINDER
                         </Typography>
                     </Paper>
-                    {fetchStatus === "PENDING" && <ProgressSpinner/>}
-                    {fetchStatus === "FAILED" && (
-                        <Typography className={classes.error}>
-                            Daten konnten nicht geladen werden
-                        </Typography>
-                    )}
+                    <Box m={4}>
+                        {fetchStatus === "PENDING" && <ProgressSpinner/>}
+                        {fetchStatus === "FAILED" && (
+                            <Typography className={classes.error}>
+                                Daten konnten nicht geladen werden
+                            </Typography>
+                        )}
+                    </Box>
                     <Box m={2}>
                         <Button
                             variant="contained"
@@ -104,16 +109,9 @@ export default function ChildInCareSummary() {
                           alignItems="center">
                         <Grid item xs={10}>
                             {kids.map((kid) => (
-                                <ChildInCareAccordion key={kid.id} kid={kid}/>
+                                <ChildInCareAccordion key={kid.id} kid={kid} />
                             ))}
                         </Grid>
-                        {/*<Grid item xs={6} sm={3}>*/}
-                        {/*    <Paper className={classes.paper}>*/}
-                        {/*        <Typography className={classes.basictypo}>*/}
-                        {/*            placeholder mini card*/}
-                        {/*        </Typography>*/}
-                        {/*    </Paper>*/}
-                        {/*</Grid>*/}
                     </Grid>
                 </div>
             </main>

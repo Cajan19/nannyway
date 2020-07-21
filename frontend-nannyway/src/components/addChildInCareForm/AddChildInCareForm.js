@@ -10,9 +10,20 @@ import Typography from '@material-ui/core/Typography';
 import {ChildInCareDispatchContext, ChildInCareStateContext} from "../../context/childInCare/ChildInCareContext";
 import {addKid} from "../../context/childInCare/childInCareActions";
 import ProgressSpinner from "../spinner/ProgressSpinner";
+import {makeStyles} from "@material-ui/core/styles";
+import myTheme from "../../styling/muiTheme";
 
+const useStyles = makeStyles(() => ({
+    addError: {
+        fontFamily: "Open Sans",
+        color: myTheme.palette.error.main,
+        fontVariant: "small-caps",
+    },
+}));
 
 export default function AddChildInCareForm({open, handleClose}) {
+    const classes = useStyles();
+
     const [childInCareInput, setChildInCareInput] = useState({
         firstName: "",
         lastName: "",
@@ -26,7 +37,7 @@ export default function AddChildInCareForm({open, handleClose}) {
         email: "",
     });
 
-    const {addStatus} = useContext(ChildInCareStateContext);
+    const addStatus = useContext(ChildInCareStateContext);
 
     useEffect(() => {
         if (addStatus === 'SUCCESS') {
@@ -79,7 +90,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         name="firstName"
                         value={childInCareInput.firstName}
                         onChange={handleChange}
-                        error={childInCareInput.firstName.length < 1}
+                        error={childInCareInput.firstName.length < 2}
                         helperText={'Dieses Feld muss ausgefüllt werden'}
                     />
                     <TextField
@@ -156,8 +167,8 @@ export default function AddChildInCareForm({open, handleClose}) {
                 </form>
                 {addStatus === 'PENDING' && <ProgressSpinner/>}
                 {addStatus === 'FAILED' && (
-                    <Typography variant="body1" component="p" color={"error"}>
-                        konnte nicht hinzugefügt werden
+                    <Typography component="p" className={classes.addError}>
+                        Daten konnten nicht hinzugefügt werden
                     </Typography>
                 )}
             </DialogContent>
@@ -165,7 +176,8 @@ export default function AddChildInCareForm({open, handleClose}) {
                 <Button onClick={handleClose} color="primary" variant={"contained"}>
                     Abbrechen
                 </Button>
-                <Button onClick={handleSubmit} color="primary" variant={"contained"}>
+                <Button onClick={handleSubmit} color="primary" variant={"contained"}
+                        disabled={childInCareInput.firstName.length < 2}>
                     Hinzufügen
                 </Button>
             </DialogActions>
