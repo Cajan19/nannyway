@@ -60,12 +60,18 @@ const useStyles = makeStyles((theme) => ({
     deleteButton: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        backgroundColor: myTheme.palette.secondary.dark,
+        backgroundColor: myTheme.palette.secondary.main,
+        '&:hover': {
+            backgroundColor: myTheme.palette.secondary.dark,
+        }
     },
     confirmAction: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        backgroundColor: myTheme.palette.primary.dark,
+        backgroundColor: myTheme.palette.primary.light,
+        '&:hover': {
+            backgroundColor: myTheme.palette.primary.dark,
+        }
     },
 }));
 
@@ -83,6 +89,7 @@ export default function ChildInCareAccordion({kid}) {
     };
 
     const dispatch = useContext(ChildInCareDispatchContext);
+
     function handleDelete(event) {
         event.stopPropagation();
         deleteKid(dispatch, kid.id);
