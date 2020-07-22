@@ -37,7 +37,7 @@ export default function AddChildInCareForm({open, handleClose}) {
         email: "",
     });
 
-    const addStatus = useContext(ChildInCareStateContext);
+    const {addStatus} = useContext(ChildInCareStateContext);
 
     useEffect(() => {
         if (addStatus === 'SUCCESS') {
@@ -53,9 +53,8 @@ export default function AddChildInCareForm({open, handleClose}) {
                 nameParents: "",
                 email: "",
             });
-            handleClose();
         }
-    }, [addStatus, handleClose]);
+    }, [addStatus]);
 
     const dispatch = useContext(ChildInCareDispatchContext);
 
