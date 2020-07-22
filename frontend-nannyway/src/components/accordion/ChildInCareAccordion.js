@@ -96,6 +96,9 @@ export default function ChildInCareAccordion({kid}) {
         setOpen(false);
     }
 
+    const mailAddress = "mailto:" + kid.email.toString();
+    const phoneNumber = "tel:" + kid.phoneNumber.toString();
+
     return (
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
@@ -149,7 +152,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <PhoneInTalkIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        {kid.phoneNumber}
+                                        <a href={phoneNumber}>{kid.phoneNumber}</a>
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -171,7 +174,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <MailOutlineIcon/>
                                     </ListItemIcon>
                                     <Typography>
-                                        {kid.email}
+                                    <a href={mailAddress}>{kid.email}</a>
                                     </Typography>
                                 </ListItem>
                             </List>
