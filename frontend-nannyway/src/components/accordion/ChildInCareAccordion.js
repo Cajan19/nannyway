@@ -22,15 +22,11 @@ import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import Button from "@material-ui/core/Button";
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import {Box} from "@material-ui/core";
 import {ChildInCareDispatchContext} from "../../context/childInCare/ChildInCareContext";
 import {deleteKid} from "../../context/childInCare/childInCareActions";
+import DeleteDialog from "../deleteTools/DeleteDialog";
+import DeleteKidButton from "../deleteTools/DeleteKidButton";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -230,40 +226,22 @@ export default function ChildInCareAccordion({kid}) {
                                 alignItems="center"
                             >
                                 <Box m={1}>
-                                    <Button
-                                        variant="contained"
-                                        className={classes.deleteButton}
-                                        onClick={handleClickOpen}
-                                        startIcon={<DeleteForeverIcon/>}
-                                    >
-                                        {kid.firstName} löschen
-                                    </Button>
+                                    <DeleteKidButton
+                                    classDeleteButton={classes.deleteButton}
+                                    handleClickOpenAction={handleClickOpen}
+                                    buttonVariant={"contained"}
+                                    matchingIcon={<DeleteForeverIcon/>}
+                                    showItemToDelete={kid.firstName}
+                                    />
                                 </Box>
-                                <Dialog
-                                    open={open}
-                                    onClose={handleClose}
-                                    aria-labelledby="alert-dialog-title"
-                                    aria-describedby="alert-dialog-description"
-                                    className={classes.basictypo}
-                                >
-                                    <DialogTitle id="alert-dialog-title"
-                                                 className={classes.basictypo}>{"Daten wirklich löschen?"}</DialogTitle>
-                                    <DialogContent>
-                                        <DialogContentText id="alert-dialog-description" className={classes.basictypo}>
-                                            Bist Du sicher, dass du diesen Eintrag unwiderruflich löschen möchtest?
-                                        </DialogContentText>
-                                    </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleClose} variant={"outlined"}
-                                                className={classes.confirmAction}>
-                                            Zurück
-                                        </Button>
-                                        <Button onClick={handleDelete} autoFocus variant={"outlined"}
-                                                className={classes.deleteButton}>
-                                            löschen
-                                        </Button>
-                                    </DialogActions>
-                                </Dialog>
+                                <DeleteDialog
+                                handleDeleteAction={handleDelete}
+                                handleCloseAction={handleClose}
+                                classBasicTypo={classes.basictypo}
+                                classConfirmAction={classes.confirmAction}
+                                classDeleteButton={classes.deleteButton}
+                                openAction={open}
+                                />
                             </Grid>
                         </Paper>
                     </div>
