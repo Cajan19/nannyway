@@ -50,9 +50,10 @@ const useStyles = makeStyles((theme) => ({
     button: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        backgroundColor: myTheme.palette.secondary.main,
+        color: myTheme.palette.primary.dark,
+        backgroundColor: myTheme.palette.secondary.light,
         '&:hover': {
-            backgroundColor: myTheme.palette.secondary.dark,
+            backgroundColor: myTheme.palette.secondary.main,
         }
     },
 
