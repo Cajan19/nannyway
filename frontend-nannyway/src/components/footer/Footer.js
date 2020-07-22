@@ -1,10 +1,14 @@
-import React from "react";
-import Typography from "@material-ui/core/Typography";
+import React, {useContext} from "react";
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import LogoutButton from "./LogoutButton";
+import FooterButton from "./FooterButton";
+import {UserDispatchContext} from "../../context/user/UserContext";
+import {LOGOUT} from "../../context/user/UserContextProvider";
+import {removeJWTToken} from "../../utils/jwt-utils";
+import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 
 const useStyles = makeStyles((theme) => ({
     darkColor: {
@@ -12,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
     },
     basictypo: {
         fontFamily: "Open Sans",
+    },
+    basicTypoButton: {
+        fontFamily: "Open Sans",
+        fontWeight: "bold",
     },
     footerPrimary: {
         padding: theme.spacing(3),
@@ -26,11 +34,22 @@ const useStyles = makeStyles((theme) => ({
 export default function Footer({colorStyle}) {
     const classes = useStyles();
 
-    const activeFooter = ()=>{
-        if (colorStyle === "secondary"){
+    const activeFooter = () => {
+        if (colorStyle === "secondary") {
             return classes.footerSecondary
         }
         return classes.footerPrimary;
+    }
+
+    function toTop() {
+        document.documentElement.scrollTop = 0;
+    }
+
+    const dispatch = useContext(UserDispatchContext);
+
+    function logout() {
+        dispatch({type: LOGOUT})
+        removeJWTToken()
     }
 
     return (
@@ -40,10 +59,24 @@ export default function Footer({colorStyle}) {
                       direction="row"
                       justify="space-between"
                       alignItems="baseline">
-                <Typography variant="h6" align="center" gutterBottom className={classes.basictypo}>
-                    Footer
-                </Typography>
-                <LogoutButton colorStyle={colorStyle}/>
+                    <FooterButton
+                        colorStyle={colorStyle}
+                        onClickAction={toTop}
+                        variant={"contained"}
+                        classNameButton={classes.basicTypoButton}
+                        startIcon={<ArrowUpwardIcon/>}
+                        size={"small"}
+                        text={"NACH OBEN"}
+                    />
+                    <FooterButton
+                        colorStyle={colorStyle}
+                        onClickAction={logout}
+                        variant={"contained"}
+                        classNameButton={classes.basicTypoButton}
+                        startIcon={<MeetingRoomIcon/>}
+                        size={"small"}
+                        text={"LOGOUT"}
+                    />
                 </Grid>
             </Toolbar>
         </footer>

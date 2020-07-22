@@ -56,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
     deleteButton: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        backgroundColor: myTheme.palette.secondary.main,
+        color: myTheme.palette.primary.dark,
+        backgroundColor: myTheme.palette.secondary.light,
         '&:hover': {
             backgroundColor: myTheme.palette.secondary.dark,
         }
@@ -69,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: myTheme.palette.primary.dark,
         }
     },
+    expandIconColor: {
+        color: myTheme.palette.secondary.light
+    }
 }));
 
 export default function ChildInCareAccordion({kid}) {
@@ -99,7 +103,7 @@ export default function ChildInCareAccordion({kid}) {
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon/>}
+                    expandIcon={<ExpandMoreIcon className={classes.expandIconColor}/>}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                 >
