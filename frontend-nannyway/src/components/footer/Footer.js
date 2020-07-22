@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Footer({colorStyle}) {
     const classes = useStyles();
 
-    const activeFooter = ()=>{
-        if (colorStyle === "secondary"){
+    const activeFooter = () => {
+        if (colorStyle === "secondary") {
             return classes.footerSecondary
         }
         return classes.footerPrimary;
@@ -59,23 +59,23 @@ export default function Footer({colorStyle}) {
                       direction="row"
                       justify="space-between"
                       alignItems="baseline">
-                <FooterButton
-                    colorStyle={colorStyle}
-                    onClickAction={toTop}
-                    variant={"contained"}
-                    classNameButton={classes.basicTypoButton}
-                    startIcon={<ArrowUpwardIcon/>}
-                    size={"small"}
-                    text={"NACH OBEN"}
+                    <FooterButton
+                        colorStyle={colorStyle}
+                        onClickAction={toTop}
+                        variant={"contained"}
+                        classNameButton={classes.basicTypoButton}
+                        startIcon={<ArrowUpwardIcon/>}
+                        size={"small"}
+                        text={"NACH OBEN"}
                     />
                     <FooterButton
-                    colorStyle={colorStyle}
-                    onClickAction={logout}
-                    variant={"contained"}
-                    classNameButton={classes.basicTypoButton}
-                    startIcon={<MeetingRoomIcon/>}
-                    size={"small"}
-                    text={"LOGOUT"}
+                        colorStyle={colorStyle}
+                        onClickAction={logout}
+                        variant={"contained"}
+                        classNameButton={classes.basicTypoButton}
+                        startIcon={<MeetingRoomIcon/>}
+                        size={"small"}
+                        text={"LOGOUT"}
                     />
                 </Grid>
             </Toolbar>
