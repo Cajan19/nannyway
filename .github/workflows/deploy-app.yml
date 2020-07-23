@@ -70,8 +70,8 @@ jobs:
       - name: heroku build/push container
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push web -a nannyway-nf
+        run: heroku container:push web -a nannyway
       - name: release container
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release web -a nannyway-nf
+        run: heroku container:release web -a nannyway
