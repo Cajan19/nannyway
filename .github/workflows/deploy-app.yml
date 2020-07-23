@@ -2,7 +2,9 @@ name: Deploy nannyway to heroku
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - cd-pipeline
 
 jobs:
   build-frontend:
