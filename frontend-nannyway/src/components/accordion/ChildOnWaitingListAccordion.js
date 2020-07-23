@@ -22,7 +22,8 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import OfflinePinIcon from '@material-ui/icons/OfflinePin';
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import DescriptionIcon from "@material-ui/icons/Description";
-import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -74,10 +75,12 @@ const useStyles = makeStyles((theme) => ({
 export default function ChildOnWaitingListAccordion({waitingKid}) {
     const classes = useStyles();
 
-    const [checked, setChecked] = React.useState(true);
+    const [state, setState] = React.useState({
+        checkedA: false,
+    });
 
     const handleChange = (event) => {
-        setChecked(event.target.checked);
+        setState({ ...state, [event.target.name]: event.target.checked });
     };
 
     const mailAddress = "mailto:" + waitingKid.email.toString();
@@ -203,14 +206,17 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <OfflinePinIcon/>
                                     </ListItemIcon>
-                                    <Typography>
-                                        {waitingKid.approval}
-                                    </Typography>
-                                    <Checkbox
-                                        checked={checked}
-                                        onChange={handleChange}
-                                        color="primary"
-                                        inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                    <FormControlLabel
+                                        value="start"
+                                        control={
+                                            <Switch
+                                                checked={waitingKid.approval}
+                                                onChange={handleChange}
+                                                name="checkedA"
+                                                color="secondary"
+                                            />}
+                                        label="Zusage"
+                                        labelPlacement="start"
                                     />
                                 </ListItem>
                             </List>
