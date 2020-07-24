@@ -16,8 +16,9 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/4504754/pexels-photo-4504754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
-        // backgroundImage: 'url(https://images.pexels.com/photos/4615463/pexels-photo-4615463.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
+        // backgroundImage: 'url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        // backgroundImage: 'url(https://images.pexels.com/photos/4504754/pexels-photo-4504754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        backgroundImage: 'url(https://images.pexels.com/photos/4615463/pexels-photo-4615463.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
