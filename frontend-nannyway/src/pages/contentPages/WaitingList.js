@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Typography from "@material-ui/core/Typography";
 import NannyAppBar from "../../components/header/NannyAppBar";
 import Footer from "../../components/footer/Footer";
@@ -16,6 +16,7 @@ import {fetchWaitingKids} from "../../context/childOnWaitingList/childOnWaitingL
 import ChildOnWaitingListAccordion from "../../components/accordion/ChildOnWaitingListAccordion";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
+import AddChildOnWaitingListForm from "../../components/addDataForm/addChildOnWaitingListForm";
 
 const useStyles = makeStyles((theme) => ({
     nannywaytypo: {
@@ -64,6 +65,8 @@ const useStyles = makeStyles((theme) => ({
 export default function WaitingList() {
     const classes = useStyles();
 
+    const [showAddForm, setShowAddForm] = useState(false);
+
     const {waitingKids, fetchStatus} = useContext(ChildOnWaitingListStateContext);
     const dispatch = useContext(ChildOnWaitingListDispatchContext);
 
@@ -94,11 +97,15 @@ export default function WaitingList() {
                         <Button
                             variant="contained"
                             className={classes.button}
+                            onClick={() => setShowAddForm(true)}
                             startIcon={<AddIcon/>}
                         >
                             Kind hinzufügen
                         </Button>
-
+                        <AddChildOnWaitingListForm
+                            open={showAddForm}
+                            handleClose={() => setShowAddForm(false)}
+                        />
                     </Box>
                     <Grid container spacing={3}
                           direction="row"
