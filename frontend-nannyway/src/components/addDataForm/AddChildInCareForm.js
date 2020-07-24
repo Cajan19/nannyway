@@ -110,7 +110,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                     />
                     <TextField
                         fullWidth={true}
-                        label="Telefonnummer"
+                        label="Kontaktnummer"
                         name="phoneNumber"
                         value={childInCareInput.phoneNumber}
                         onChange={handleChange}
@@ -157,7 +157,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                     />
                     <TextField
                         fullWidth={true}
-                        label="freier Infotext"
+                        label="Freitext"
                         name="infoText"
                         value={childInCareInput.infoText}
                         onChange={handleChange}
