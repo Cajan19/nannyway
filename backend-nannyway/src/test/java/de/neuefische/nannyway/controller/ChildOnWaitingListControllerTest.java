@@ -2,9 +2,7 @@ package de.neuefische.nannyway.controller;
 
 import de.neuefische.nannyway.database.ChildOnWaitingListMongoDb;
 import de.neuefische.nannyway.database.UserDb;
-import de.neuefische.nannyway.model.ChildOnWaitingList;
-import de.neuefische.nannyway.model.LoginData;
-import de.neuefische.nannyway.model.NannywayUser;
+import de.neuefische.nannyway.model.*;
 import de.neuefische.nannyway.security.JwtUtils;
 import de.neuefische.nannyway.utils.RandomIdUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -93,5 +91,97 @@ class ChildOnWaitingListControllerTest {
         assertEquals(waitingKids[1], new ChildOnWaitingList("safe-id", "Meier", "Uschi", LocalDate.of(2020, 6, 7),
                 "123312", "test2@test.de", LocalDate.of(2020, 11, 10),
                 LocalDate.of(2021, 7, 31), "40", "nice", true, "more info"));
+    }
+
+    @Test
+    public void addFunctionShouldAddNewChildOnWaitingListToOverview() {
+//        given
+        String token = loginUser();
+
+        when(randomIdUtils.generateRandomID()).thenReturn("some-Id");
+
+        AddChildOnWaitingListDto addChildOnWaitingListDto = new AddChildOnWaitingListDto("Wollny", "Loredana", LocalDate.of(2020, 1, 17),
+                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
+
+        String url = "http://localhost:" + port + "/api/waitinglist";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity<AddChildOnWaitingListDto> requestEntity = new HttpEntity<>(addChildOnWaitingListDto, headers);
+
+//        when
+        ResponseEntity<ChildOnWaitingList> postResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
+
+//        then
+        ChildOnWaitingList expectedChild = new ChildOnWaitingList("some-Id", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
+                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
+        assertEquals(HttpStatus.OK, postResponse.getStatusCode());
+        assertNotNull(postResponse.getBody());
+        assertEquals(expectedChild, postResponse.getBody());
+    }
+
+    @Test
+    public void addFunctionShouldReturnForbiddenErrorWhenNotLoggedIn() {
+//    given
+        AddChildOnWaitingListDto addChildOnWaitingListDto = new AddChildOnWaitingListDto("Wollny", "Loredana", LocalDate.of(2020, 1, 17),
+                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
+
+        String url = "http://localhost:" + port + "/api/waitinglist";
+
+        HttpEntity<AddChildOnWaitingListDto> requestEntity = new HttpEntity<>(addChildOnWaitingListDto);
+
+//        when
+        ResponseEntity<ChildOnWaitingList> putResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
+
+//        then
+        assertEquals(HttpStatus.FORBIDDEN, putResponse.getStatusCode());
+    }
+
+    @Test
+    public void checkForFamilyNameFieldNotEmpty() {
+//        given
+        String token = loginUser();
+
+        AddChildOnWaitingListDto addChildOnWaitingListDto = new AddChildOnWaitingListDto("", "Loredana", LocalDate.of(2020, 1, 17),
+                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
+
+        String url = "http://localhost:" + port + "/api/waitinglist";
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity<AddChildOnWaitingListDto> requestEntity = new HttpEntity<>(addChildOnWaitingListDto, headers);
+
+//        when
+        ResponseEntity<ChildOnWaitingList> postResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
+
+//        then
+        assertEquals(HttpStatus.BAD_REQUEST, postResponse.getStatusCode());
+    }
+
+    @Test
+    public void deleteFunctionShouldDeleteKidById() {
+        //        given
+        String token = loginUser();
+
+        waitingListDb.save(new ChildOnWaitingList("999", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
+                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info"));
+        waitingListDb.save(new ChildOnWaitingList("765", "Meier", "Uschi", LocalDate.of(2020, 6, 7),
+                "123312", "test2@test.de", LocalDate.of(2020, 11, 10),
+                LocalDate.of(2021, 7, 31), "40", "nice", true, "more info"));
+
+//        when
+        String url = "http://localhost:" + port + "/api/waitinglist/999";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        HttpEntity httpEntity = new HttpEntity(headers);
+        restTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Void.class);
+
+//        then
+        assertTrue(waitingListDb.findById("999").isEmpty());
     }
 }
