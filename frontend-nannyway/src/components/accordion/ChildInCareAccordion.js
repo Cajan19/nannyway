@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.pxToRem(25),
         fontFamily: "Finger Paint",
         fontWeight: "bold",
-        color: myTheme.palette.secondary.light,
+        color: myTheme.palette.secondary.main,
     },
     accordionBackGround: {
         backgroundColor: myTheme.palette.primary.dark,
