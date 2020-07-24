@@ -11,8 +11,9 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ChildCareIcon from "@material-ui/icons/ChildCare";
+import OfflinePinOutlinedIcon from '@material-ui/icons/OfflinePinOutlined';
 import Divider from "@material-ui/core/Divider";
-import CakeIcon from "@material-ui/icons/Cake";
+import CakeOutlinedIcon from '@material-ui/icons/CakeOutlined';
 import PhoneInTalkIcon from "@material-ui/icons/PhoneInTalk";
 import TimerIcon from '@material-ui/icons/Timer';
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
@@ -20,13 +21,17 @@ import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStatio
 import myTheme from "../../styling/muiTheme";
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
-import DescriptionIcon from "@material-ui/icons/Description";
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import {Box} from "@material-ui/core";
 import DeleteKidButton from "../deleteTools/DeleteKidButton";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import DeleteDialog from "../deleteTools/DeleteDialog";
-import {ChildOnWaitingListDispatchContext} from "../../context/childOnWaitingList/ChildOnWaitingListContext";
+import {
+    ChildOnWaitingListDispatchContext,
+} from "../../context/childOnWaitingList/ChildOnWaitingListContext";
 import {deleteWaitingKid} from "../../context/childOnWaitingList/childOnWaitingListActions";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -99,6 +104,22 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
     const mailAddress = "mailto:" + waitingKid.email.toString();
     const phoneNumber = "tel:" + waitingKid.phoneNumber.toString();
 
+    // const [approvalInput, setApprovalInput] = React.useState({
+    //     approval: false,
+    // });
+    //
+    // useEffect(() => {
+    //     if (approvalInput === false) {
+    //         setApprovalInput({
+    //             approval: true,
+    //         });
+    //     }
+    // }, []);
+    //
+    // const handleChange = (event) => {
+    //     setApprovalInput({ ...approvalInput, [event.target.name]: event.target.approval});
+    // };
+
     return (
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
@@ -140,7 +161,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <CakeIcon/>
+                                        <CakeOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {waitingKid.birthDate}
@@ -217,7 +238,28 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <DescriptionIcon/>
+                                        <OfflinePinOutlinedIcon/>
+                                    </ListItemIcon>
+                                    <FormControlLabel
+                                        value="start"
+                                        control={
+                                            <Switch
+                                                // checked={waitingKid.approval}
+                                                name={"approval"}
+                                                // onChange={handleChange}
+                                                color="secondary"
+                                                // inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                            />}
+                                        label="Zusage"
+                                        labelPlacement="start"
+                                    />
+                                </ListItem>
+                            </List>
+                            <Divider/>
+                            <List>
+                                <ListItem>
+                                    <ListItemIcon>
+                                        <DescriptionOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {waitingKid.infoText}
