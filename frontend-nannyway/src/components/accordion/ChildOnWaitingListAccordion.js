@@ -41,19 +41,19 @@ const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.pxToRem(15),
         fontFamily: "Finger Paint",
         fontWeight: "bold",
-        color: myTheme.palette.secondary.light,
+        color: myTheme.palette.primary.dark,
     },
     accordionBackGround: {
-        backgroundColor: myTheme.palette.primary.dark,
+        backgroundColor: myTheme.palette.secondary.light,
         marginBottom: "20px",
         marginTop: "20px",
     },
     listBackGround: {
-        backgroundColor: myTheme.palette.primary.main,
+        backgroundColor: myTheme.palette.secondary.main,
     },
     list: {
         width: '100%',
-        backgroundColor: myTheme.palette.primary.light,
+        backgroundColor: myTheme.palette.secondary.light,
     },
     basictypo: {
         fontFamily: "Open Sans",
@@ -61,22 +61,22 @@ const useStyles = makeStyles((theme) => ({
     deleteButton: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        color: myTheme.palette.primary.dark,
-        backgroundColor: myTheme.palette.secondary.light,
+        color: myTheme.palette.secondary.light,
+        backgroundColor: myTheme.palette.primary.dark,
         '&:hover': {
-            backgroundColor: myTheme.palette.secondary.dark,
+            backgroundColor: myTheme.palette.primary.main,
         }
     },
     confirmAction: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        backgroundColor: myTheme.palette.primary.light,
+        backgroundColor: myTheme.palette.secondary.light,
         '&:hover': {
-            backgroundColor: myTheme.palette.primary.dark,
+            backgroundColor: myTheme.palette.secondary.dark,
         }
     },
     expandIconColor: {
-        color: myTheme.palette.secondary.light
+        color: myTheme.palette.primary.light
     }
 }));
 
@@ -131,10 +131,10 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                     <Grid spacing={6}
                           container
                     >
-                        <Grid item xs={6}>
+                        <Grid item xs={3}>
                         <Typography className={classes.heading}>Familie:</Typography>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={9}>
                         <Typography className={classes.heading}>{waitingKid.familyName}</Typography>
                         </Grid>
                     </Grid>
@@ -241,17 +241,17 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                         <OfflinePinOutlinedIcon/>
                                     </ListItemIcon>
                                     <FormControlLabel
-                                        value="start"
                                         control={
                                             <Switch
                                                 // checked={waitingKid.approval}
                                                 name={"approval"}
                                                 // onChange={handleChange}
-                                                color="secondary"
+                                                color="primary"
                                                 // inputProps={{ 'aria-label': 'secondary checkbox' }}
                                             />}
                                         label="Zusage"
                                         labelPlacement="start"
+                                        value="start"
                                     />
                                 </ListItem>
                             </List>
