@@ -16,29 +16,23 @@ import Box from "@material-ui/core/Box";
 import AddChildInCareForm from "../../components/addDataForm/AddChildInCareForm";
 
 const useStyles = makeStyles((theme) => ({
-    nannywaytypo: {
+    heading: {
         fontFamily: "Finger Paint",
+        color: myTheme.palette.secondary.light,
     },
     basictypo: {
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/3661246/pexels-photo-3661246.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)',
+        backgroundImage: 'url(https://images.pexels.com/photos/158935/pexels-photo-158935.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
+        // backgroundImage: 'url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
         minHeight: '72vh',
     },
-    darkColor: {
-        color: myTheme.palette.primary.dark,
-    },
     error: {
         color: myTheme.palette.error.main,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        backgroundColor: myTheme.palette.primary.light,
     },
     paperTop: {
         padding: theme.spacing(2),
@@ -78,7 +72,7 @@ export default function ChildInCareSummary() {
             <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
-                        <Typography variant={"h4"} className={classes.nannywaytypo}>
+                        <Typography variant={"h4"} className={classes.heading}>
                             TAGESKINDER
                         </Typography>
                     </Paper>
@@ -90,20 +84,6 @@ export default function ChildInCareSummary() {
                             </Typography>
                         )}
                     </Box>
-                    <Box m={2}>
-                        <Button
-                            variant="contained"
-                            className={classes.button}
-                            onClick={() => setShowAddForm(true)}
-                            startIcon={<AddIcon/>}
-                        >
-                            Kind hinzufügen
-                        </Button>
-                        <AddChildInCareForm
-                            open={showAddForm}
-                            handleClose={() => setShowAddForm(false)}
-                        />
-                    </Box>
                     <Grid container spacing={3}
                           direction="row"
                           justify="space-around"
@@ -113,6 +93,20 @@ export default function ChildInCareSummary() {
                                 <ChildInCareAccordion key={kid.id} kid={kid} />
                             ))}
                         </Grid>
+                        <Box m={5}>
+                            <Button
+                                variant="contained"
+                                className={classes.button}
+                                onClick={() => setShowAddForm(true)}
+                                startIcon={<AddIcon/>}
+                            >
+                                Kind hinzufügen
+                            </Button>
+                            <AddChildInCareForm
+                                open={showAddForm}
+                                handleClose={() => setShowAddForm(false)}
+                            />
+                        </Box>
                     </Grid>
                 </div>
             </main>

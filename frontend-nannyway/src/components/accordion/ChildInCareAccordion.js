@@ -9,15 +9,15 @@ import myTheme from "../../styling/muiTheme";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import PhoneInTalkIcon from '@material-ui/icons/PhoneInTalk';
-import CakeIcon from '@material-ui/icons/Cake';
-import PeopleIcon from '@material-ui/icons/People';
-import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
-import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
-import DescriptionIcon from '@material-ui/icons/Description';
-import ChildCareIcon from '@material-ui/icons/ChildCare';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import PhoneInTalkOutlinedIcon from '@material-ui/icons/PhoneInTalkOutlined';
+import CakeOutlinedIcon from '@material-ui/icons/CakeOutlined';
+import PeopleOutlineOutlinedIcon from '@material-ui/icons/PeopleOutlineOutlined';
+import QueryBuilderOutlinedIcon from '@material-ui/icons/QueryBuilderOutlined';
+import HourglassEmptyOutlinedIcon from '@material-ui/icons/HourglassEmptyOutlined';
+import EmojiPeopleOutlinedIcon from '@material-ui/icons/EmojiPeopleOutlined';
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import ChildCareOutLinedIcon from '@material-ui/icons/ChildCareOutlined';
+import MailOutlinedIcon from '@material-ui/icons/MailOutlined';
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -122,7 +122,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <ChildCareIcon/>
+                                        <ChildCareOutLinedIcon/>
                                     </ListItemIcon>
                                     <Grid>
                                         <Typography>
@@ -138,7 +138,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <CakeIcon/>
+                                        <CakeOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {kid.birthDate}
@@ -149,7 +149,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <PhoneInTalkIcon/>
+                                        <PhoneInTalkOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         <a href={phoneNumber}>{kid.phoneNumber}</a>
@@ -160,7 +160,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <PeopleIcon/>
+                                        <PeopleOutlineOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {kid.nameParents}
@@ -171,7 +171,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <MailOutlineIcon/>
+                                        <MailOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                     <a href={mailAddress}>{kid.email}</a>
@@ -182,7 +182,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <QueryBuilderIcon/>
+                                        <QueryBuilderOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {kid.hoursInCarePerWeek}
@@ -193,7 +193,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <HourglassEmptyIcon/>
+                                        <HourglassEmptyOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {kid.contractTerm}
@@ -204,7 +204,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <EmojiPeopleIcon/>
+                                        <EmojiPeopleOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {kid.pickUpPerson}
@@ -215,7 +215,7 @@ export default function ChildInCareAccordion({kid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <DescriptionIcon/>
+                                        <DescriptionOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {kid.infoText}

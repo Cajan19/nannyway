@@ -8,14 +8,16 @@ import Footer from "../../components/footer/Footer";
 import NannyAppBar from "../../components/header/NannyAppBar";
 
 const useStyles = makeStyles((theme) => ({
-    nannywaytypo: {
+    heading: {
         fontFamily: "Finger Paint",
+        color: myTheme.palette.primary.dark,
     },
     basictypo: {
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        backgroundImage: 'url(https://images.pexels.com/photos/4504754/pexels-photo-4504754.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        // backgroundImage: 'url(https://images.pexels.com/photos/4615463/pexels-photo-4615463.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
@@ -24,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        backgroundColor: myTheme.palette.secondary.light,
+        backgroundColor: myTheme.palette.primary.main,
     },
     paperTop: {
         padding: theme.spacing(2),
@@ -40,15 +42,14 @@ export default function EmergencyNumbers() {
 
     return (
         <div>
-            <NannyAppBar colorStyle={"secondary"}/>
+            <NannyAppBar colorStyle={"primary"}/>
             <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
-                        <Typography variant={"h4"} className={classes.nannywaytypo}>
+                        <Typography variant={"h4"} className={classes.heading}>
                             NOTRUFNUMMERN
                         </Typography>
                     </Paper>
-                    )}
                     <Grid container spacing={3}
                           direction="row"
                           justify="space-around"
@@ -70,7 +71,7 @@ export default function EmergencyNumbers() {
                     </Grid>
                 </div>
             </main>
-            <Footer colorStyle={"secondary"}/>
+            <Footer colorStyle={"primary"}/>
         </div>
     )
 }

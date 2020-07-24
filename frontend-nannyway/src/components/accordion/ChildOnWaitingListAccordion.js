@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -11,17 +11,25 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ChildCareIcon from "@material-ui/icons/ChildCare";
+import OfflinePinOutlinedIcon from '@material-ui/icons/OfflinePinOutlined';
 import Divider from "@material-ui/core/Divider";
-import CakeIcon from "@material-ui/icons/Cake";
+import CakeOutlinedIcon from '@material-ui/icons/CakeOutlined';
 import PhoneInTalkIcon from "@material-ui/icons/PhoneInTalk";
 import TimerIcon from '@material-ui/icons/Timer';
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStation';
 import myTheme from "../../styling/muiTheme";
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import OfflinePinIcon from '@material-ui/icons/OfflinePin';
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
-import DescriptionIcon from "@material-ui/icons/Description";
+import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import {Box} from "@material-ui/core";
+import DeleteKidButton from "../deleteTools/DeleteKidButton";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import DeleteDialog from "../deleteTools/DeleteDialog";
+import {
+    ChildOnWaitingListDispatchContext,
+} from "../../context/childOnWaitingList/ChildOnWaitingListContext";
+import {deleteWaitingKid} from "../../context/childOnWaitingList/childOnWaitingListActions";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 
@@ -33,19 +41,19 @@ const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.pxToRem(15),
         fontFamily: "Finger Paint",
         fontWeight: "bold",
-        color: myTheme.palette.secondary.light,
+        color: myTheme.palette.primary.dark,
     },
     accordionBackGround: {
-        backgroundColor: myTheme.palette.primary.dark,
+        backgroundColor: myTheme.palette.secondary.light,
         marginBottom: "20px",
         marginTop: "20px",
     },
     listBackGround: {
-        backgroundColor: myTheme.palette.primary.main,
+        backgroundColor: myTheme.palette.secondary.main,
     },
     list: {
         width: '100%',
-        backgroundColor: myTheme.palette.primary.light,
+        backgroundColor: myTheme.palette.secondary.light,
     },
     basictypo: {
         fontFamily: "Open Sans",
@@ -53,38 +61,64 @@ const useStyles = makeStyles((theme) => ({
     deleteButton: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        color: myTheme.palette.primary.dark,
-        backgroundColor: myTheme.palette.secondary.light,
+        color: myTheme.palette.secondary.light,
+        backgroundColor: myTheme.palette.primary.dark,
         '&:hover': {
-            backgroundColor: myTheme.palette.secondary.dark,
+            backgroundColor: myTheme.palette.primary.main,
         }
     },
     confirmAction: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        backgroundColor: myTheme.palette.primary.light,
+        backgroundColor: myTheme.palette.secondary.light,
         '&:hover': {
-            backgroundColor: myTheme.palette.primary.dark,
+            backgroundColor: myTheme.palette.secondary.dark,
         }
     },
     expandIconColor: {
-        color: myTheme.palette.secondary.light
+        color: myTheme.palette.primary.light
     }
 }));
 
 export default function ChildOnWaitingListAccordion({waitingKid}) {
     const classes = useStyles();
 
-    const [state, setState] = React.useState({
-        checkedA: false,
-    });
+    const [open, setOpen] = React.useState(false);
 
-    const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
+    const handleClickOpen = () => {
+        setOpen(true);
     };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const dispatch = useContext(ChildOnWaitingListDispatchContext);
+
+    function handleDelete(event) {
+        event.stopPropagation();
+        deleteWaitingKid(dispatch, waitingKid.id);
+        setOpen(false);
+    }
 
     const mailAddress = "mailto:" + waitingKid.email.toString();
     const phoneNumber = "tel:" + waitingKid.phoneNumber.toString();
+
+    // const [approvalInput, setApprovalInput] = React.useState({
+    //     approval: false,
+    // });
+    //
+    // useEffect(() => {
+    //     if (approvalInput === false) {
+    //         setApprovalInput({
+    //             approval: true,
+    //         });
+    //     }
+    // }, []);
+    //
+    // const handleChange = (event) => {
+    //     setApprovalInput({ ...approvalInput, [event.target.name]: event.target.approval});
+    // };
 
     return (
         <div className={classes.root}>
@@ -97,10 +131,10 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                     <Grid spacing={6}
                           container
                     >
-                        <Grid item xs={6}>
+                        <Grid item xs={3}>
                         <Typography className={classes.heading}>Familie:</Typography>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={9}>
                         <Typography className={classes.heading}>{waitingKid.familyName}</Typography>
                         </Grid>
                     </Grid>
@@ -127,7 +161,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <CakeIcon/>
+                                        <CakeOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {waitingKid.birthDate}
@@ -204,19 +238,20 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <OfflinePinIcon/>
+                                        <OfflinePinOutlinedIcon/>
                                     </ListItemIcon>
                                     <FormControlLabel
-                                        value="start"
                                         control={
                                             <Switch
-                                                checked={waitingKid.approval}
-                                                onChange={handleChange}
-                                                name="checkedA"
-                                                color="secondary"
+                                                // checked={waitingKid.approval}
+                                                name={"approval"}
+                                                // onChange={handleChange}
+                                                color="primary"
+                                                // inputProps={{ 'aria-label': 'secondary checkbox' }}
                                             />}
                                         label="Zusage"
                                         labelPlacement="start"
+                                        value="start"
                                     />
                                 </ListItem>
                             </List>
@@ -224,7 +259,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <DescriptionIcon/>
+                                        <DescriptionOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography>
                                         {waitingKid.infoText}
@@ -232,6 +267,30 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 </ListItem>
                             </List>
                             <Divider/>
+                            <Grid
+                                container
+                                direction="row"
+                                justify="center"
+                                alignItems="center"
+                            >
+                                <Box m={1}>
+                                    <DeleteKidButton
+                                        classDeleteButton={classes.deleteButton}
+                                        handleClickOpenAction={handleClickOpen}
+                                        buttonVariant={"contained"}
+                                        matchingIcon={<DeleteForeverIcon/>}
+                                        showItemToDelete={waitingKid.familyName}
+                                    />
+                                </Box>
+                                <DeleteDialog
+                                    handleDeleteAction={handleDelete}
+                                    handleCloseAction={handleClose}
+                                    classBasicTypo={classes.basictypo}
+                                    classConfirmAction={classes.confirmAction}
+                                    classDeleteButton={classes.deleteButton}
+                                    openAction={open}
+                                />
+                            </Grid>
                         </Paper>
                     </div>
                 </AccordionDetails>
