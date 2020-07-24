@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -19,11 +19,14 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStation';
 import myTheme from "../../styling/muiTheme";
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import OfflinePinIcon from '@material-ui/icons/OfflinePin';
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import DescriptionIcon from "@material-ui/icons/Description";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
+import {Box} from "@material-ui/core";
+import DeleteKidButton from "../deleteTools/DeleteKidButton";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import DeleteDialog from "../deleteTools/DeleteDialog";
+import {ChildOnWaitingListDispatchContext} from "../../context/childOnWaitingList/ChildOnWaitingListContext";
+import {deleteWaitingKid} from "../../context/childOnWaitingList/childOnWaitingListActions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -75,13 +78,23 @@ const useStyles = makeStyles((theme) => ({
 export default function ChildOnWaitingListAccordion({waitingKid}) {
     const classes = useStyles();
 
-    const [state, setState] = React.useState({
-        checkedA: false,
-    });
+    const [open, setOpen] = React.useState(false);
 
-    const handleChange = (event) => {
-        setState({ ...state, [event.target.name]: event.target.checked });
+    const handleClickOpen = () => {
+        setOpen(true);
     };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const dispatch = useContext(ChildOnWaitingListDispatchContext);
+
+    function handleDelete(event) {
+        event.stopPropagation();
+        deleteWaitingKid(dispatch, waitingKid.id);
+        setOpen(false);
+    }
 
     const mailAddress = "mailto:" + waitingKid.email.toString();
     const phoneNumber = "tel:" + waitingKid.phoneNumber.toString();
@@ -204,26 +217,6 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <OfflinePinIcon/>
-                                    </ListItemIcon>
-                                    <FormControlLabel
-                                        value="start"
-                                        control={
-                                            <Switch
-                                                checked={waitingKid.approval}
-                                                onChange={handleChange}
-                                                name="checkedA"
-                                                color="secondary"
-                                            />}
-                                        label="Zusage"
-                                        labelPlacement="start"
-                                    />
-                                </ListItem>
-                            </List>
-                            <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
                                         <DescriptionIcon/>
                                     </ListItemIcon>
                                     <Typography>
@@ -232,6 +225,30 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 </ListItem>
                             </List>
                             <Divider/>
+                            <Grid
+                                container
+                                direction="row"
+                                justify="center"
+                                alignItems="center"
+                            >
+                                <Box m={1}>
+                                    <DeleteKidButton
+                                        classDeleteButton={classes.deleteButton}
+                                        handleClickOpenAction={handleClickOpen}
+                                        buttonVariant={"contained"}
+                                        matchingIcon={<DeleteForeverIcon/>}
+                                        showItemToDelete={waitingKid.familyName}
+                                    />
+                                </Box>
+                                <DeleteDialog
+                                    handleDeleteAction={handleDelete}
+                                    handleCloseAction={handleClose}
+                                    classBasicTypo={classes.basictypo}
+                                    classConfirmAction={classes.confirmAction}
+                                    classDeleteButton={classes.deleteButton}
+                                    openAction={open}
+                                />
+                            </Grid>
                         </Paper>
                     </div>
                 </AccordionDetails>
