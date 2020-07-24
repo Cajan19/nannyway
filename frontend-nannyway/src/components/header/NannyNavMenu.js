@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     menuTextPrimary: {
         color: myTheme.palette.primary.dark,
     },
@@ -64,7 +64,7 @@ export default function NannyNavMenu({colorStyle}) {
                     <Link to={"/waitinglist"} className={activeTextClass()}>Warteliste</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose} className={classes.backgroundColor}>
-                    <Link to={"/emergency"} className={activeTextClass()}>Notfallnummern</Link>
+                    <Link to={"/emergency"} className={activeTextClass()}>Notrufnummern</Link>
                 </MenuItem>
             </Menu>
         </div>
