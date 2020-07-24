@@ -19,44 +19,38 @@ import AddIcon from "@material-ui/icons/Add";
 import AddChildOnWaitingListForm from "../../components/addDataForm/addChildOnWaitingListForm";
 
 const useStyles = makeStyles((theme) => ({
-    nannywaytypo: {
+    heading: {
         fontFamily: "Finger Paint",
+        color: myTheme.palette.primary.dark,
     },
     basictypo: {
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/19678/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        backgroundImage: 'url(https://images.pexels.com/photos/268819/pexels-photo-268819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        // backgroundImage: 'url(https://images.pexels.com/photos/19678/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
         minHeight: '72vh',
     },
-    darkColor: {
-        color: myTheme.palette.primary.dark,
-    },
     error: {
         color: myTheme.palette.error.main,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        backgroundColor: myTheme.palette.primary.light,
     },
     paperTop: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        backgroundColor: myTheme.palette.primary.main,
+        backgroundColor: myTheme.palette.secondary.main,
         fontFamily: "Open Sans",
         marginBottom: "20px",
     },
     button: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        color: myTheme.palette.primary.dark,
-        backgroundColor: myTheme.palette.secondary.light,
+        color: myTheme.palette.secondary.light,
+        backgroundColor: myTheme.palette.primary.dark,
         '&:hover': {
-            backgroundColor: myTheme.palette.secondary.main,
+            backgroundColor: myTheme.palette.primary.main,
         }
     },
 
@@ -78,11 +72,11 @@ export default function WaitingList() {
 
     return (
         <div>
-            <NannyAppBar colorStyle={"primary"}/>
+            <NannyAppBar colorStyle={"secondary"}/>
             <main>
                 <div className={classes.image} >
                     <Paper className={classes.paperTop}>
-                        <Typography variant={"h4"} className={classes.nannywaytypo}>
+                        <Typography variant={"h4"} className={classes.heading}>
                             WARTELISTE
                         </Typography>
                     </Paper>
@@ -93,20 +87,6 @@ export default function WaitingList() {
                                 Daten konnten nicht geladen werden
                             </Typography>)}
                     </Box>
-                    <Box m={2}>
-                        <Button
-                            variant="contained"
-                            className={classes.button}
-                            onClick={() => setShowAddForm(true)}
-                            startIcon={<AddIcon/>}
-                        >
-                            Kind hinzufügen
-                        </Button>
-                        <AddChildOnWaitingListForm
-                            open={showAddForm}
-                            handleClose={() => setShowAddForm(false)}
-                        />
-                    </Box>
                     <Grid container spacing={3}
                           direction="row"
                           justify="space-around"
@@ -116,10 +96,24 @@ export default function WaitingList() {
                                 <ChildOnWaitingListAccordion key={waitingKid.id} waitingKid={waitingKid} />
                             ))}
                         </Grid>
+                        <Box m={5}>
+                            <Button
+                                variant="contained"
+                                className={classes.button}
+                                onClick={() => setShowAddForm(true)}
+                                startIcon={<AddIcon/>}
+                            >
+                                neue Warteliste
+                            </Button>
+                            <AddChildOnWaitingListForm
+                                open={showAddForm}
+                                handleClose={() => setShowAddForm(false)}
+                            />
+                        </Box>
                     </Grid>
                 </div>
             </main>
-            <Footer colorStyle={"primary"}/>
+            <Footer colorStyle={"secondary"}/>
         </div>
     )
 }
