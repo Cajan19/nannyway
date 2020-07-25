@@ -33,12 +33,16 @@ const useStyles = makeStyles((theme) => ({
         minHeight: '100vh',
     },
     paperText: {
-        backgroundColor: myTheme.palette.primary.dark,
+        backgroundColor: myTheme.palette.info.light,
         padding: 3,
-        color: myTheme.palette.secondary.light,
+        color: myTheme.palette.secondary.main,
     },
     basictypo: {
         fontFamily: "Open Sans",
+    },
+    nannyTypo: {
+        fontFamily: "Finger Paint",
+        color: myTheme.palette.primary.dark,
     },
 }));
 
@@ -53,15 +57,13 @@ export default function LandingPage() {
                         <Grid container justify={"center"}>
                             <img src={"images/nwlogo6-200.png"} alt={"bunte Hand"}/>
                         </Grid>
-                        <Typography variant="h5" gutterBottom align={"center"} className={classes.basictypo}>
-                            Der digitale KTP-Planer!
+                        <ListItem>
+                            <Divider/>
+                        </ListItem>
+                        <Typography variant="h5" gutterBottom align={"center"} className={classes.nannyTypo}>
+                            Kindertagespflege-App
                         </Typography>
                     </Container>
-                </Grid>
-                <Grid item container xs={12} justify={"center"}>
-                    <Typography variant="h6" align={"center"} className={classes.basictypo}>
-                        Tschüss Papierkram - hallo Kids ;)
-                    </Typography>
                 </Grid>
                 <Grid item>
                     <section className={classes.login}>
@@ -70,16 +72,29 @@ export default function LandingPage() {
                         </Container>
                     </section>
                     <Grid item>
-                        <Box m={12}/>
+                        <Box m={8}/>
                     </Grid>
                     <ListItem>
                         <Divider/>
                     </ListItem>
                     <Grid item container xs={12} justify={"center"}>
                         <Paper className={classes.paperText}>
-                            <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>Die digitale
-                                Datenverwaltung Deiner aktuellen und
-                                zukünftigen Tagespflegegäste ist jetzt kinderleicht.</Typography>
+                            <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
+                                Datenerfassung • Organizer • Planungshilfe
+                            </Typography>
+                        </Paper>
+                        <ListItem>
+                            <Divider/>
+                        </ListItem>
+                        <Paper className={classes.paperText}>
+                            <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
+                                Die digitale Datenverwaltung Deiner aktuellen und zukünftigen Tagespflegekids ist jetzt kinderleicht.
+                            </Typography>
+                        </Paper>
+                        <ListItem>
+                            <Divider/>
+                        </ListItem>
+                        <Paper className={classes.paperText}>
                             <Typography align={"center"} variant={"body2"} className={classes.basictypo}>
                                 Inhalte sind nur für eingeloggte Nutzer sichtbar.
                             </Typography>
