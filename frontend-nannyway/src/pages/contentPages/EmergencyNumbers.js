@@ -19,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
         backgroundImage: 'url("https://images.unsplash.com/photo-1530036067142-31e9b88da9b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundPosition: "center",
+        backgroundPosition: "right",
         minHeight: '72vh',
     },
     paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        backgroundColor: myTheme.palette.primary.main,
+        backgroundColor: myTheme.palette.info.light,
     },
     paperTop: {
         padding: theme.spacing(2),
