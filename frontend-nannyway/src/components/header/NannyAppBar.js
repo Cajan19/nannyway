@@ -36,7 +36,7 @@ export default function NannyAppBar({colorStyle}) {
                             <NannyNavMenu colorStyle={colorStyle}/>
                         </Grid>
                         <Grid item>
-                            <img src={"images/nwLogo-200.png"} alt={"nannyway logo"}/>
+                            <img src={"images/nwlogo6-200.png"} alt={"nannyway logo"}/>
                         </Grid>
                     </Grid>
                 </Toolbar>
