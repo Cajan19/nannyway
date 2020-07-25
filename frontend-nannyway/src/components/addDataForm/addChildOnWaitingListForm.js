@@ -22,6 +22,9 @@ const useStyles = makeStyles(() => ({
         color: myTheme.palette.error.main,
         fontVariant: "small-caps",
     },
+    basicFont: {
+        fontFamily: "Open Sans",
+    },
 }));
 
 export default function AddChildOnWaitingListForm({open, handleClose}) {
@@ -84,11 +87,12 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
             maxWidth={'md'}
             fullWidth={true}
         >
-            <DialogTitle id="form-dialog-title">Warteliste hinzufügen</DialogTitle>
+            <DialogTitle id="form-dialog-title" className={classes.basicFont}>Warteliste hinzufügen</DialogTitle>
             <DialogContent>
-                <DialogContentText>Setze ein neues Kind auf die Warteliste</DialogContentText>
+                <DialogContentText className={classes.basicFont}>Setze ein neues Kind auf die Warteliste</DialogContentText>
                 <form onSubmit={handleSubmit}>
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Familienname"
                         name="familyName"
@@ -98,6 +102,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         helperText={'Dieses Feld muss ausgefüllt werden'}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Vorname"
                         name="firstName"
@@ -105,6 +110,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         onChange={handleChange}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Geburtsdatum"
                         name="birthDate"
@@ -122,6 +128,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         type={"tel"}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="E-Mail"
                         name="email"
@@ -130,6 +137,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         type={"email"}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Kennelernen am"
                         name="getToKnowDate"
@@ -139,6 +147,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         InputLabelProps={{shrink: true}}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Betreuung gewünscht ab"
                         name="startDateOfCare"
@@ -148,6 +157,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         InputLabelProps={{shrink: true}}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Betreuungsstunden pro Woche"
                         name="hoursInCarePerWeek"
@@ -156,6 +166,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         onChange={handleChange}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Prognose"
                         name="prediction"
@@ -163,6 +174,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         onChange={handleChange}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Freitext"
                         name="infoText"
@@ -179,10 +191,10 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                 )}
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary" variant={"contained"}>
+                <Button onClick={handleClose} color="primary" variant={"contained"} className={classes.basicFont}>
                     Abbrechen
                 </Button>
-                <Button onClick={handleSubmit} color="primary" variant={"contained"}
+                <Button onClick={handleSubmit} color="primary" variant={"contained"} className={classes.basicFont}
                         disabled={childOnWaitingListInput.familyName.length < 2}>
                     Hinzufügen
                 </Button>

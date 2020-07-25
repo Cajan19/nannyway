@@ -19,6 +19,9 @@ const useStyles = makeStyles(() => ({
         color: myTheme.palette.error.main,
         fontVariant: "small-caps",
     },
+    basicFont: {
+        fontFamily: "Open Sans",
+    },
 }));
 
 export default function AddChildInCareForm({open, handleClose}) {
@@ -79,11 +82,12 @@ export default function AddChildInCareForm({open, handleClose}) {
             maxWidth={'md'}
             fullWidth={true}
         >
-            <DialogTitle id="form-dialog-title">Kind hinzufügen</DialogTitle>
+            <DialogTitle id="form-dialog-title" className={classes.basicFont}>Kind hinzufügen</DialogTitle>
             <DialogContent>
-                <DialogContentText>Trage ein neues Tageskind ein</DialogContentText>
+                <DialogContentText className={classes.basicFont}>Trage ein neues Tageskind ein</DialogContentText>
                 <form onSubmit={handleSubmit}>
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Vorname"
                         name="firstName"
@@ -93,6 +97,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         helperText={'Dieses Feld muss ausgefüllt werden'}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Nachname"
                         name="lastName"
@@ -100,6 +105,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         onChange={handleChange}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Geburtsdatum"
                         name="birthDate"
@@ -109,6 +115,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         InputLabelProps={{shrink: true}}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Kontaktnummer"
                         name="phoneNumber"
@@ -117,6 +124,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         type="tel"
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Eltern"
                         name="nameParents"
@@ -124,6 +132,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         onChange={handleChange}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="E-Mail"
                         name="email"
@@ -132,6 +141,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         type="email"
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Betreuungsstunden pro Woche"
                         name="hoursInCarePerWeek"
@@ -140,6 +150,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         type="number"
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Vertragslaufzeit bis"
                         name="contractTerm"
@@ -149,6 +160,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         InputLabelProps={{shrink: true}}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="autorisierte Abholperson"
                         name="pickUpPerson"
@@ -156,6 +168,7 @@ export default function AddChildInCareForm({open, handleClose}) {
                         onChange={handleChange}
                     />
                     <TextField
+                        className={classes.basicFont}
                         fullWidth={true}
                         label="Freitext"
                         name="infoText"
@@ -172,10 +185,10 @@ export default function AddChildInCareForm({open, handleClose}) {
                 )}
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary" variant={"contained"}>
+                <Button onClick={handleClose} color="primary" variant={"contained"} className={classes.basicFont}>
                     Abbrechen
                 </Button>
-                <Button onClick={handleSubmit} color="primary" variant={"contained"}
+                <Button onClick={handleSubmit} color="primary" variant={"contained"} className={classes.basicFont}
                         disabled={childInCareInput.firstName.length < 2}>
                     Hinzufügen
                 </Button>
