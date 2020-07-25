@@ -24,11 +24,11 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url("https://images.unsplash.com/photo-1518275491839-7039ff7be8fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")',
+        backgroundImage: 'url("https://images.unsplash.com/photo-1521080755838-d2311117f767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1129&q=80")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
-        minHeight: '71vh',
+        minHeight: '72vh',
     },
     error: {
         color: myTheme.palette.error.main,

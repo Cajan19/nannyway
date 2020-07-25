@@ -10,16 +10,16 @@ import NannyAppBar from "../../components/header/NannyAppBar";
 const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: "Finger Paint",
-        color: myTheme.palette.primary.dark,
+        color: myTheme.palette.secondary.main,
     },
     basictypo: {
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url("https://images.unsplash.com/photo-1530036067142-31e9b88da9b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80")',
+        backgroundImage: 'url("https://images.unsplash.com/photo-1521080755838-d2311117f767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1129&q=80")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundPosition: "right",
+        backgroundPosition: "center",
         minHeight: '72vh',
     },
     paper: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     paperTop: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        backgroundColor: myTheme.palette.secondary.main,
+        backgroundColor: myTheme.palette.primary.main,
         fontFamily: "Open Sans",
         marginBottom: "20px",
     },
