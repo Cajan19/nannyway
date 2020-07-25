@@ -8,7 +8,6 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import Box from "@material-ui/core/Box";
 import myTheme from "../../styling/muiTheme";
-import Paper from "@material-ui/core/Paper";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,13 +31,14 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: "center",
         minHeight: '100vh',
     },
-    paperText: {
-        backgroundColor: myTheme.palette.info.light,
-        padding: 3,
-        color: myTheme.palette.secondary.main,
-    },
+    // paperText: {
+    //     backgroundColor: myTheme.palette.info.light,
+    //     padding: 3,
+    //     color: myTheme.palette.secondary.main,
+    // },
     basictypo: {
         fontFamily: "Open Sans",
+        color: myTheme.palette.secondary.main,
     },
     nannyTypo: {
         fontFamily: "Finger Paint",
@@ -78,27 +78,27 @@ export default function LandingPage() {
                         <Divider/>
                     </ListItem>
                     <Grid item container xs={12} justify={"center"}>
-                        <Paper className={classes.paperText}>
+                        {/*<Paper className={classes.paperText}>*/}
                             <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
                                 Datenerfassung • Organizer • Planungshilfe
                             </Typography>
-                        </Paper>
+                        {/*</Paper>*/}
                         <ListItem>
                             <Divider/>
                         </ListItem>
-                        <Paper className={classes.paperText}>
+                        {/*<Paper className={classes.paperText}>*/}
                             <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
                                 Die digitale Datenverwaltung Deiner aktuellen und zukünftigen Tagespflegekids ist jetzt kinderleicht.
                             </Typography>
-                        </Paper>
+                        {/*</Paper>*/}
                         <ListItem>
                             <Divider/>
                         </ListItem>
-                        <Paper className={classes.paperText}>
+                        {/*<Paper className={classes.paperText}>*/}
                             <Typography align={"center"} variant={"body2"} className={classes.basictypo}>
                                 Inhalte sind nur für eingeloggte Nutzer sichtbar.
                             </Typography>
-                        </Paper>
+                        {/*</Paper>*/}
                     </Grid>
                 </Grid>
             </div>

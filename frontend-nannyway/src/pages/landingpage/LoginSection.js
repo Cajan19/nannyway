@@ -19,8 +19,10 @@ const useStyles = makeStyles((theme) => ({
     },
     textfieldFontColor: {
         color: myTheme.palette.secondary.dark,
+        fontFamily: "Open Sans",
     },
     buttons: {
+        fontFamily: "Open Sans",
         backgroundColor: myTheme.palette.primary.dark,
         color: myTheme.palette.secondary.light,
         '&:hover': {
