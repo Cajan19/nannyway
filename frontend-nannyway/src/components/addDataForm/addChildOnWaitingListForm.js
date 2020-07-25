@@ -172,6 +172,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                         name="prediction"
                         value={childOnWaitingListInput.prediction}
                         onChange={handleChange}
+                        multiline={true}
                     />
                     <TextField
                         className={classes.basicFont}
