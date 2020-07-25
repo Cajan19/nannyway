@@ -14,7 +14,7 @@ const myTheme = createMuiTheme({
             dark: '#CB5940',
             contrastText: '#000',
         },
-        info:{
+        info: {
             light: '#273B44',
             main: '#bbeef6',
             dark: '#273B44',
@@ -23,20 +23,7 @@ const myTheme = createMuiTheme({
         error: {
             light: "#CB5940",
             main: "#ff3f1f"
-        }},
-
-    overrides: {
-        MuiButton: {
-            text: {
-                background: 'linear-gradient(45deg, #F1BF9E 30%, #CB5940 90%)',
-                borderRadius: 3,
-                border: 0,
-                color: 'dark',
-                height: 48,
-                padding: '0 30px',
-                fontFamily: "Open Sans",
-            },
-        },
+        }
     },
 });
 
