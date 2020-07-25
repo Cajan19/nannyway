@@ -9,6 +9,7 @@ import LandingPage from "../../pages/landingpage/LandingPage";
 import WaitingList from "../../pages/contentPages/WaitingList";
 import EmergencyNumbers from "../../pages/contentPages/EmergencyNumbers";
 import ChildInCareSummary from "../../pages/contentPages/ChildInCareSummary";
+import Imprint from "../../pages/imprint/Imprint";
 
 export default function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -26,6 +27,9 @@ export default function Navigation() {
             <PrivateRoute path="/waitinglist" component={WaitingList}/>
             <PrivateRoute path="/emergency" component={EmergencyNumbers}/>
             <PrivateRoute path="/" component={ChildInCareSummary} exact/>
+            <Route path="/impr" exact>
+                <Imprint/>
+            </Route>
             <Route path="/login" exact>
                 <LandingPage/>
             </Route>
