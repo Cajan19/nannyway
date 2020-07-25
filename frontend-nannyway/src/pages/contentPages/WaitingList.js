@@ -27,9 +27,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/4058111/pexels-photo-4058111.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)',
-        // backgroundImage: 'url(https://images.pexels.com/photos/268819/pexels-photo-268819.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
-        // backgroundImage: 'url(https://images.pexels.com/photos/19678/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
+        backgroundImage: 'url("images/tealbg-orig-l.jpg")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",

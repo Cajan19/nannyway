@@ -19,6 +19,13 @@ const useStyles = makeStyles((theme) => ({
     },
     textfieldFontColor: {
         color: myTheme.palette.secondary.dark,
+    },
+    buttons: {
+        backgroundColor: myTheme.palette.primary.dark,
+        color: myTheme.palette.secondary.light,
+        '&:hover': {
+            backgroundColor: myTheme.palette.primary.main,
+        },
     }
 }));
 
@@ -51,25 +58,29 @@ export default function LoginSection() {
     }
 
     return (
-        <Grid container justify={"space-around"} alignItems={"center"} spacing={2}>
-            <Grid item>
+        <Grid container
+              direction="column"
+              justify="space-around"
+              alignItems="center" spacing={2}>
                 <FormControl margin={"normal"}>
-                    <TextField label="Benutzername" type="text" variant={"filled"}
-                               InputProps={{className: classes.textfieldFontColor}}
-                               value={username} className={classes.textfield} color={"secondary"}
-                               onChange={(event) => setUsername(event.target.value)}/>
-                    <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
-                               value={password} className={classes.textfield}
-                               InputProps={{className: classes.textfieldFontColor}}
-                               onChange={(event) => setPassword(event.target.value)}/>
+                        <TextField label="Benutzername" type="text" variant={"filled"}
+                                   InputProps={{className: classes.textfieldFontColor}}
+                                   value={username} className={classes.textfield} color={"secondary"}
+                                   onChange={(event) => setUsername(event.target.value)}
+                        />
+                        <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
+                                   value={password} className={classes.textfield}
+                                   InputProps={{className: classes.textfieldFontColor}}
+                                   onChange={(event) => setPassword(event.target.value)}/>
                 </FormControl>
-                <Box m={1}>
-                    <Button fullWidth onClick={login}>Login</Button>
-                </Box>
-                <Box m={1}>
-                    <Button fullWidth onClick={login}>Registrierung</Button>
-                </Box>
-            </Grid>
+                <Grid container justify={"center"} spacing={2}>
+                    <Box m={1}>
+                        <Button onClick={login} className={classes.buttons} variant={"outlined"}>Login</Button>
+                    </Box>
+                    <Box m={1}>
+                        <Button onClick={login} className={classes.buttons}>Sign up</Button>
+                    </Box>
+                </Grid>
         </Grid>
     )
 }

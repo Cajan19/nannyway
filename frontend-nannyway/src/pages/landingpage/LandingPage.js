@@ -6,9 +6,9 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
-import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 import myTheme from "../../styling/muiTheme";
+import Paper from "@material-ui/core/Paper";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,22 +25,21 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(3, 2),
         marginTop: 'auto',
     },
-    nannywaytypo: {
-        fontFamily: "Finger Paint",
-    },
-    basictypo: {
-        fontFamily: "Open Sans",
-    },
     image: {
-        backgroundImage: 'url(https://images.pexels.com/photos/1262304/pexels-photo-1262304.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)',
+        backgroundImage: 'url("images/tealbg-orig-l.jpg")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
         minHeight: '100vh',
     },
-    darkColor: {
-        color: myTheme.palette.primary.dark,
-    }
+    paperText: {
+        backgroundColor: myTheme.palette.primary.dark,
+        padding: 3,
+        color: myTheme.palette.secondary.light,
+    },
+    basictypo: {
+        fontFamily: "Open Sans",
+    },
 }));
 
 export default function LandingPage() {
@@ -51,13 +50,18 @@ export default function LandingPage() {
             <div className={classes.image}>
                 <Grid item>
                     <Container className={classes.main} maxWidth="sm">
-                        <Grid item container xs={12} justify={"center"}>
-                            <img src={"images/nwLogo-dark-200.png"} alt={"bunte Hand"}/>
+                        <Grid container justify={"center"}>
+                            <img src={"images/nwlogo6-200.png"} alt={"bunte Hand"}/>
                         </Grid>
                         <Typography variant="h5" gutterBottom align={"center"} className={classes.basictypo}>
                             Der digitale KTP-Planer!
                         </Typography>
                     </Container>
+                </Grid>
+                <Grid item container xs={12} justify={"center"}>
+                    <Typography variant="h6" align={"center"} className={classes.basictypo}>
+                        Tschüss Papierkram - hallo Kids ;)
+                    </Typography>
                 </Grid>
                 <Grid item>
                     <section className={classes.login}>
@@ -66,24 +70,21 @@ export default function LandingPage() {
                         </Container>
                     </section>
                     <Grid item>
-                        <Box m={1}/>
-                    <Typography className={classes.basictypo} align={"center"}>
-                        <Link href={"#"} className={classes.darkColor} underline={"always"}> Passwort vergessen?
-                        </Link>
-                    </Typography>
+                        <Box m={12}/>
                     </Grid>
-                  <Box m={3} />
-                    <Typography variant="h6" align={"center"} className={classes.basictypo}>Weniger Papierkram - mehr
-                        Zeit für Kids!</Typography>
                     <ListItem>
                         <Divider/>
                     </ListItem>
-                    <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>Die digitale
-                        Datenverwaltung Deiner aktuellen und
-                        zukünftigen Tagespflegegäste ist jetzt kinderleicht.</Typography>
-                    <Typography align={"center"} variant={"body2"} className={classes.basictypo}>
-                        Inhalte sind nur für eingeloggte Nutzer sichtbar.
-                    </Typography>
+                    <Grid item container xs={12} justify={"center"}>
+                        <Paper className={classes.paperText}>
+                            <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>Die digitale
+                                Datenverwaltung Deiner aktuellen und
+                                zukünftigen Tagespflegegäste ist jetzt kinderleicht.</Typography>
+                            <Typography align={"center"} variant={"body2"} className={classes.basictypo}>
+                                Inhalte sind nur für eingeloggte Nutzer sichtbar.
+                            </Typography>
+                        </Paper>
+                    </Grid>
                 </Grid>
             </div>
         </div>
