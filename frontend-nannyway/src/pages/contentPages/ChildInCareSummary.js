@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url("images/wolkenbg-orig.jpg")',
+        backgroundImage: 'url("https://images.unsplash.com/photo-1518275491839-7039ff7be8fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
