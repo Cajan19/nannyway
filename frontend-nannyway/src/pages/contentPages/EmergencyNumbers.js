@@ -6,6 +6,9 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Footer from "../../components/footer/Footer";
 import NannyAppBar from "../../components/header/NannyAppBar";
+import EmergencyCard from "../../components/cards/EmergencyCard";
+import PoliceCard from "../../components/cards/PoliceCard";
+import PoisonCard from "../../components/cards/PoisonCard";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -50,23 +53,12 @@ export default function EmergencyNumbers() {
                         </Typography>
                     </Paper>
                     <Grid container spacing={3}
-                          direction="row"
+                          direction="column"
                           justify="space-around"
                           alignItems="center">
-                        <Grid item xs={10}>
-                            <Paper className={classes.paper}>
-                                <Typography className={classes.basictypo}>
-                                    placeholder card
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
-                            <Paper className={classes.paper}>
-                                <Typography className={classes.basictypo}>
-                                    placeholder mini card
-                                </Typography>
-                            </Paper>
-                        </Grid>
+                        <EmergencyCard/>
+                        <PoliceCard/>
+                        <PoisonCard/>
                     </Grid>
                 </div>
             </main>
