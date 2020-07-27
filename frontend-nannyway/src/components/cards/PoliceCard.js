@@ -97,7 +97,7 @@ export default function PoliceCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:110">110</a>
+                            <a href="tel:110">110 (bundesweit)</a>
                         </Typography>
                     </ListItem>
                 </List>
@@ -106,14 +106,14 @@ export default function PoliceCard() {
                 <Paper className={classes.paper}>
                     <Typography variant="body2" component="p" className={classes.basicTypo}>
                         Der Notruf der Polizei sollte immer dann gerufen werden, wenn man sich bedroht fühlt,
-                        in einer gefährlichen Situation befindet oder sich eine unmittelbare Notsituation anbahnt.
+                        in einer gefährlichen Situation befindet oder sich eine Notsituation anbahnt.
                     </Typography>
                 </Paper>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton>
+                <ListItemIcon>
                     <NewReleasesOutlinedIcon/>
-                </IconButton>
+                </ListItemIcon>
                 <IconButton
                     className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,

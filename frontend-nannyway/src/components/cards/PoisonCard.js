@@ -174,9 +174,9 @@ export default function PoisonCard() {
                 </Paper>
             </CardContent>
             <CardActions disableSpacing>
-                <IconButton>
+                <ListItemIcon>
                     <NewReleasesOutlinedIcon/>
-                </IconButton>
+                </ListItemIcon>
                 <IconButton
                     className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,
