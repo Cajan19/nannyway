@@ -22,8 +22,21 @@ const useStyles = makeStyles(() => ({
         color: myTheme.palette.error.main,
         fontVariant: "small-caps",
     },
-    basicFont: {
+    addButton: {
         fontFamily: "Open Sans",
+        color: myTheme.palette.primary.contrastText,
+        backgroundColor: myTheme.palette.primary.main,
+        '&:hover': {
+            backgroundColor: myTheme.palette.primary.dark,
+        }
+    },
+    abortButton: {
+        fontFamily: "Open Sans",
+        color: myTheme.palette.primary.contrastText,
+        backgroundColor: myTheme.palette.secondary.main,
+        '&:hover': {
+            backgroundColor: myTheme.palette.secondary.dark,
+        }
     },
 }));
 
@@ -192,10 +205,10 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                 )}
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary" variant={"contained"} className={classes.basicFont}>
+                <Button onClick={handleClose} variant={"contained"} className={classes.abortButton}>
                     Abbrechen
                 </Button>
-                <Button onClick={handleSubmit} color="primary" variant={"contained"} className={classes.basicFont}
+                <Button onClick={handleSubmit} variant={"contained"} className={classes.addButton}
                         disabled={childOnWaitingListInput.familyName.length < 2}>
                     Hinzufügen
                 </Button>

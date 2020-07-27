@@ -9,6 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Box from "@material-ui/core/Box";
 import myTheme from "../../styling/muiTheme";
 import Link from "@material-ui/core/Link";
+import Paper from "@material-ui/core/Paper";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +48,11 @@ const useStyles = makeStyles((theme) => ({
     },
     link: {
         marginRight: theme.spacing(2),
-    }
+    },
+    paper: {
+        backgroundColor: myTheme.palette.warning.main,
+        marginBottom: 5,
+    },
 }));
 
 export default function LandingPage() {
@@ -76,28 +81,33 @@ export default function LandingPage() {
                         </Container>
                     </section>
                     <Grid item>
-                        <Box m={8}/>
+                        <Box m={2}/>
                     </Grid>
                     <ListItem>
                         <Divider/>
                     </ListItem>
                     <Grid item container xs={12} justify={"center"}>
-                        <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
-                            Datenerfassung | Organizer | Planungshilfe
-                        </Typography>
-                        <ListItem>
-                            <Divider/>
-                        </ListItem>
-                        <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
-                            Die digitale Datenverwaltung Deiner aktuellen und zukünftigen Tagespflegekids ist jetzt
-                            kinderleicht.
-                        </Typography>
-                        <ListItem>
-                            <Divider/>
-                        </ListItem>
-                        <Typography align={"center"} variant={"body2"} className={classes.basictypo}>
-                            Inhalte sind nur für eingeloggte Nutzer sichtbar.
-                        </Typography>
+                        <Grid item xs={10}>
+                            <Paper className={classes.paper}>
+                                <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
+                                    Datenerfassung | Organizer | Planungshilfe
+                                </Typography>
+                                <ListItem>
+                                    <Divider/>
+                                </ListItem>
+                                <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
+                                    Die digitale Datenverwaltung Deiner aktuellen und zukünftigen Tagespflegekids ist
+                                    jetzt
+                                    kinderleicht.
+                                </Typography>
+                                <ListItem>
+                                    <Divider/>
+                                </ListItem>
+                                <Typography align={"center"} variant={"body2"} className={classes.basictypo}>
+                                    Inhalte sind nur für eingeloggte Nutzer sichtbar.
+                                </Typography>
+                            </Paper>
+                        </Grid>
                     </Grid>
                 </Grid>
                 <Grid

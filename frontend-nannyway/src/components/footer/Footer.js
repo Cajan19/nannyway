@@ -11,15 +11,10 @@ import {removeJWTToken} from "../../utils/jwt-utils";
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
 
 const useStyles = makeStyles((theme) => ({
-    darkColor: {
-        color: myTheme.palette.primary.dark,
-    },
-    basictypo: {
-        fontFamily: "Open Sans",
-    },
     basicTypoButton: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
+        color: myTheme.palette.primary.contrastText,
     },
     footerPrimary: {
         padding: theme.spacing(3),

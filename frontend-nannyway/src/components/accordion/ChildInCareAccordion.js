@@ -35,16 +35,15 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(25),
         fontFamily: "Finger Paint",
-        fontWeight: "bold",
         color: myTheme.palette.secondary.main,
     },
     accordionBackGround: {
-        backgroundColor: myTheme.palette.primary.dark,
+        backgroundColor: myTheme.palette.success.dark,
         marginBottom: "20px",
         marginTop: "20px",
     },
     listBackGround: {
-        backgroundColor: myTheme.palette.primary.main,
+        backgroundColor: myTheme.palette.primary.dark,
     },
     list: {
         width: '100%',
@@ -52,6 +51,10 @@ const useStyles = makeStyles((theme) => ({
     },
     basictypo: {
         fontFamily: "Open Sans",
+        color: myTheme.palette.info.light,
+    },
+    deleteText: {
+        color: myTheme.palette.info.dark,
     },
     deleteButton: {
         fontFamily: "Open Sans",
@@ -72,6 +75,13 @@ const useStyles = makeStyles((theme) => ({
     },
     expandIconColor: {
         color: myTheme.palette.secondary.light
+    },
+    linkColor: {
+        textDecoration: "none",
+        color: myTheme.palette.info.light,
+        '&:hover': {
+            color: myTheme.palette.secondary.light
+        }
     }
 }));
 
@@ -125,10 +135,10 @@ export default function ChildInCareAccordion({kid}) {
                                         <ChildCareOutLinedIcon/>
                                     </ListItemIcon>
                                     <Grid>
-                                        <Typography>
+                                        <Typography className={classes.basictypo}>
                                             {kid.firstName}
                                         </Typography>
-                                        <Typography>
+                                        <Typography className={classes.basictypo}>
                                             {kid.lastName}
                                         </Typography>
                                     </Grid>
@@ -140,7 +150,7 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <CakeOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {kid.birthDate}
                                     </Typography>
                                 </ListItem>
@@ -151,8 +161,8 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <PhoneInTalkOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
-                                        <a href={phoneNumber}>{kid.phoneNumber}</a>
+                                    <Typography className={classes.basictypo}>
+                                        <a className={classes.linkColor} href={phoneNumber}>{kid.phoneNumber}</a>
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -162,7 +172,7 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <PeopleOutlineOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {kid.nameParents}
                                     </Typography>
                                 </ListItem>
@@ -173,8 +183,8 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <MailOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
-                                    <a href={mailAddress}>{kid.email}</a>
+                                    <Typography className={classes.basictypo}>
+                                    <a className={classes.linkColor} href={mailAddress}>{kid.email}</a>
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -184,7 +194,7 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <QueryBuilderOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {kid.hoursInCarePerWeek}
                                     </Typography>
                                 </ListItem>
@@ -195,7 +205,7 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <HourglassEmptyOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {kid.contractTerm}
                                     </Typography>
                                 </ListItem>
@@ -206,7 +216,7 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <EmojiPeopleOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {kid.pickUpPerson}
                                     </Typography>
                                 </ListItem>
@@ -217,7 +227,7 @@ export default function ChildInCareAccordion({kid}) {
                                     <ListItemIcon>
                                         <DescriptionOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {kid.infoText}
                                     </Typography>
                                 </ListItem>
@@ -241,7 +251,7 @@ export default function ChildInCareAccordion({kid}) {
                                 <DeleteDialog
                                 handleDeleteAction={handleDelete}
                                 handleCloseAction={handleClose}
-                                classBasicTypo={classes.basictypo}
+                                classBasicTypo={classes.deleteText}
                                 classConfirmAction={classes.confirmAction}
                                 classDeleteButton={classes.deleteButton}
                                 openAction={open}

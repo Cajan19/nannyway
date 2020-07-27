@@ -40,16 +40,15 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontFamily: "Finger Paint",
-        fontWeight: "bold",
         color: myTheme.palette.primary.dark,
     },
     accordionBackGround: {
-        backgroundColor: myTheme.palette.secondary.light,
+        backgroundColor: myTheme.palette.info.main,
         marginBottom: "20px",
         marginTop: "20px",
     },
     listBackGround: {
-        backgroundColor: myTheme.palette.secondary.main,
+        backgroundColor: myTheme.palette.secondary.dark,
     },
     list: {
         width: '100%',
@@ -57,12 +56,16 @@ const useStyles = makeStyles((theme) => ({
     },
     basictypo: {
         fontFamily: "Open Sans",
+        color: myTheme.palette.info.light,
+    },
+    deleteText: {
+        color: myTheme.palette.info.dark,
     },
     deleteButton: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        color: myTheme.palette.secondary.light,
-        backgroundColor: myTheme.palette.primary.dark,
+        color: myTheme.palette.secondary.dark,
+        backgroundColor: myTheme.palette.primary.light,
         '&:hover': {
             backgroundColor: myTheme.palette.primary.main,
         }
@@ -76,7 +79,14 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     expandIconColor: {
-        color: myTheme.palette.primary.light
+        color: myTheme.palette.primary.dark,
+    },
+    linkColor: {
+        textDecoration: "none",
+        color: myTheme.palette.info.light,
+        '&:hover': {
+            color: myTheme.palette.secondary.light
+        }
     }
 }));
 
@@ -104,22 +114,6 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
     const mailAddress = "mailto:" + waitingKid.email.toString();
     const phoneNumber = "tel:" + waitingKid.phoneNumber.toString();
 
-    // const [approvalInput, setApprovalInput] = React.useState({
-    //     approval: false,
-    // });
-    //
-    // useEffect(() => {
-    //     if (approvalInput === false) {
-    //         setApprovalInput({
-    //             approval: true,
-    //         });
-    //     }
-    // }, []);
-    //
-    // const handleChange = (event) => {
-    //     setApprovalInput({ ...approvalInput, [event.target.name]: event.target.approval});
-    // };
-
     return (
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
@@ -132,7 +126,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                           container
                     >
                         <Grid item xs={3}>
-                        <Typography className={classes.heading}>Familie:</Typography>
+                        <Typography className={classes.heading} aria-expanded={true}>Familie:</Typography>
                         </Grid>
                         <Grid item xs={9}>
                         <Typography className={classes.heading}>{waitingKid.familyName}</Typography>
@@ -148,10 +142,10 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                         <ChildCareIcon/>
                                     </ListItemIcon>
                                     <Grid>
-                                        <Typography>
+                                        <Typography className={classes.basictypo}>
                                             {waitingKid.firstName}
                                         </Typography>
-                                        <Typography>
+                                        <Typography className={classes.basictypo}>
                                             {waitingKid.familyName}
                                         </Typography>
                                     </Grid>
@@ -163,7 +157,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <CakeOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {waitingKid.birthDate}
                                     </Typography>
                                 </ListItem>
@@ -174,8 +168,8 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <PhoneInTalkIcon/>
                                     </ListItemIcon>
-                                    <Typography>
-                                        <a href={phoneNumber}>{waitingKid.phoneNumber}</a>
+                                    <Typography className={classes.basictypo}>
+                                        <a className={classes.linkColor} href={phoneNumber}>{waitingKid.phoneNumber}</a>
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -185,8 +179,8 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <MailOutlineIcon/>
                                     </ListItemIcon>
-                                    <Typography>
-                                        <a href={mailAddress}>{waitingKid.email}</a>
+                                    <Typography className={classes.basictypo}>
+                                        <a className={classes.linkColor}  href={mailAddress}>{waitingKid.email}</a>
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -196,7 +190,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <TransferWithinAStationIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {waitingKid.getToKnowDate}
                                     </Typography>
                                 </ListItem>
@@ -207,7 +201,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <TimerIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {waitingKid.startDateOfCare}
                                     </Typography>
                                 </ListItem>
@@ -218,7 +212,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <QueryBuilderIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {waitingKid.hoursInCarePerWeek}
                                     </Typography>
                                 </ListItem>
@@ -229,7 +223,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <HelpOutlineIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {waitingKid.prediction}
                                     </Typography>
                                 </ListItem>
@@ -240,7 +234,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <OfflinePinOutlinedIcon/>
                                     </ListItemIcon>
-                                    <FormControlLabel
+                                    <FormControlLabel className={classes.basictypo}
                                         control={
                                             <Switch
                                                 // checked={waitingKid.approval}
@@ -261,7 +255,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                     <ListItemIcon>
                                         <DescriptionOutlinedIcon/>
                                     </ListItemIcon>
-                                    <Typography>
+                                    <Typography className={classes.basictypo}>
                                         {waitingKid.infoText}
                                     </Typography>
                                 </ListItem>
@@ -285,7 +279,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 <DeleteDialog
                                     handleDeleteAction={handleDelete}
                                     handleCloseAction={handleClose}
-                                    classBasicTypo={classes.basictypo}
+                                    classBasicTypo={classes.deleteText}
                                     classConfirmAction={classes.confirmAction}
                                     classDeleteButton={classes.deleteButton}
                                     openAction={open}

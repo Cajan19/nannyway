@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 345,
         marginBottom: "20px",
         marginTop: "20px",
-        backgroundColor: myTheme.palette.secondary.light,
+        backgroundColor: myTheme.palette.success.light,
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         transform: 'rotate(180deg)',
     },
     avatarG: {
-        backgroundColor: myTheme.palette.info.light,
+        backgroundColor: myTheme.palette.info.dark,
         fontFamily: "Open Sans",
     },
     basicTypo: {
@@ -50,11 +50,17 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
         fontWeight: "bold",
         fontSize: "large",
-        color: myTheme.palette.info.light,
+        color: myTheme.palette.info.dark,
     },
     paper: {
-        backgroundColor: myTheme.palette.secondary.main,
+        backgroundColor: myTheme.palette.secondary.dark,
         padding: 5,
+    },
+    expandIconColor: {
+        color: myTheme.palette.info.dark,
+    },
+    linkColor: {
+        color: myTheme.palette.info.dark,
     }
 }));
 
@@ -98,7 +104,7 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:0761 19240">Baden-Württemberg</a>
+                            <a href="tel:0761 19240" className={classes.linkColor}>Baden-Württemberg</a>
                         </Typography>
                     </ListItem>
                     <Divider/>
@@ -107,7 +113,7 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:089 19240">Bayern</a>
+                            <a href="tel:089 19240" className={classes.linkColor}>Bayern</a>
                         </Typography>
                     </ListItem>
                     <Divider/>
@@ -116,7 +122,7 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:030 19240">Berlin, Brandenburg</a>
+                            <a href="tel:030 19240" className={classes.linkColor}>Berlin, Brandenburg</a>
                         </Typography>
                     </ListItem>
                     <Divider/>
@@ -125,7 +131,7 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:0551 19240">Bremen, Hamburg, Schleswig-Holstein, Niedersachsen</a>
+                            <a href="tel:0551 19240" className={classes.linkColor}>Bremen, Hamburg, Schleswig-Holstein, Niedersachsen</a>
                         </Typography>
                     </ListItem>
                     <Divider/>
@@ -134,7 +140,7 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:06131 19240">Hessen, Rheinland-Pfalz</a>
+                            <a href="tel:06131 19240" className={classes.linkColor}>Hessen, Rheinland-Pfalz</a>
                         </Typography>
                     </ListItem>
                     <Divider/>
@@ -143,7 +149,7 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:0361 730730">Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt, Thüringen</a>
+                            <a href="tel:0361 730730" className={classes.linkColor}>Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt, Thüringen</a>
                         </Typography>
                     </ListItem>
                     <Divider/>
@@ -152,7 +158,7 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:0228 19240">Nordrhein-Westfalen</a>
+                            <a href="tel:0228 19240" className={classes.linkColor}>Nordrhein-Westfalen</a>
                         </Typography>
                     </ListItem>
                     <Divider/>
@@ -161,7 +167,7 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:06841 19240">Saarland</a>
+                            <a href="tel:06841 19240" className={classes.linkColor}>Saarland</a>
                         </Typography>
                     </ListItem>
                 </List>
@@ -187,7 +193,7 @@ export default function PoisonCard() {
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <ExpandMoreIcon/>
+                    <ExpandMoreIcon className={classes.expandIconColor}/>
                 </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>

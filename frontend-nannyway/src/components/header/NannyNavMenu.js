@@ -21,6 +21,7 @@ const useStyles = makeStyles(() => ({
     basicTypoButton: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
+        color: myTheme.palette.primary.contrastText,
     },
 }));
 

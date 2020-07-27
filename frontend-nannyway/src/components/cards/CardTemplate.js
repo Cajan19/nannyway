@@ -18,6 +18,7 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import {makeStyles} from "@material-ui/core/styles";
+import myTheme from "../../styling/muiTheme";
 
 const useStyles = makeStyles((theme) => ({
     expand: {
@@ -30,6 +31,12 @@ const useStyles = makeStyles((theme) => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
+    expandIconColor: {
+        color: myTheme.palette.info.dark,
+    },
+    linkColor: {
+        color: myTheme.palette.info.dark,
+    }
 }));
 
 export default function CardTemplate({
@@ -76,7 +83,7 @@ export default function CardTemplate({
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={typoClass}>
-                            <a href={phoneLink}>{phoneText}</a>
+                            <a className={classes.linkColor} href={phoneLink}>{phoneText}</a>
                         </Typography>
                     </ListItem>
                 </List>
@@ -100,7 +107,7 @@ export default function CardTemplate({
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <ExpandMoreIcon/>
+                    <ExpandMoreIcon className={classes.expandIconColor}/>
                 </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>

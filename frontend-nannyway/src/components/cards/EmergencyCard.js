@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
         maxWidth: 345,
         marginBottom: "20px",
         marginTop: "20px",
-        backgroundColor: myTheme.palette.secondary.light,
+        backgroundColor: myTheme.palette.success.light,
     },
     avatarN: {
         backgroundColor: myTheme.palette.secondary.dark,
@@ -24,10 +24,10 @@ const useStyles = makeStyles(() => ({
         fontFamily: "Open Sans",
         fontWeight: "bold",
         fontSize: "large",
-        color: myTheme.palette.info.light,
+        color: myTheme.palette.info.dark,
     },
     paper: {
-        backgroundColor: myTheme.palette.secondary.main,
+        backgroundColor: myTheme.palette.secondary.dark,
         padding: 5,
     }
 }));
