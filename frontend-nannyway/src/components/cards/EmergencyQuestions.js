@@ -7,7 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 const useStyles = makeStyles(() => ({
     basicTypo: {
         fontFamily: "Open Sans",
-        color: myTheme.palette.info.light,
+        color: myTheme.palette.info.dark,
     },
 }));
 

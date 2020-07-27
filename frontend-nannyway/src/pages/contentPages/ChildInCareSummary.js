@@ -18,7 +18,7 @@ import AddChildInCareForm from "../../components/addDataForm/AddChildInCareForm"
 const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: "Finger Paint",
-        color: myTheme.palette.secondary.main,
+        color: myTheme.palette.info.dark,
     },
     basictypo: {
         fontFamily: "Open Sans",
@@ -43,14 +43,14 @@ const useStyles = makeStyles((theme) => ({
     button: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        color: myTheme.palette.info.light,
+        color: myTheme.palette.info.dark,
         backgroundColor: myTheme.palette.secondary.main,
         '&:hover': {
             backgroundColor: myTheme.palette.secondary.light,
         }
     },
-
 }));
+
 export default function ChildInCareSummary() {
     const [showAddForm, setShowAddForm] = useState(false);
 

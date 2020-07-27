@@ -13,13 +13,13 @@ import PoisonCard from "../../components/cards/PoisonCard";
 const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: "Finger Paint",
-        color: myTheme.palette.primary.dark,
+        color: myTheme.palette.secondary.dark,
     },
     basictypo: {
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url("https://images.unsplash.com/photo-1530036067142-31e9b88da9b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80")',
+        backgroundImage: 'url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",

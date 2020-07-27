@@ -10,16 +10,16 @@ import FooterImprint from "../../components/footer/FooterImprint";
 const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: "Finger Paint",
-        color: myTheme.palette.info.light,
+        color: myTheme.palette.info.dark,
     },
     headingImprint: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
-        color: myTheme.palette.info.main,
+        color: myTheme.palette.info.light,
     },
     basictypo: {
         fontFamily: "Open Sans",
-        color: myTheme.palette.info.main,
+        color: myTheme.palette.info.light,
     },
     image: {
         backgroundImage: 'url("https://images.unsplash.com/photo-1530036067142-31e9b88da9b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80")',
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        backgroundColor: myTheme.palette.info.dark,
+        backgroundColor: myTheme.palette.success.dark,
         marginBottom: 10,
     },
 }));
