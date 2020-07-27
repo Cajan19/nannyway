@@ -35,7 +35,11 @@ const useStyles = makeStyles((theme) => ({
         color: myTheme.palette.info.dark,
     },
     linkColor: {
-        color: myTheme.palette.info.dark,
+        textDecoration: "none",
+        color: myTheme.palette.info.light,
+        '&:hover': {
+            color: myTheme.palette.secondary.light
+        }
     }
 }));
 

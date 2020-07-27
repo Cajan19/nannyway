@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 345,
         marginBottom: "20px",
         marginTop: "20px",
-        backgroundColor: myTheme.palette.success.light,
+        backgroundColor: myTheme.palette.warning.dark,
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -53,14 +53,18 @@ const useStyles = makeStyles((theme) => ({
         color: myTheme.palette.info.dark,
     },
     paper: {
-        backgroundColor: myTheme.palette.secondary.dark,
+        backgroundColor: myTheme.palette.primary.dark,
         padding: 5,
     },
     expandIconColor: {
         color: myTheme.palette.info.dark,
     },
     linkColor: {
-        color: myTheme.palette.info.dark,
+        textDecoration: "none",
+        color: myTheme.palette.info.light,
+        '&:hover': {
+            color: myTheme.palette.secondary.light
+        }
     }
 }));
 
