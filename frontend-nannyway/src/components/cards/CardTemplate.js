@@ -18,15 +18,8 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import {makeStyles} from "@material-ui/core/styles";
-import myTheme from "../../styling/muiTheme";
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        maxWidth: 345,
-        marginBottom: "20px",
-        marginTop: "20px",
-        backgroundColor: myTheme.palette.secondary.light,
-    },
     expand: {
         transform: 'rotate(0deg)',
         marginLeft: 'auto',
@@ -37,24 +30,6 @@ const useStyles = makeStyles((theme) => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
-    avatarP: {
-        backgroundColor: myTheme.palette.primary.dark,
-        fontFamily: "Open Sans",
-    },
-    basicTypo: {
-        fontFamily: "Open Sans",
-        color: myTheme.palette.info.light,
-    },
-    heading: {
-        fontFamily: "Open Sans",
-        fontWeight: "bold",
-        fontSize: "large",
-        color: myTheme.palette.info.light,
-    },
-    paper: {
-        backgroundColor: myTheme.palette.secondary.main,
-        padding: 5,
-    }
 }));
 
 export default function CardTemplate({
