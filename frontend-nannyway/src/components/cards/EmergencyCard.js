@@ -97,7 +97,7 @@ export default function EmergencyCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:112">112</a>
+                            <a href="tel:112">112 (bundesweit)</a>
                         </Typography>
                     </ListItem>
                 </List>
@@ -113,9 +113,9 @@ export default function EmergencyCard() {
                 </Paper>
             </CardContent>
             <CardActions disableSpacing>
-                    <IconButton>
+                    <ListItemIcon>
                         <NewReleasesOutlinedIcon/>
-                    </IconButton>
+                    </ListItemIcon>
                 <IconButton
                     className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,

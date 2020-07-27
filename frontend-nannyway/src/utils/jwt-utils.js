@@ -1,6 +1,6 @@
 const jwtDecode = require('jwt-decode');
 
-const key = "nannyway-user-token";
+const key = "!nw6us6To7?sEc$";
 
 export function getJWTToken() {
     return localStorage.getItem(key);
