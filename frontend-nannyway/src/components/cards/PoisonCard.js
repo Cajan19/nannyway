@@ -19,6 +19,7 @@ import PhoneInTalkOutlinedIcon from "@material-ui/icons/PhoneInTalkOutlined";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
+import PoisonQuestions from "./PoisonQuestions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -168,8 +169,9 @@ export default function PoisonCard() {
             <CardContent>
                 <Paper className={classes.paper}>
                     <Typography variant="body2" component="p" className={classes.basicTypo}>
-                        Bei einem Notfall mit mutmaßlicher Vergiftung ist schnelles und zielgerichtetes Handeln erforderlich.
-                        Immer wenn ein Verdacht auf Kontakt mit Giftstoffen besteht ist der Giftnotruf die richtige Anlaufstelle.
+                        Bei einem Notfall mit mutmaßlicher Vergiftung ist schnelles und zielgerichtetes Handeln
+                        erforderlich. Immer wenn ein Verdacht auf Kontakt mit Giftstoffen besteht ist der Giftnotruf die
+                        richtige Anlaufstelle.
                     </Typography>
                 </Paper>
             </CardContent>
@@ -190,27 +192,7 @@ export default function PoisonCard() {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph className={classes.basicTypo}>
-                        • WER ist betroffen?
-                    </Typography>
-                    <Typography paragraph className={classes.basicTypo}>
-                        • WAS wurde eingenommen?
-                    </Typography>
-                    <Typography paragraph className={classes.basicTypo}>
-                        • WIE wurde es eingenommen?
-                    </Typography>
-                    <Typography paragraph className={classes.basicTypo}>
-                        • WANN wurde es eingenommen?
-                    </Typography>
-                    <Typography paragraph className={classes.basicTypo}>
-                        • WIE GEHT es der betroffenen Person?
-                    </Typography>
-                    <Typography paragraph className={classes.basicTypo}>
-                        • WIE VIEL wiegt die betroffene Person?
-                    </Typography>
-                    <Typography paragraph className={classes.basicTypo}>
-                        • WARTEN auf Rückfragen!
-                    </Typography>
+                    <PoisonQuestions/>
                 </CardContent>
             </Collapse>
         </Card>
