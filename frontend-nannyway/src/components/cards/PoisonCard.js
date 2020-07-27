@@ -169,8 +169,9 @@ export default function PoisonCard() {
             <CardContent>
                 <Paper className={classes.paper}>
                     <Typography variant="body2" component="p" className={classes.basicTypo}>
-                        Bei einem Notfall mit mutmaßlicher Vergiftung ist schnelles und zielgerichtetes Handeln erforderlich.
-                        Immer wenn ein Verdacht auf Kontakt mit Giftstoffen besteht ist der Giftnotruf die richtige Anlaufstelle.
+                        Bei einem Notfall mit mutmaßlicher Vergiftung ist schnelles und zielgerichtetes Handeln
+                        erforderlich. Immer wenn ein Verdacht auf Kontakt mit Giftstoffen besteht ist der Giftnotruf die
+                        richtige Anlaufstelle.
                     </Typography>
                 </Paper>
             </CardContent>

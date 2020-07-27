@@ -35,7 +35,7 @@ const useStyles = makeStyles(() => ({
 export default function EmergencyCard() {
     const classes = useStyles();
 
-    return(
+    return (
         <CardTemplate
             cardClassName={classes.root}
             avatarAriaLabel={"emergency"}
