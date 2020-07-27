@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     heading: {
         fontSize: theme.typography.pxToRem(15),
         fontFamily: "Finger Paint",
-        color: myTheme.palette.primary.dark,
+        color: myTheme.palette.info.dark,
     },
     accordionBackGround: {
         backgroundColor: myTheme.palette.info.main,

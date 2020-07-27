@@ -31,6 +31,7 @@ const myTheme = createMuiTheme({
         },
         warning:{
             main: 'rgba(25,90,104,0.1)',
+            dark: 'rgba(90,160,171,0.95)',
         }
     },
 });

@@ -13,13 +13,14 @@ import PoisonCard from "../../components/cards/PoisonCard";
 const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: "Finger Paint",
-        color: myTheme.palette.secondary.dark,
+        color: myTheme.palette.info.dark,
     },
     basictypo: {
         fontFamily: "Open Sans",
     },
     image: {
-        backgroundImage: 'url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")',
+        backgroundImage: 'url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")',
+        // backgroundImage: 'url("https://images.pexels.com/photos/2088167/pexels-photo-2088167.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     paperTop: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        backgroundColor: myTheme.palette.secondary.main,
+        backgroundColor: myTheme.palette.primary.main,
         fontFamily: "Open Sans",
         marginBottom: "20px",
     },
@@ -44,7 +45,7 @@ export default function EmergencyNumbers() {
 
     return (
         <div>
-            <NannyAppBar colorStyle={"secondary"}/>
+            <NannyAppBar colorStyle={"primary"}/>
             <main>
                 <div className={classes.image}>
                     <Paper className={classes.paperTop}>
@@ -62,7 +63,7 @@ export default function EmergencyNumbers() {
                     </Grid>
                 </div>
             </main>
-            <Footer colorStyle={"secondary"}/>
+            <Footer colorStyle={"primary"}/>
         </div>
     )
 }
