@@ -80,7 +80,7 @@ export default function LoginSection() {
                         <Button onClick={login} className={classes.buttons} variant={"outlined"}>Login</Button>
                     </Box>
                     <Box m={1}>
-                        <Button onClick={login} className={classes.buttons}>Sign up</Button>
+                        <Button onClick={login} className={classes.buttons} variant={"outlined"}>Sign up</Button>
                     </Box>
                 </Grid>
         </Grid>
