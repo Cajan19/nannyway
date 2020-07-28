@@ -51,11 +51,11 @@ class ChildOnWaitingListControllerTest {
     }
 
     private String loginUser() {
-        NannywayUser testUser = new NannywayUser("bibi", encoder.encode("kartoffelbrei"), "user");
+        NannywayUser testUser = new NannywayUser("madonna", encoder.encode("music"), "Karl", "Quark", "karl@quark.de");
         userDb.save(testUser);
 
         String loginUrl = "http://localhost:" + port + "/auth/login";
-        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(loginUrl, new LoginData("bibi", "kartoffelbrei"), String.class);
+        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(loginUrl, new LoginData("madonna", "music"), String.class);
         return tokenResponse.getBody();
     }
 
