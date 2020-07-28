@@ -102,7 +102,7 @@ export default function WaitingList() {
                                 onClick={() => setShowAddForm(true)}
                                 startIcon={<AddIcon/>}
                             >
-                                neue Warteliste
+                                neuer Eintrag
                             </Button>
                             <AddChildOnWaitingListForm
                                 open={showAddForm}
