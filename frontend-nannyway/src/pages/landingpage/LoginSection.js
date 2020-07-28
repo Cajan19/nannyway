@@ -11,6 +11,7 @@ import {Box} from "@material-ui/core";
 import FormControl from "@material-ui/core/FormControl";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
+import UserRegistrationForm from "../../components/registration/UserRegistrationForm";
 
 const useStyles = makeStyles((theme) => ({
     textfield: {
@@ -51,6 +52,8 @@ export default function LoginSection() {
         })
     }
 
+    const [showAddForm, setShowAddForm] = useState(false);
+
     const {authStatus} = useContext(UserStateContext);
     const location = useLocation();
     console.log(location);
@@ -64,25 +67,30 @@ export default function LoginSection() {
               direction="column"
               justify="space-around"
               alignItems="center" spacing={2}>
-                <FormControl margin={"normal"}>
-                        <TextField label="Benutzername" type="text" variant={"filled"}
-                                   InputProps={{className: classes.textfieldFontColor}}
-                                   value={username} className={classes.textfield} color={"secondary"}
-                                   onChange={(event) => setUsername(event.target.value)}
-                        />
-                        <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
-                                   value={password} className={classes.textfield}
-                                   InputProps={{className: classes.textfieldFontColor}}
-                                   onChange={(event) => setPassword(event.target.value)}/>
-                </FormControl>
-                <Grid container justify={"center"} spacing={2}>
-                    <Box m={1}>
-                        <Button onClick={login} className={classes.buttons} variant={"outlined"}>Login</Button>
-                    </Box>
-                    <Box m={1}>
-                        <Button onClick={login} className={classes.buttons} variant={"outlined"}>Sign up</Button>
-                    </Box>
-                </Grid>
+            <FormControl margin={"normal"}>
+                <TextField label="Benutzername" type="text" variant={"filled"}
+                           InputProps={{className: classes.textfieldFontColor}}
+                           value={username} className={classes.textfield} color={"secondary"}
+                           onChange={(event) => setUsername(event.target.value)}
+                />
+                <TextField label="Passwort" type="password" variant={"filled"} color={"secondary"}
+                           value={password} className={classes.textfield}
+                           InputProps={{className: classes.textfieldFontColor}}
+                           onChange={(event) => setPassword(event.target.value)}/>
+            </FormControl>
+            <Grid container justify={"center"} spacing={2}>
+                <Box m={1}>
+                    <Button onClick={login} className={classes.buttons} variant={"outlined"}>Login</Button>
+                </Box>
+                <Box m={1}>
+                    <Button onClick={() => setShowAddForm(true)} className={classes.buttons} variant={"outlined"}>Sign
+                        up</Button>
+                </Box>
+                <UserRegistrationForm
+                    open={showAddForm}
+                    handleClose={() => setShowAddForm(false)}
+                />
+            </Grid>
         </Grid>
     )
 }
