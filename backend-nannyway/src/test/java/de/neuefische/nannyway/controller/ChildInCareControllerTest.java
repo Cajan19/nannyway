@@ -53,11 +53,11 @@ class ChildInCareControllerTest {
     }
 
     private String loginUser() {
-        NannywayUser testUser = new NannywayUser("madonna", encoder.encode("music"), "admin");
+        NannywayUser testUser = new NannywayUser("madonna", encoder.encode("music12345"), "Karl", "Quark", "karl@quark.de");
         userDb.save(testUser);
 
         String loginUrl = "http://localhost:" + port + "/auth/login";
-        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(loginUrl, new LoginData("madonna", "music"), String.class);
+        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(loginUrl, new LoginData("madonna", "music12345"), String.class);
         return tokenResponse.getBody();
     }
 
