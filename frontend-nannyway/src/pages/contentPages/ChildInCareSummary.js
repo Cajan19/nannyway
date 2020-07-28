@@ -87,7 +87,7 @@ export default function ChildInCareSummary() {
                           direction="row"
                           justify="space-around"
                           alignItems="center">
-                        <Grid item xs={10}>
+                        <Grid item xs={11}>
                             {kids.map((kid) => (
                                 <ChildInCareAccordion key={kid.id} kid={kid} />
                             ))}

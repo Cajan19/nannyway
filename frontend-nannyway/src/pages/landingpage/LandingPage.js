@@ -14,7 +14,7 @@ import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex',
+        display: "flex",
         flexDirection: 'column',
         minHeight: '100vh',
     },
@@ -87,24 +87,15 @@ export default function LandingPage() {
                         <Divider/>
                     </ListItem>
                     <Grid item container xs={12} justify={"center"}>
-                        <Grid item xs={10}>
+                        <Grid item xs={11} p={3}>
                             <Paper className={classes.paper}>
-                                <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
-                                    Datenerfassung | Organizer | Planungshilfe
+                             <Box m={1}/>
+                                <Typography variant="h6" align={"center"} className={classes.basictypo}>
+                                    Der digitale KTP-Planer
                                 </Typography>
-                                <ListItem>
-                                    <Divider/>
-                                </ListItem>
+                                <Box m={3}/>
                                 <Typography variant="subtitle1" align={"center"} className={classes.basictypo}>
-                                    Die digitale Datenverwaltung Deiner aktuellen und zukünftigen Tagespflegekids ist
-                                    jetzt
-                                    kinderleicht.
-                                </Typography>
-                                <ListItem>
-                                    <Divider/>
-                                </ListItem>
-                                <Typography align={"center"} variant={"body2"} className={classes.basictypo}>
-                                    Inhalte sind nur für eingeloggte Nutzer sichtbar.
+                                    Erfassung | Organizer | Planungshilfe
                                 </Typography>
                             </Paper>
                         </Grid>

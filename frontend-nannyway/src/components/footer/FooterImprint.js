@@ -18,11 +18,11 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "bold",
     },
     footerPrimary: {
-        padding: theme.spacing(3),
+        padding: theme.spacing(2),
         backgroundColor: myTheme.palette.primary.light,
     },
     footerSecondary: {
-        padding: theme.spacing(3),
+        padding: theme.spacing(2),
         backgroundColor: myTheme.palette.secondary.light,
     },
 }));

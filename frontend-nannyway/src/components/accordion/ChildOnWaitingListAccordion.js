@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     expandIconColor: {
-        color: myTheme.palette.primary.dark,
+        color: myTheme.palette.info.dark,
     },
     linkColor: {
         textDecoration: "none",
