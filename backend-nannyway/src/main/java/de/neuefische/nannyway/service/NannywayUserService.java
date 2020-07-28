@@ -2,7 +2,6 @@ package de.neuefische.nannyway.service;
 
 import de.neuefische.nannyway.database.UserDb;
 import de.neuefische.nannyway.model.NannywayUser;
-import de.neuefische.nannyway.utils.RandomIdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,7 +17,7 @@ public class NannywayUserService {
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @Autowired
-    public NannywayUserService(UserDb userDb, RandomIdUtils randomIdUtils) {
+    public NannywayUserService(UserDb userDb) {
         this.userDb = userDb;
     }
 
