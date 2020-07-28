@@ -12,14 +12,18 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import TextField from "@material-ui/core/TextField";
 import ProgressSpinner from "../spinner/ProgressSpinner";
-import Typography from "@material-ui/core/Typography";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles(() => ({
-    addError: {
+    basicFont: {
         fontFamily: "Open Sans",
-        color: myTheme.palette.error.main,
+    },
+    alertError: {
+        backgroundColor: myTheme.palette.error.main,
+        color: myTheme.palette.primary.contrastText,
+        fontFamily: "Open Sans",
         fontVariant: "small-caps",
     },
     addButton: {
@@ -199,9 +203,9 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                 </form>
                 {addStatus === 'PENDING' && <ProgressSpinner/>}
                 {addStatus === 'FAILED' && (
-                    <Typography component="p" className={classes.addError}>
-                        Daten konnten nicht hinzugefügt werden
-                    </Typography>
+                    <Alert severity={"error"} variant={"filled"} className={classes.alertError}>
+                        Daten konnten nicht hinzugefügt werden!
+                    </Alert>
                 )}
             </DialogContent>
             <DialogActions>

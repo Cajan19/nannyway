@@ -6,17 +6,21 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import {ChildInCareDispatchContext, ChildInCareStateContext} from "../../context/childInCare/ChildInCareContext";
 import {addKid} from "../../context/childInCare/childInCareActions";
 import ProgressSpinner from "../spinner/ProgressSpinner";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
+import Alert from "@material-ui/lab/Alert";
 
 const useStyles = makeStyles(() => ({
-    addError: {
+    basicFont: {
         fontFamily: "Open Sans",
-        color: myTheme.palette.error.main,
+    },
+    alertError: {
+        backgroundColor: myTheme.palette.error.main,
+        color: myTheme.palette.primary.contrastText,
+        fontFamily: "Open Sans",
         fontVariant: "small-caps",
     },
     addButton: {
@@ -192,9 +196,9 @@ export default function AddChildInCareForm({open, handleClose}) {
                 </form>
                 {addStatus === 'PENDING' && <ProgressSpinner/>}
                 {addStatus === 'FAILED' && (
-                    <Typography component="p" className={classes.addError}>
-                        Daten konnten nicht hinzugefügt werden
-                    </Typography>
+                    <Alert severity={"error"} variant={"filled"} className={classes.alertError}>
+                        Daten konnten nicht hinzugefügt werden!
+                    </Alert>
                 )}
             </DialogContent>
             <DialogActions>

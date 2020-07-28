@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
         color: myTheme.palette.primary.contrastText,
     },
     footerPrimary: {
-        padding: theme.spacing(3),
+        padding: theme.spacing(2),
         backgroundColor: myTheme.palette.primary.light,
     },
     footerSecondary: {
-        padding: theme.spacing(3),
+        padding: theme.spacing(2),
         backgroundColor: myTheme.palette.secondary.light,
     },
 }));
