@@ -104,7 +104,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
             maxWidth={'md'}
             fullWidth={true}
         >
-            <DialogTitle id="form-dialog-title" className={classes.basicFont}>Warteliste hinzufügen</DialogTitle>
+            <DialogTitle id="form-dialog-title" className={classes.basicFont}>Neuer Eintrag</DialogTitle>
             <DialogContent>
                 <DialogContentText className={classes.basicFont}>Setze ein neues Kind auf die Warteliste</DialogContentText>
                 <form onSubmit={handleSubmit}>
