@@ -82,8 +82,9 @@ class ChildInCareControllerTest {
 
 //    then
 
-        ChildInCare expectedChild = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte",
-                "35", LocalDate.of(2021, 8, 31), "77777", "Peter und Petra", "kid@nannyway.de");
+        ChildInCare expectedChild = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie",
+                "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
+                "77777", "Peter und Petra", "kid@nannyway.de", "madonna");
         assertEquals(HttpStatus.OK, postResponse.getStatusCode());
         assertNotNull(postResponse.getBody());
         assertEquals(expectedChild, postResponse.getBody());
@@ -133,9 +134,9 @@ class ChildInCareControllerTest {
         String token = loginUser();
 
         kidsDb.save(new ChildInCare("123", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte",
-                "35", LocalDate.of(2021, 8, 31), "77777", "Peter und Petra", "kid@nannyway.de"));
+                "35", LocalDate.of(2021, 8, 31), "77777", "Peter und Petra", "kid@nannyway.de", "madonna"));
         kidsDb.save(new ChildInCare("234", "Ingo", "Meier", LocalDate.of(2017, 11, 11), "Quarkallergie", "Oma Inge",
-                "35", LocalDate.of(2021, 8, 31), "99999", "Erna und Manfred", "kid2@nannyway.de"));
+                "35", LocalDate.of(2021, 8, 31), "99999", "Erna und Manfred", "kid2@nannyway.de", "madonna"));
 
 //        when
         String url = "http://localhost:" + port + "/api/kids/123";
@@ -146,6 +147,18 @@ class ChildInCareControllerTest {
 
 //        then
         assertTrue(kidsDb.findById("123").isEmpty());
+    }
+
+    @Test
+    public void getChildByNanny(){
+//        given
+        String token = loginUser();
+
+
+
+//        when
+
+//        then
     }
 }
 

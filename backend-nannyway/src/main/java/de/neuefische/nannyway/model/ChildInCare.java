@@ -25,4 +25,5 @@ public class ChildInCare {
     private String phoneNumber;
     private String nameParents;
     private String email;
+    private String nanny;
 }
