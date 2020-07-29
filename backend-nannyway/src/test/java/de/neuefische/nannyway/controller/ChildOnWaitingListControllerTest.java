@@ -70,10 +70,10 @@ class ChildOnWaitingListControllerTest {
         String url = "http://localhost:" + port + "/api/waitinglist";
         waitingListDb.save(new ChildOnWaitingList("some-id", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
                 "88888", "test@test.de", LocalDate.of(2020, 11, 11),
-                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info"));
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info", "madonna"));
         waitingListDb.save(new ChildOnWaitingList("safe-id", "Meier", "Uschi", LocalDate.of(2020, 6, 7),
                 "123312", "test2@test.de", LocalDate.of(2020, 11, 10),
-                LocalDate.of(2021, 7, 31), "40", "nice", true, "more info"));
+                LocalDate.of(2021, 7, 31), "40", "nice", true, "more info", "madonna"));
 
 //        when
         HttpHeaders headers = new HttpHeaders();
@@ -87,10 +87,10 @@ class ChildOnWaitingListControllerTest {
         assertEquals(2, waitingKids.length);
         assertEquals(waitingKids[0], new ChildOnWaitingList("some-id", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
                 "88888", "test@test.de", LocalDate.of(2020, 11, 11),
-                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info"));
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info", "madonna"));
         assertEquals(waitingKids[1], new ChildOnWaitingList("safe-id", "Meier", "Uschi", LocalDate.of(2020, 6, 7),
                 "123312", "test2@test.de", LocalDate.of(2020, 11, 10),
-                LocalDate.of(2021, 7, 31), "40", "nice", true, "more info"));
+                LocalDate.of(2021, 7, 31), "40", "nice", true, "more info", "madonna"));
     }
 
     @Test
@@ -116,7 +116,7 @@ class ChildOnWaitingListControllerTest {
 //        then
         ChildOnWaitingList expectedChild = new ChildOnWaitingList("some-Id", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
                 "88888", "test@test.de", LocalDate.of(2020, 11, 11),
-                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info", "madonna");
         assertEquals(HttpStatus.OK, postResponse.getStatusCode());
         assertNotNull(postResponse.getBody());
         assertEquals(expectedChild, postResponse.getBody());
@@ -169,10 +169,10 @@ class ChildOnWaitingListControllerTest {
 
         waitingListDb.save(new ChildOnWaitingList("999", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
                 "88888", "test@test.de", LocalDate.of(2020, 11, 11),
-                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info"));
+                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info", "madonna"));
         waitingListDb.save(new ChildOnWaitingList("765", "Meier", "Uschi", LocalDate.of(2020, 6, 7),
                 "123312", "test2@test.de", LocalDate.of(2020, 11, 10),
-                LocalDate.of(2021, 7, 31), "40", "nice", true, "more info"));
+                LocalDate.of(2021, 7, 31), "40", "nice", true, "more info", "madonna"));
 
 //        when
         String url = "http://localhost:" + port + "/api/waitinglist/999";
