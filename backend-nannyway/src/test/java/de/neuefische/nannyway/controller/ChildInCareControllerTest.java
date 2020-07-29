@@ -61,6 +61,10 @@ class ChildInCareControllerTest {
         return tokenResponse.getBody();
     }
 
+    private String apiUrl(String endpoint) {
+        return "http://localhost:" + port + "/api/" + endpoint;
+    }
+
     @Test
     public void addFunctionShouldAddNewChildInCareToOverview() {
 //    given
@@ -71,14 +75,13 @@ class ChildInCareControllerTest {
         AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie",
                 "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
                 "77777", "Peter und Petra", "kid@nannyway.de");
-        String url = "http://localhost:" + port + "/api/kids";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto, headers);
 
 //    when
-        ResponseEntity<ChildInCare> postResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildInCare.class);
+        ResponseEntity<ChildInCare> postResponse = restTemplate.exchange(apiUrl("kids"), HttpMethod.POST, requestEntity, ChildInCare.class);
 
 //    then
 
@@ -96,12 +99,11 @@ class ChildInCareControllerTest {
         AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17),
                 "Nussallergie", "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
                 "77777", "Peter und Petra", "kid@nannyway.de");
-        String url = "http://localhost:" + port + "/api/kids";
 
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto);
 
 //    when
-        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildInCare.class);
+        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(apiUrl("kids"), HttpMethod.POST, requestEntity, ChildInCare.class);
 
 //    then
         assertEquals(HttpStatus.FORBIDDEN, putResponse.getStatusCode());
@@ -115,21 +117,20 @@ class ChildInCareControllerTest {
         AddChildInCareDto addChildInCareDto = new AddChildInCareDto("", "Wurschtlhuber", LocalDate.of(2018, 1, 17),
                 "Nussallergie", "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
                 "77777", "Peter und Petra", "kid@nannyway.de");
-        String url = "http://localhost:" + port + "/api/kids";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto, headers);
 
 //    when
-        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildInCare.class);
+        ResponseEntity<ChildInCare> putResponse = restTemplate.exchange(apiUrl("kids"), HttpMethod.POST, requestEntity, ChildInCare.class);
 
 //    then
         assertEquals(HttpStatus.BAD_REQUEST, putResponse.getStatusCode());
     }
 
     @Test
-    public void deleteFunctionShouldDeleteKidById(){
+    public void deleteFunctionShouldDeleteKidById() {
 //        given
         String token = loginUser();
 
@@ -139,26 +140,13 @@ class ChildInCareControllerTest {
                 "35", LocalDate.of(2021, 8, 31), "99999", "Erna und Manfred", "kid2@nannyway.de", "madonna"));
 
 //        when
-        String url = "http://localhost:" + port + "/api/kids/123";
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity httpEntity = new HttpEntity(headers);
-        restTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Void.class);
+        restTemplate.exchange(apiUrl("kids/123"), HttpMethod.DELETE, httpEntity, Void.class);
 
 //        then
         assertTrue(kidsDb.findById("123").isEmpty());
-    }
-
-    @Test
-    public void getChildByNanny(){
-//        given
-        String token = loginUser();
-
-
-
-//        when
-
-//        then
     }
 }
 

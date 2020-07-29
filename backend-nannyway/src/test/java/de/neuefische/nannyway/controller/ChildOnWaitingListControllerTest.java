@@ -59,6 +59,10 @@ class ChildOnWaitingListControllerTest {
         return tokenResponse.getBody();
     }
 
+    private String apiUrl(String endpoint) {
+        return "http://localhost:" + port + "/api/" + endpoint;
+    }
+
     @Test
     @DisplayName("getAllChildren should return all children on waiting list")
     public void getAllChildren() {
@@ -67,7 +71,6 @@ class ChildOnWaitingListControllerTest {
 
         when(randomIdUtils.generateRandomID()).thenReturn("some-Id");
 
-        String url = "http://localhost:" + port + "/api/waitinglist";
         waitingListDb.save(new ChildOnWaitingList("some-id", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
                 "88888", "test@test.de", LocalDate.of(2020, 11, 11),
                 LocalDate.of(2021, 8, 1), "40", "whatever", false, "info", "madonna"));
@@ -79,7 +82,7 @@ class ChildOnWaitingListControllerTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity entity = new HttpEntity(headers);
-        ResponseEntity<ChildOnWaitingList[]> response = restTemplate.exchange(url, HttpMethod.GET, entity, ChildOnWaitingList[].class);
+        ResponseEntity<ChildOnWaitingList[]> response = restTemplate.exchange(apiUrl("waitinglist"), HttpMethod.GET, entity, ChildOnWaitingList[].class);
 
 //        then
         assertEquals(response.getStatusCode(), HttpStatus.OK);
@@ -104,14 +107,12 @@ class ChildOnWaitingListControllerTest {
                 "88888", "test@test.de", LocalDate.of(2020, 11, 11),
                 LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
 
-        String url = "http://localhost:" + port + "/api/waitinglist";
-
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<AddChildOnWaitingListDto> requestEntity = new HttpEntity<>(addChildOnWaitingListDto, headers);
 
 //        when
-        ResponseEntity<ChildOnWaitingList> postResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
+        ResponseEntity<ChildOnWaitingList> postResponse = restTemplate.exchange(apiUrl("waitinglist"), HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
 
 //        then
         ChildOnWaitingList expectedChild = new ChildOnWaitingList("some-Id", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
@@ -129,12 +130,10 @@ class ChildOnWaitingListControllerTest {
                 "88888", "test@test.de", LocalDate.of(2020, 11, 11),
                 LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
 
-        String url = "http://localhost:" + port + "/api/waitinglist";
-
         HttpEntity<AddChildOnWaitingListDto> requestEntity = new HttpEntity<>(addChildOnWaitingListDto);
 
 //        when
-        ResponseEntity<ChildOnWaitingList> putResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
+        ResponseEntity<ChildOnWaitingList> putResponse = restTemplate.exchange(apiUrl("waitinglist"), HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
 
 //        then
         assertEquals(HttpStatus.FORBIDDEN, putResponse.getStatusCode());
@@ -149,14 +148,12 @@ class ChildOnWaitingListControllerTest {
                 "88888", "test@test.de", LocalDate.of(2020, 11, 11),
                 LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
 
-        String url = "http://localhost:" + port + "/api/waitinglist";
-
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity<AddChildOnWaitingListDto> requestEntity = new HttpEntity<>(addChildOnWaitingListDto, headers);
 
 //        when
-        ResponseEntity<ChildOnWaitingList> postResponse = restTemplate.exchange(url, HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
+        ResponseEntity<ChildOnWaitingList> postResponse = restTemplate.exchange(apiUrl("waitinglist"), HttpMethod.POST, requestEntity, ChildOnWaitingList.class);
 
 //        then
         assertEquals(HttpStatus.BAD_REQUEST, postResponse.getStatusCode());
@@ -175,11 +172,10 @@ class ChildOnWaitingListControllerTest {
                 LocalDate.of(2021, 7, 31), "40", "nice", true, "more info", "madonna"));
 
 //        when
-        String url = "http://localhost:" + port + "/api/waitinglist/999";
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity httpEntity = new HttpEntity(headers);
-        restTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Void.class);
+        restTemplate.exchange(apiUrl("waitinglist/999"), HttpMethod.DELETE, httpEntity, Void.class);
 
 //        then
         assertTrue(waitingListDb.findById("999").isEmpty());
