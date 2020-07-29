@@ -15,6 +15,7 @@ import ProgressSpinner from "../spinner/ProgressSpinner";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import Alert from "@material-ui/lab/Alert";
+import {UserStateContext} from "../../context/user/UserContext";
 
 const useStyles = makeStyles(() => ({
     basicFont: {
@@ -47,6 +48,8 @@ const useStyles = makeStyles(() => ({
 export default function AddChildOnWaitingListForm({open, handleClose}) {
     const classes = useStyles();
 
+    const {userData} = useContext(UserStateContext);
+
     const [childOnWaitingListInput, setChildOnWaitingListInput] = useState({
         familyName: "",
         firstName: "",
@@ -59,6 +62,7 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
         prediction: "",
         approval: false,
         infoText: "",
+        nanny: userData.username,
     });
 
     const {addStatus} = useContext(ChildOnWaitingListStateContext);
@@ -75,7 +79,6 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
                 startDateOfCare: "",
                 hoursInCarePerWeek: "",
                 prediction: "",
-                approval: false,
                 infoText: "",
             });
         }
@@ -86,7 +89,8 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
     function handleSubmit() {
         addWaitingKid(dispatch, childOnWaitingListInput.familyName, childOnWaitingListInput.firstName, childOnWaitingListInput.birthDate,
             childOnWaitingListInput.phoneNumber, childOnWaitingListInput.email, childOnWaitingListInput.getToKnowDate, childOnWaitingListInput.startDateOfCare,
-            childOnWaitingListInput.hoursInCarePerWeek, childOnWaitingListInput.prediction, childOnWaitingListInput.approval, childOnWaitingListInput.infoText)
+            childOnWaitingListInput.hoursInCarePerWeek, childOnWaitingListInput.prediction, childOnWaitingListInput.approval, childOnWaitingListInput.infoText,
+            childOnWaitingListInput.nanny)
             .then(handleClose);
     }
 
@@ -106,7 +110,8 @@ export default function AddChildOnWaitingListForm({open, handleClose}) {
         >
             <DialogTitle id="form-dialog-title" className={classes.basicFont}>Neuer Eintrag</DialogTitle>
             <DialogContent>
-                <DialogContentText className={classes.basicFont}>Setze ein neues Kind auf die Warteliste</DialogContentText>
+                <DialogContentText className={classes.basicFont}>Setze ein neues Kind auf die
+                    Warteliste</DialogContentText>
                 <form onSubmit={handleSubmit}>
                     <TextField
                         className={classes.basicFont}
