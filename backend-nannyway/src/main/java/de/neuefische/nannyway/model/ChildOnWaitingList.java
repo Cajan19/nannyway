@@ -27,4 +27,5 @@ public class ChildOnWaitingList {
     private String prediction;
     private boolean approval;
     private String infoText;
+    private String nanny;
 }
