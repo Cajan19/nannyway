@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
-        minHeight: '72vh',
+        minHeight: '75vh',
     },
     error: {
         color: myTheme.palette.error.main,
