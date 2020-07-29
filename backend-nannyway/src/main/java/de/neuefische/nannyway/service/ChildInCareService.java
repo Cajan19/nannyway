@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class ChildInCareService {
@@ -19,13 +20,9 @@ public class ChildInCareService {
         this.randomIdUtils = randomIdUtils;
     }
 
-    public Iterable<ChildInCare> getAllKids(){
-        return kidsDb.findAll();
-    }
-
     public ChildInCare addChildInCare(String firstName, String lastName, LocalDate birthDate, String infoText,
                                       String pickUpPerson, String hoursInCarePerWeek, LocalDate contractTerm,
-                                      String phoneNumber, String nameParents, String email){
+                                      String phoneNumber, String nameParents, String email, String nanny){
         ChildInCare kid = new ChildInCare();
         kid.setId(randomIdUtils.generateRandomID());
         kid.setFirstName(firstName);
@@ -38,10 +35,15 @@ public class ChildInCareService {
         kid.setPhoneNumber(phoneNumber);
         kid.setNameParents(nameParents);
         kid.setEmail(email);
+        kid.setNanny(nanny);
         return kidsDb.save(kid);
     }
 
     public void deleteKidById(String id){
         kidsDb.deleteById(id);
+    }
+
+    public List<ChildInCare> getChildByNanny (String nannyUsername){
+        return kidsDb.findByNanny(nannyUsername);
     }
 }
