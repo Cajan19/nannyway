@@ -4,7 +4,7 @@ import de.neuefische.nannyway.database.UserDb;
 import de.neuefische.nannyway.model.NannywayUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -14,25 +14,24 @@ import java.util.Optional;
 public class NannywayUserService {
 
     private final UserDb userDb;
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder encoder;
 
     @Autowired
-    public NannywayUserService(UserDb userDb) {
+    public NannywayUserService(UserDb userDb, PasswordEncoder encoder) {
         this.userDb = userDb;
+        this.encoder = encoder;
     }
 
     public void registerNewUser(NannywayUser user) {
         Optional<NannywayUser> userCheck = userDb.findByUsername(user.getUsername());
         if (userCheck.isPresent()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Nutzername bereits vergeben");
-        } else {
-            String secretPassword = encoder.encode(user.getPassword());
-            user.setPassword(secretPassword);
-            user.setUsername(user.getUsername());
-            user.setEmail(user.getEmail());
-            user.setFirstName(user.getFirstName());
-            user.setLastName(user.getLastName());
-            userDb.save(user);
         }
+        user.setPassword(encoder.encode(user.getPassword()));
+        user.setUsername(user.getUsername());
+        user.setEmail(user.getEmail());
+        user.setFirstName(user.getFirstName());
+        user.setLastName(user.getLastName());
+        userDb.save(user);
     }
 }
