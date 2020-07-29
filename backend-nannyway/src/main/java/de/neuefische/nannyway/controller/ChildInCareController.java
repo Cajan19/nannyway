@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.List;
 
 
 @RestController
@@ -20,21 +22,20 @@ public class ChildInCareController {
         this.childInCareService = childInCareService;
     }
 
-    @GetMapping
-    public Iterable<ChildInCare> getChildrenInCare() {
-        return childInCareService.getAllKids();
-    }
-
     @PostMapping
-    public ChildInCare addChildInCare(@Valid @RequestBody AddChildInCareDto data){
+    public ChildInCare addChildInCare(@Valid @RequestBody AddChildInCareDto data, Principal principal) {
         return childInCareService.addChildInCare(data.getFirstName(), data.getLastName(), data.getBirthDate(),
                 data.getInfoText(), data.getPickUpPerson(), data.getHoursInCarePerWeek(), data.getContractTerm(),
-                data.getPhoneNumber(), data.getNameParents(), data.getEmail());
+                data.getPhoneNumber(), data.getNameParents(), data.getEmail(), principal.getName());
     }
 
     @DeleteMapping("{id}")
-    public void deleteKid(@PathVariable String id){
+    public void deleteKid(@PathVariable String id) {
         childInCareService.deleteKidById(id);
     }
 
+    @GetMapping
+    public List<ChildInCare> getMyKidsInCare(Principal principal) {
+        return childInCareService.getChildByNanny(principal.getName());
+    }
 }

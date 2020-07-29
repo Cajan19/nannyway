@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/waitinglist")
@@ -19,20 +21,20 @@ public class ChildOnWaitingListController {
         this.childOnWaitingListService = childOnWaitingListService;
     }
 
-    @GetMapping
-    public Iterable<ChildOnWaitingList> getKidsOnWaitingList() {
-        return childOnWaitingListService.getAllOnWaitingList();
-    }
-
     @PostMapping
-    public ChildOnWaitingList addChildOnWaitingList(@Valid @RequestBody AddChildOnWaitingListDto data) {
+    public ChildOnWaitingList addChildOnWaitingList(@Valid @RequestBody AddChildOnWaitingListDto data, Principal principal) {
         return childOnWaitingListService.addChildOnWaitingList(data.getFamilyName(), data.getFirstName(), data.getBirthDate(), data.getPhoneNumber(),
                 data.getEmail(), data.getGetToKnowDate(), data.getStartDateOfCare(), data.getHoursInCarePerWeek(), data.getPrediction(),
-                data.isApproval(), data.getInfoText());
+                data.isApproval(), data.getInfoText(), principal.getName());
     }
 
     @DeleteMapping("{id}")
     public void deleteWaitingKid(@PathVariable String id) {
         childOnWaitingListService.deleteWaitingKidById(id);
+    }
+
+    @GetMapping
+    public List<ChildOnWaitingList> getMyKidsOnWaitinglist(Principal principal) {
+        return childOnWaitingListService.getWaitingChildByNanny(principal.getName());
     }
 }
