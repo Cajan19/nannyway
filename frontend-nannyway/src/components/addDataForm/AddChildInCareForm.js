@@ -12,6 +12,7 @@ import ProgressSpinner from "../spinner/ProgressSpinner";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
 import Alert from "@material-ui/lab/Alert";
+import {UserStateContext} from "../../context/user/UserContext";
 
 const useStyles = makeStyles(() => ({
     basicFont: {
@@ -44,6 +45,8 @@ const useStyles = makeStyles(() => ({
 export default function AddChildInCareForm({open, handleClose}) {
     const classes = useStyles();
 
+    const {userData} = useContext(UserStateContext);
+
     const [childInCareInput, setChildInCareInput] = useState({
         firstName: "",
         lastName: "",
@@ -55,6 +58,7 @@ export default function AddChildInCareForm({open, handleClose}) {
         phoneNumber: "",
         nameParents: "",
         email: "",
+        nanny: userData.username,
     });
 
     const {addStatus} = useContext(ChildInCareStateContext);
@@ -81,7 +85,7 @@ export default function AddChildInCareForm({open, handleClose}) {
     function handleSubmit() {
         addKid(dispatch, childInCareInput.firstName, childInCareInput.lastName, childInCareInput.birthDate, childInCareInput.infoText, childInCareInput.pickUpPerson,
             childInCareInput.hoursInCarePerWeek, childInCareInput.contractTerm, childInCareInput.phoneNumber,
-            childInCareInput.nameParents, childInCareInput.email)
+            childInCareInput.nameParents, childInCareInput.email, childInCareInput.nanny)
             .then(handleClose);
     }
 

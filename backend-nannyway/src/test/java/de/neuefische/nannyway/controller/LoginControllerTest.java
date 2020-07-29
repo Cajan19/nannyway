@@ -39,6 +39,10 @@ class LoginControllerTest {
         userDb.deleteAll();
     }
 
+    private String authUrl() {
+        return "http://localhost:" + port + "/auth/login";
+    }
+
     @Test
     public void loginWithValidCredentials(){
 //        given
@@ -46,8 +50,7 @@ class LoginControllerTest {
         userDb.save(testUser);
 
 //        when
-        String url = "http://localhost:" + port + "/auth/login";
-        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(url, new LoginData("madonna", "music99999"), String.class);
+        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(authUrl(), new LoginData("madonna", "music99999"), String.class);
 
 //        then
         assertEquals(HttpStatus.OK, tokenResponse.getStatusCode());
@@ -61,8 +64,7 @@ class LoginControllerTest {
         userDb.save(testUser);
 
 //        when
-        String url = "http://localhost:" + port + "/auth/login";
-        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(url, new LoginData("madonna", "music999"), String.class);
+        ResponseEntity<String> tokenResponse = restTemplate.postForEntity(authUrl(), new LoginData("madonna", "music999"), String.class);
 
 //        then
         assertEquals(HttpStatus.BAD_REQUEST, tokenResponse.getStatusCode());
