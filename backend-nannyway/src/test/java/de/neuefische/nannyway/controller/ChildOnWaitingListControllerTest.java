@@ -63,6 +63,14 @@ class ChildOnWaitingListControllerTest {
         return "http://localhost:" + port + "/api/" + endpoint;
     }
 
+    private ChildOnWaitingList waitingKidInDb = new ChildOnWaitingList("some-id", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
+            "88888", "test@test.de", LocalDate.of(2020, 11, 11),
+            LocalDate.of(2021, 8, 1), "40", "whatever", false, "info", "madonna");
+
+    private AddChildOnWaitingListDto onWaitingListDto = new AddChildOnWaitingListDto("Wollny", "Loredana", LocalDate.of(2020, 1, 17),
+            "88888", "test@test.de", LocalDate.of(2020, 11, 11),
+            LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
+
     @Test
     @DisplayName("getAllChildren should return all children on waiting list")
     public void getAllChildren() {
@@ -71,9 +79,7 @@ class ChildOnWaitingListControllerTest {
 
         when(randomIdUtils.generateRandomID()).thenReturn("some-Id");
 
-        waitingListDb.save(new ChildOnWaitingList("some-id", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
-                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
-                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info", "madonna"));
+        waitingListDb.save(waitingKidInDb);
         waitingListDb.save(new ChildOnWaitingList("safe-id", "Meier", "Uschi", LocalDate.of(2020, 6, 7),
                 "123312", "test2@test.de", LocalDate.of(2020, 11, 10),
                 LocalDate.of(2021, 7, 31), "40", "nice", true, "more info", "madonna"));
@@ -103,9 +109,7 @@ class ChildOnWaitingListControllerTest {
 
         when(randomIdUtils.generateRandomID()).thenReturn("some-Id");
 
-        AddChildOnWaitingListDto addChildOnWaitingListDto = new AddChildOnWaitingListDto("Wollny", "Loredana", LocalDate.of(2020, 1, 17),
-                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
-                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
+        AddChildOnWaitingListDto addChildOnWaitingListDto = onWaitingListDto;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
@@ -126,9 +130,7 @@ class ChildOnWaitingListControllerTest {
     @Test
     public void addFunctionShouldReturnForbiddenErrorWhenNotLoggedIn() {
 //    given
-        AddChildOnWaitingListDto addChildOnWaitingListDto = new AddChildOnWaitingListDto("Wollny", "Loredana", LocalDate.of(2020, 1, 17),
-                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
-                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info");
+        AddChildOnWaitingListDto addChildOnWaitingListDto = onWaitingListDto;
 
         HttpEntity<AddChildOnWaitingListDto> requestEntity = new HttpEntity<>(addChildOnWaitingListDto);
 
@@ -164,20 +166,15 @@ class ChildOnWaitingListControllerTest {
         //        given
         String token = loginUser();
 
-        waitingListDb.save(new ChildOnWaitingList("999", "Wollny", "Loredana", LocalDate.of(2020, 1, 17),
-                "88888", "test@test.de", LocalDate.of(2020, 11, 11),
-                LocalDate.of(2021, 8, 1), "40", "whatever", false, "info", "madonna"));
-        waitingListDb.save(new ChildOnWaitingList("765", "Meier", "Uschi", LocalDate.of(2020, 6, 7),
-                "123312", "test2@test.de", LocalDate.of(2020, 11, 10),
-                LocalDate.of(2021, 7, 31), "40", "nice", true, "more info", "madonna"));
+        waitingListDb.save(waitingKidInDb);
 
 //        when
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity httpEntity = new HttpEntity(headers);
-        restTemplate.exchange(apiUrl("waitinglist/999"), HttpMethod.DELETE, httpEntity, Void.class);
+        restTemplate.exchange(apiUrl("waitinglist/some-id"), HttpMethod.DELETE, httpEntity, Void.class);
 
 //        then
-        assertTrue(waitingListDb.findById("999").isEmpty());
+        assertTrue(waitingListDb.findById("some-id").isEmpty());
     }
 }

@@ -65,6 +65,15 @@ class ChildInCareControllerTest {
         return "http://localhost:" + port + "/api/" + endpoint;
     }
 
+    private AddChildInCareDto testKid = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie",
+            "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
+            "77777", "Peter und Petra", "kid@nannyway.de");
+
+    private ChildInCare kidInDb = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie",
+            "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
+            "77777", "Peter und Petra", "kid@nannyway.de", "madonna");
+
+
     @Test
     public void addFunctionShouldAddNewChildInCareToOverview() {
 //    given
@@ -72,9 +81,7 @@ class ChildInCareControllerTest {
 
         when(randomIdUtils.generateRandomID()).thenReturn("some-Id");
 
-        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie",
-                "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
-                "77777", "Peter und Petra", "kid@nannyway.de");
+        AddChildInCareDto addChildInCareDto = testKid;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
@@ -85,9 +92,7 @@ class ChildInCareControllerTest {
 
 //    then
 
-        ChildInCare expectedChild = new ChildInCare("some-Id", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie",
-                "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
-                "77777", "Peter und Petra", "kid@nannyway.de", "madonna");
+        ChildInCare expectedChild = kidInDb;
         assertEquals(HttpStatus.OK, postResponse.getStatusCode());
         assertNotNull(postResponse.getBody());
         assertEquals(expectedChild, postResponse.getBody());
@@ -96,9 +101,7 @@ class ChildInCareControllerTest {
     @Test
     public void addFunctionShouldReturnForbiddenErrorWhenNotLoggedIn() {
 //    given
-        AddChildInCareDto addChildInCareDto = new AddChildInCareDto("Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17),
-                "Nussallergie", "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
-                "77777", "Peter und Petra", "kid@nannyway.de");
+        AddChildInCareDto addChildInCareDto = testKid;
 
         HttpEntity<AddChildInCareDto> requestEntity = new HttpEntity<>(addChildInCareDto);
 
@@ -134,19 +137,16 @@ class ChildInCareControllerTest {
 //        given
         String token = loginUser();
 
-        kidsDb.save(new ChildInCare("123", "Paul", "Wurschtlhuber", LocalDate.of(2018, 1, 17), "Nussallergie", "Oma Lotte",
-                "35", LocalDate.of(2021, 8, 31), "77777", "Peter und Petra", "kid@nannyway.de", "madonna"));
-        kidsDb.save(new ChildInCare("234", "Ingo", "Meier", LocalDate.of(2017, 11, 11), "Quarkallergie", "Oma Inge",
-                "35", LocalDate.of(2021, 8, 31), "99999", "Erna und Manfred", "kid2@nannyway.de", "madonna"));
+        kidsDb.save(kidInDb);
 
 //        when
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(token);
         HttpEntity httpEntity = new HttpEntity(headers);
-        restTemplate.exchange(apiUrl("kids/123"), HttpMethod.DELETE, httpEntity, Void.class);
+        restTemplate.exchange(apiUrl("kids/some-Id"), HttpMethod.DELETE, httpEntity, Void.class);
 
 //        then
-        assertTrue(kidsDb.findById("123").isEmpty());
+        assertTrue(kidsDb.findById("some-Id").isEmpty());
     }
 }
 
