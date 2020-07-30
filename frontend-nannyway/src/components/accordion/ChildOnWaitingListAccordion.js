@@ -273,7 +273,8 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                         handleClickOpenAction={handleClickOpen}
                                         buttonVariant={"contained"}
                                         matchingIcon={<DeleteForeverIcon/>}
-                                        showItemToDelete={waitingKid.familyName}
+                                        showItemToDelete={"Eintrag"}
+                                        buttonSize={"small"}
                                     />
                                 </Box>
                                 <DeleteDialog
