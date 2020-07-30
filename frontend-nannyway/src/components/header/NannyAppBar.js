@@ -39,7 +39,7 @@ export default function NannyAppBar({colorStyle}) {
                     <Grid container
                           direction="row"
                           justify="space-evenly"
-                          alignItems="center">
+                          alignItems="flex-start">
                         <Grid item xs={3}>
                             <NannyNavMenu colorStyle={colorStyle}/>
                         </Grid>
