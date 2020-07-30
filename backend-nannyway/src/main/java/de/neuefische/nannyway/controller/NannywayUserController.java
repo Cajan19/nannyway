@@ -3,10 +3,7 @@ package de.neuefische.nannyway.controller;
 import de.neuefische.nannyway.model.NannywayUser;
 import de.neuefische.nannyway.service.NannywayUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -24,6 +21,11 @@ public class NannywayUserController {
     @PostMapping
     public void registerUser(@RequestBody @Valid NannywayUser user) {
         userService.registerNewUser(user);
+    }
+
+    @DeleteMapping("{username}")
+    public void deleteAccount(@PathVariable String username) {
+        userService.deleteUser(username);
     }
 }
 
