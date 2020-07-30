@@ -6,9 +6,9 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Footer from "../../components/footer/Footer";
 import NannyAppBar from "../../components/header/NannyAppBar";
-import EmergencyCard from "../../components/cards/EmergencyCard";
-import PoliceCard from "../../components/cards/PoliceCard";
-import PoisonCard from "../../components/cards/PoisonCard";
+import EmergencyCard from "../../components/emergencyInfoCards/EmergencyCard";
+import PoliceCard from "../../components/emergencyInfoCards/PoliceCard";
+import PoisonCard from "../../components/emergencyInfoCards/PoisonCard";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
