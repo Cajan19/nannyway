@@ -10,6 +10,7 @@ import WaitingList from "../../pages/contentPages/WaitingList";
 import EmergencyNumbers from "../../pages/contentPages/EmergencyNumbers";
 import ChildInCareSummary from "../../pages/contentPages/ChildInCareSummary";
 import Imprint from "../../pages/imprint/Imprint";
+import UserProfile from "../../pages/contentPages/UserProfile";
 
 export default function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -26,6 +27,7 @@ export default function Navigation() {
         <Switch>
             <PrivateRoute path="/waitinglist" component={WaitingList}/>
             <PrivateRoute path="/emergency" component={EmergencyNumbers}/>
+            <PrivateRoute path="/profile" component={UserProfile} exact/>
             <PrivateRoute path="/" component={ChildInCareSummary} exact/>
             <Route path="/impr" exact>
                 <Imprint/>
