@@ -154,22 +154,22 @@ export default function UserProfile() {
                                         justify="center"
                                         alignItems="center"
                                     >
-                                    <DeleteButton
-                                        buttonSize={"small"}
-                                        classDeleteButton={classes.deleteButton}
-                                        handleClickOpenAction={handleClickOpen}
-                                        buttonVariant={"contained"}
-                                        matchingIcon={<DeleteForeverIcon/>}
-                                        showItemToDelete={"Account"}
-                                    />
-                                    <DeleteDialog
-                                        handleDeleteAction={handleDelete}
-                                        handleCloseAction={handleClose}
-                                        classBasicTypo={classes.deleteText}
-                                        classConfirmAction={classes.confirmAction}
-                                        classDeleteButton={classes.deleteButton}
-                                        openAction={open}
-                                    />
+                                        <DeleteButton
+                                            buttonSize={"small"}
+                                            classDeleteButton={classes.deleteButton}
+                                            handleClickOpenAction={handleClickOpen}
+                                            buttonVariant={"contained"}
+                                            matchingIcon={<DeleteForeverIcon/>}
+                                            showItemToDelete={"Account"}
+                                        />
+                                        <DeleteDialog
+                                            handleDeleteAction={handleDelete}
+                                            handleCloseAction={handleClose}
+                                            classBasicTypo={classes.deleteText}
+                                            classConfirmAction={classes.confirmAction}
+                                            classDeleteButton={classes.deleteButton}
+                                            openAction={open}
+                                        />
                                     </Grid>
                                 </CardActions>
                             </Card>
@@ -180,5 +180,4 @@ export default function UserProfile() {
             <Footer colorStyle={"secondary"}/>
         </div>
     )
-
 }
