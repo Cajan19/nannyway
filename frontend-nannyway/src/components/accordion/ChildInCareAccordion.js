@@ -184,7 +184,7 @@ export default function ChildInCareAccordion({kid}) {
                                         <MailOutlinedIcon/>
                                     </ListItemIcon>
                                     <Typography className={classes.basictypo}>
-                                    <a className={classes.linkColor} href={mailAddress}>{kid.email}</a>
+                                        <a className={classes.linkColor} href={mailAddress}>{kid.email}</a>
                                     </Typography>
                                 </ListItem>
                             </List>
@@ -241,20 +241,21 @@ export default function ChildInCareAccordion({kid}) {
                             >
                                 <Box m={1}>
                                     <DeleteKidButton
-                                    classDeleteButton={classes.deleteButton}
-                                    handleClickOpenAction={handleClickOpen}
-                                    buttonVariant={"contained"}
-                                    matchingIcon={<DeleteForeverIcon/>}
-                                    showItemToDelete={kid.firstName}
+                                        buttonSize={"small"}
+                                        classDeleteButton={classes.deleteButton}
+                                        handleClickOpenAction={handleClickOpen}
+                                        buttonVariant={"contained"}
+                                        matchingIcon={<DeleteForeverIcon/>}
+                                        showItemToDelete={kid.firstName}
                                     />
                                 </Box>
                                 <DeleteDialog
-                                handleDeleteAction={handleDelete}
-                                handleCloseAction={handleClose}
-                                classBasicTypo={classes.deleteText}
-                                classConfirmAction={classes.confirmAction}
-                                classDeleteButton={classes.deleteButton}
-                                openAction={open}
+                                    handleDeleteAction={handleDelete}
+                                    handleCloseAction={handleClose}
+                                    classBasicTypo={classes.deleteText}
+                                    classConfirmAction={classes.confirmAction}
+                                    classDeleteButton={classes.deleteButton}
+                                    openAction={open}
                                 />
                             </Grid>
                         </Paper>
