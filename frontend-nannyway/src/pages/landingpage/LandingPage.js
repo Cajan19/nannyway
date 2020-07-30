@@ -117,7 +117,7 @@ export default function LandingPage() {
                         |
                     </Typography>
                     <Typography align={"center"} variant={"caption"}>
-                        <Link href="/impr" className={classes.link}>
+                        <Link href={"#"} className={classes.link}>
                             Impressum
                         </Link>
                     </Typography>
