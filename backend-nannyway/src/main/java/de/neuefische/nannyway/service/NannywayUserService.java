@@ -34,4 +34,8 @@ public class NannywayUserService {
         user.setLastName(user.getLastName());
         userDb.save(user);
     }
+
+    public void deleteUser(String username){
+        userDb.deleteById(username);
+    }
 }
