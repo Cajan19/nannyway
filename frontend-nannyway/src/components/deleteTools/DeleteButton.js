@@ -1,7 +1,7 @@
 import Button from "@material-ui/core/Button";
 import React from "react";
 
-export default function DeleteKidButton({classDeleteButton, handleClickOpenAction, matchingIcon, buttonVariant, buttonSize, showItemToDelete}){
+export default function DeleteButton({classDeleteButton, handleClickOpenAction, matchingIcon, buttonVariant, buttonSize, showItemToDelete}){
     return (
         <Button
             variant={buttonVariant}

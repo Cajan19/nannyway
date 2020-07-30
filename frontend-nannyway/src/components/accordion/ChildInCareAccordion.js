@@ -26,7 +26,7 @@ import {Box} from "@material-ui/core";
 import {ChildInCareDispatchContext} from "../../context/childInCare/ChildInCareContext";
 import {deleteKid} from "../../context/childInCare/childInCareActions";
 import DeleteDialog from "../deleteTools/DeleteDialog";
-import DeleteKidButton from "../deleteTools/DeleteKidButton";
+import DeleteButton from "../deleteTools/DeleteButton";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -240,7 +240,7 @@ export default function ChildInCareAccordion({kid}) {
                                 alignItems="center"
                             >
                                 <Box m={1}>
-                                    <DeleteKidButton
+                                    <DeleteButton
                                         buttonSize={"small"}
                                         classDeleteButton={classes.deleteButton}
                                         handleClickOpenAction={handleClickOpen}

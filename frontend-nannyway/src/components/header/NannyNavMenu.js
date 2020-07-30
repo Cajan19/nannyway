@@ -68,6 +68,9 @@ export default function NannyNavMenu({colorStyle}) {
                     <Link to={"/emergency"} className={activeTextClass()}>Notrufnummern</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose} className={classes.backgroundColor}>
+                    <Link to={"/profile"} className={activeTextClass()}>Nutzerprofil</Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose} className={classes.backgroundColor}>
                     <Link to={"/impr"} className={activeTextClass()}>Impressum</Link>
                 </MenuItem>
             </Menu>

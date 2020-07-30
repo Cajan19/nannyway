@@ -23,7 +23,7 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import {Box} from "@material-ui/core";
-import DeleteKidButton from "../deleteTools/DeleteKidButton";
+import DeleteButton from "../deleteTools/DeleteButton";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import DeleteDialog from "../deleteTools/DeleteDialog";
 import {
@@ -268,7 +268,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 alignItems="center"
                             >
                                 <Box m={1}>
-                                    <DeleteKidButton
+                                    <DeleteButton
                                         classDeleteButton={classes.deleteButton}
                                         handleClickOpenAction={handleClickOpen}
                                         buttonVariant={"contained"}

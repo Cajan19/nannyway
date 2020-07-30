@@ -1,3 +1,5 @@
+import {getJWTToken} from "./jwt-utils";
+
 export async function performLogin(username, password) {
     const response = await fetch("/auth/login", {
         method: 'POST',
@@ -25,5 +27,15 @@ export async function registerNewUser(registerData) {
         throw new Error(`failed to register: ${response.statusText}`)
     }
     return await response.text();
+}
+
+export function deleteUser(username) {
+    const token = getJWTToken();
+    return fetch("/auth/register/" + username, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
 }
 
