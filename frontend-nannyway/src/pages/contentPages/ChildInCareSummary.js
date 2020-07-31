@@ -1,11 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
-import NannyAppBar from "../../components/header/NannyAppBar";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Footer from "../../components/footer/Footer";
 import {ChildInCareDispatchContext, ChildInCareStateContext} from "../../context/childInCare/ChildInCareContext";
 import {fetchKids} from "../../context/childInCare/childInCareActions";
 import ChildInCareAccordion from "../../components/accordion/ChildInCareAccordion";
@@ -28,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
-        minHeight: '78vh',
+        minHeight: '80vh',
     },
     error: {
         color: myTheme.palette.error.main,
@@ -65,43 +63,39 @@ export default function ChildInCareSummary() {
     const classes = useStyles();
 
     return (
-        <div>
-            <NannyAppBar colorStyle={"primary"}/>
-            <main>
-                <div className={classes.image}>
-                    <Paper className={classes.paperTop} square={true} elevation={0}>
-                        <Typography variant={"h4"} className={classes.heading}>
-                            TAGESKINDER
-                        </Typography>
-                    </Paper>
-                    <LoadingInfo errorClass={classes.error} fetchStatus={fetchStatus}/>
-                    <Grid container spacing={3}
-                          direction="row"
-                          justify="space-around"
-                          alignItems="center">
-                        <Grid item xs={11}>
-                            {kids.map((kid) => (
-                                <ChildInCareAccordion key={kid.id} kid={kid} />
-                            ))}
-                        </Grid>
-                        <Box m={2}>
-                            <Button
-                                variant="contained"
-                                className={classes.button}
-                                onClick={() => setShowAddForm(true)}
-                                startIcon={<AddIcon/>}
-                            >
-                                Kind hinzufügen
-                            </Button>
-                            <AddChildInCareForm
-                                open={showAddForm}
-                                handleClose={() => setShowAddForm(false)}
-                            />
-                        </Box>
+        <main>
+            <div className={classes.image}>
+                <Paper className={classes.paperTop} square={true} elevation={0}>
+                    <Typography variant={"h4"} className={classes.heading}>
+                        TAGESKINDER
+                    </Typography>
+                </Paper>
+                <LoadingInfo errorClass={classes.error} fetchStatus={fetchStatus}/>
+                <Grid container spacing={3}
+                      direction="row"
+                      justify="space-around"
+                      alignItems="center">
+                    <Grid item xs={11}>
+                        {kids.map((kid) => (
+                            <ChildInCareAccordion key={kid.id} kid={kid}/>
+                        ))}
                     </Grid>
-                </div>
-            </main>
-            <Footer colorStyle={"primary"}/>
-        </div>
+                    <Box m={2}>
+                        <Button
+                            variant="contained"
+                            className={classes.button}
+                            onClick={() => setShowAddForm(true)}
+                            startIcon={<AddIcon/>}
+                        >
+                            Kind hinzufügen
+                        </Button>
+                        <AddChildInCareForm
+                            open={showAddForm}
+                            handleClose={() => setShowAddForm(false)}
+                        />
+                    </Box>
+                </Grid>
+            </div>
+        </main>
     )
 }

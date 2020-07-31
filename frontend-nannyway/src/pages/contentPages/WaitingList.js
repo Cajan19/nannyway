@@ -1,7 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
 import Typography from "@material-ui/core/Typography";
-import NannyAppBar from "../../components/header/NannyAppBar";
-import Footer from "../../components/footer/Footer";
 import {makeStyles} from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -31,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
-        minHeight: '78vh',
+        minHeight: '80vh',
     },
     error: {
         color: myTheme.palette.error.main,
@@ -69,44 +67,40 @@ export default function WaitingList() {
     }, [fetchStatus, dispatch]);
 
     return (
-        <div>
-            <NannyAppBar colorStyle={"secondary"}/>
-            <main>
-                <div className={classes.image} >
-                    <Paper className={classes.paperTop} square={true} elevation={0}>
-                        <Typography variant={"h4"} className={classes.heading}>
-                            WARTELISTE
-                        </Typography>
-                    </Paper>
-                    <LoadingInfo errorClass={classes.error} fetchStatus={fetchStatus}/>
-                    <Grid container spacing={3}
-                          direction="row"
-                          justify="space-around"
-                          alignItems="center">
-                        <Grid item xs={11}>
-                            {waitingKids.map((waitingKid)=>(
-                                <ChildOnWaitingListAccordion key={waitingKid.id} waitingKid={waitingKid} />
-                            ))}
-                        </Grid>
-                        <Box m={2}>
-                            <Button
-                                variant="contained"
-                                className={classes.button}
-                                onClick={() => setShowAddForm(true)}
-                                startIcon={<AddIcon/>}
-                            >
-                                neuer Eintrag
-                            </Button>
-                            <AddChildOnWaitingListForm
-                                open={showAddForm}
-                                handleClose={() => setShowAddForm(false)}
-                            />
-                        </Box>
+        <main>
+            <div className={classes.image}>
+                <Paper className={classes.paperTop} square={true} elevation={0}>
+                    <Typography variant={"h4"} className={classes.heading}>
+                        WARTELISTE
+                    </Typography>
+                </Paper>
+                <LoadingInfo errorClass={classes.error} fetchStatus={fetchStatus}/>
+                <Grid container spacing={3}
+                      direction="row"
+                      justify="space-around"
+                      alignItems="center">
+                    <Grid item xs={11}>
+                        {waitingKids.map((waitingKid) => (
+                            <ChildOnWaitingListAccordion key={waitingKid.id} waitingKid={waitingKid}/>
+                        ))}
                     </Grid>
-                </div>
-            </main>
-            <Footer colorStyle={"secondary"}/>
-        </div>
+                    <Box m={2}>
+                        <Button
+                            variant="contained"
+                            className={classes.button}
+                            onClick={() => setShowAddForm(true)}
+                            startIcon={<AddIcon/>}
+                        >
+                            neuer Eintrag
+                        </Button>
+                        <AddChildOnWaitingListForm
+                            open={showAddForm}
+                            handleClose={() => setShowAddForm(false)}
+                        />
+                    </Box>
+                </Grid>
+            </div>
+        </main>
     )
 }
 

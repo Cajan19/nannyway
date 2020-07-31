@@ -4,8 +4,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Footer from "../../components/footer/Footer";
-import NannyAppBar from "../../components/header/NannyAppBar";
 import EmergencyCard from "../../components/emergencyInfoCards/EmergencyCard";
 import PoliceCard from "../../components/emergencyInfoCards/PoliceCard";
 import PoisonCard from "../../components/emergencyInfoCards/PoisonCard";
@@ -43,26 +41,22 @@ export default function EmergencyNumbers() {
     const classes = useStyles();
 
     return (
-        <div>
-            <NannyAppBar colorStyle={"primary"}/>
-            <main>
-                <div className={classes.image}>
-                    <Paper className={classes.paperTop} square={true} elevation={0}>
-                        <Typography variant={"h4"} className={classes.heading}>
-                            NOTRUFNUMMERN
-                        </Typography>
-                    </Paper>
-                    <Grid container spacing={3}
-                          direction="column"
-                          justify="space-around"
-                          alignItems="center">
-                        <EmergencyCard/>
-                        <PoliceCard/>
-                        <PoisonCard/>
-                    </Grid>
-                </div>
-            </main>
-            <Footer colorStyle={"primary"}/>
-        </div>
+        <main>
+            <div className={classes.image}>
+                <Paper className={classes.paperTop} square={true} elevation={0}>
+                    <Typography variant={"h4"} className={classes.heading}>
+                        NOTRUFNUMMERN
+                    </Typography>
+                </Paper>
+                <Grid container spacing={3}
+                      direction="column"
+                      justify="space-around"
+                      alignItems="center">
+                    <EmergencyCard/>
+                    <PoliceCard/>
+                    <PoisonCard/>
+                </Grid>
+            </div>
+        </main>
     )
 }
