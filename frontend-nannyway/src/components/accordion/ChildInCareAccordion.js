@@ -26,7 +26,7 @@ import {deleteKid} from "../../context/childInCare/childInCareActions";
 import DeleteDialog from "../deleteTools/DeleteDialog";
 import DeleteButton from "../deleteTools/DeleteButton";
 import ListItemComponent from "../listItems/ListItemComponent";
-import AccordionSummaryTemp from "./AccordionSummaryTemp";
+import AccordionSummarySingleLine from "./AccordionSummarySingleLine";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -115,7 +115,7 @@ export default function ChildInCareAccordion({kid}) {
     return (
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
-                <AccordionSummaryTemp
+                <AccordionSummarySingleLine
                     expandClass={classes.expandIconColor}
                     typoClass={classes.heading}
                     typoValue={kid.firstName}
