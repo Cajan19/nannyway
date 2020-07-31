@@ -1,10 +1,8 @@
 import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import List from "@material-ui/core/List";
@@ -32,10 +30,15 @@ import {
 import {deleteWaitingKid} from "../../context/childOnWaitingList/childOnWaitingListActions";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
+import ListItemComponent from "../listItems/ListItemComponent";
+import AccordionSummaryMultiline from "./AccordionSummaryMultiline";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
+    },
+    iconColor: {
+        color: myTheme.palette.primary.contrastText,
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -117,29 +120,18 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
     return (
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className={classes.expandIconColor}/>}
-                    aria-controls="panel1bh-content"
-                    id="panel1bh-header"
-                >
-                    <Grid spacing={6}
-                          container
-                    >
-                        <Grid item xs={3}>
-                        <Typography className={classes.heading} aria-expanded={true}>Familie:</Typography>
-                        </Grid>
-                        <Grid item xs={9}>
-                        <Typography className={classes.heading}>{waitingKid.familyName}</Typography>
-                        </Grid>
-                    </Grid>
-                </AccordionSummary>
+                <AccordionSummaryMultiline
+                typoClass={classes.heading}
+                typoValue={waitingKid.familyName}
+                expandClass={classes.expandIconColor}
+                />
                 <AccordionDetails>
                     <div className={classes.list}>
                         <Paper className={classes.listBackGround}>
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <ChildCareIcon/>
+                                        <ChildCareIcon className={classes.iconColor}/>
                                     </ListItemIcon>
                                     <Grid>
                                         <Typography className={classes.basictypo}>
@@ -152,87 +144,59 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 </ListItem>
                             </List>
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <CakeOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {waitingKid.birthDate}
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<CakeOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={waitingKid.birthDate}
+                                iconColor={classes.iconColor}
+                            />
+                            <Divider/>
+                            <ListItemComponent
+                                itemIcon={<PhoneInTalkIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={<a className={classes.linkColor} href={phoneNumber}>{waitingKid.phoneNumber}</a>}
+                                iconColor={classes.iconColor}
+                            />
+                            <Divider/>
+                            <ListItemComponent
+                                itemIcon={<MailOutlineIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={<a className={classes.linkColor}  href={mailAddress}>{waitingKid.email}</a>}
+                                iconColor={classes.iconColor}
+                            />
+                            <Divider/>
+                            <ListItemComponent
+                                itemIcon={<TransferWithinAStationIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={waitingKid.getToKnowDate}
+                                iconColor={classes.iconColor}
+                            />
+                            <Divider/>
+                            <ListItemComponent
+                                itemIcon={<TimerIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={waitingKid.startDateOfCare}
+                                iconColor={classes.iconColor}
+                            />
+                            <Divider/>
+                            <ListItemComponent
+                                itemIcon={<QueryBuilderIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={waitingKid.hoursInCarePerWeek}
+                                iconColor={classes.iconColor}
+                            />
+                            <Divider/>
+                            <ListItemComponent
+                                itemIcon={<HelpOutlineIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={waitingKid.prediction}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <PhoneInTalkIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        <a className={classes.linkColor} href={phoneNumber}>{waitingKid.phoneNumber}</a>
-                                    </Typography>
-                                </ListItem>
-                            </List>
-                            <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <MailOutlineIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        <a className={classes.linkColor}  href={mailAddress}>{waitingKid.email}</a>
-                                    </Typography>
-                                </ListItem>
-                            </List>
-                            <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <TransferWithinAStationIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {waitingKid.getToKnowDate}
-                                    </Typography>
-                                </ListItem>
-                            </List>
-                            <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <TimerIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {waitingKid.startDateOfCare}
-                                    </Typography>
-                                </ListItem>
-                            </List>
-                            <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <QueryBuilderIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {waitingKid.hoursInCarePerWeek}
-                                    </Typography>
-                                </ListItem>
-                            </List>
-                            <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <HelpOutlineIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {waitingKid.prediction}
-                                    </Typography>
-                                </ListItem>
-                            </List>
-                            <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <OfflinePinOutlinedIcon/>
+                                        <OfflinePinOutlinedIcon className={classes.iconColor}/>
                                     </ListItemIcon>
                                     <FormControlLabel className={classes.basictypo}
                                         control={
@@ -250,16 +214,12 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 </ListItem>
                             </List>
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <DescriptionOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {waitingKid.infoText}
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<DescriptionOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={waitingKid.infoText}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
                             <Grid
                                 container

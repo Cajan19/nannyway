@@ -2,9 +2,7 @@ import React, {useContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import myTheme from "../../styling/muiTheme";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -27,6 +25,8 @@ import {ChildInCareDispatchContext} from "../../context/childInCare/ChildInCareC
 import {deleteKid} from "../../context/childInCare/childInCareActions";
 import DeleteDialog from "../deleteTools/DeleteDialog";
 import DeleteButton from "../deleteTools/DeleteButton";
+import ListItemComponent from "../listItems/ListItemComponent";
+import AccordionSummaryTemp from "./AccordionSummaryTemp";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
     basictypo: {
         fontFamily: "Open Sans",
         color: myTheme.palette.info.light,
+    },
+    iconColor: {
+        color: myTheme.palette.primary.contrastText,
     },
     deleteText: {
         color: myTheme.palette.info.dark,
@@ -112,27 +115,18 @@ export default function ChildInCareAccordion({kid}) {
     return (
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon className={classes.expandIconColor}/>}
-                    aria-controls="panel1bh-content"
-                    id="panel1bh-header"
-                >
-                    <Grid spacing={6}
-                          container
-                          direction="row"
-                          justify="center"
-                          alignItems="center"
-                    >
-                        <Typography className={classes.heading}>{kid.firstName}</Typography>
-                    </Grid>
-                </AccordionSummary>
+                <AccordionSummaryTemp
+                    expandClass={classes.expandIconColor}
+                    typoClass={classes.heading}
+                    typoValue={kid.firstName}
+                />
                 <AccordionDetails>
                     <div className={classes.list}>
                         <Paper className={classes.listBackGround}>
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
-                                        <ChildCareOutLinedIcon/>
+                                        <ChildCareOutLinedIcon className={classes.iconColor}/>
                                     </ListItemIcon>
                                     <Grid>
                                         <Typography className={classes.basictypo}>
@@ -145,93 +139,61 @@ export default function ChildInCareAccordion({kid}) {
                                 </ListItem>
                             </List>
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <CakeOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {kid.birthDate}
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<CakeOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={kid.birthDate}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <PhoneInTalkOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        <a className={classes.linkColor} href={phoneNumber}>{kid.phoneNumber}</a>
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<PhoneInTalkOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={<a className={classes.linkColor} href={phoneNumber}>{kid.phoneNumber}</a>}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <PeopleOutlineOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {kid.nameParents}
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<PeopleOutlineOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={kid.nameParents}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <MailOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        <a className={classes.linkColor} href={mailAddress}>{kid.email}</a>
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<MailOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={<a className={classes.linkColor}  href={mailAddress}>{kid.email}</a>}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <QueryBuilderOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {kid.hoursInCarePerWeek}
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<QueryBuilderOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={kid.hoursInCarePerWeek}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <HourglassEmptyOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {kid.contractTerm}
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<HourglassEmptyOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={kid.contractTerm}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <EmojiPeopleOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {kid.pickUpPerson}
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<EmojiPeopleOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={kid.pickUpPerson}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
-                            <List>
-                                <ListItem>
-                                    <ListItemIcon>
-                                        <DescriptionOutlinedIcon/>
-                                    </ListItemIcon>
-                                    <Typography className={classes.basictypo}>
-                                        {kid.infoText}
-                                    </Typography>
-                                </ListItem>
-                            </List>
+                            <ListItemComponent
+                                itemIcon={<DescriptionOutlinedIcon/>}
+                                typoClass={classes.basictypo}
+                                typoValue={kid.infoText}
+                                iconColor={classes.iconColor}
+                            />
                             <Divider/>
                             <Grid
                                 container
