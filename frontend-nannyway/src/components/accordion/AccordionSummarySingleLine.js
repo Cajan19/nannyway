@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 
-export default function AccordionSummaryTemp({expandClass, typoClass, typoValue}) {
+export default function AccordionSummarySingleLine({expandClass, typoClass, typoValue}) {
     return (
         <AccordionSummary
             expandIcon={<ExpandMoreIcon className={expandClass}/>}
