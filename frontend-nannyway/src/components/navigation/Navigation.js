@@ -11,6 +11,8 @@ import EmergencyNumbers from "../../pages/contentPages/EmergencyNumbers";
 import ChildInCareSummary from "../../pages/contentPages/ChildInCareSummary";
 import Imprint from "../../pages/imprint/Imprint";
 import UserProfile from "../../pages/contentPages/UserProfile";
+import BottomNav from "../footer/BottomNav";
+import Header from "../header/Header";
 
 export default function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -24,6 +26,7 @@ export default function Navigation() {
     }, [dispatch])
 
     return <BrowserRouter>
+        <Header/>
         <Switch>
             <PrivateRoute path="/waitinglist" component={WaitingList}/>
             <PrivateRoute path="/emergency" component={EmergencyNumbers}/>
@@ -36,5 +39,6 @@ export default function Navigation() {
                 <LandingPage/>
             </Route>
         </Switch>
+        <BottomNav/>
     </BrowserRouter>;
 }
