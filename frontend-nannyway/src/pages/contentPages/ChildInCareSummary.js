@@ -84,7 +84,7 @@ export default function ChildInCareSummary() {
                                 <ChildInCareAccordion key={kid.id} kid={kid} />
                             ))}
                         </Grid>
-                        <Box m={5}>
+                        <Box m={2}>
                             <Button
                                 variant="contained"
                                 className={classes.button}

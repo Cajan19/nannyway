@@ -88,7 +88,7 @@ export default function WaitingList() {
                                 <ChildOnWaitingListAccordion key={waitingKid.id} waitingKid={waitingKid} />
                             ))}
                         </Grid>
-                        <Box m={5}>
+                        <Box m={2}>
                             <Button
                                 variant="contained"
                                 className={classes.button}
