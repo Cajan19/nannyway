@@ -5,8 +5,6 @@ import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import ProgressSpinner from "../../components/spinner/ProgressSpinner";
 import {UserDispatchContext, UserStateContext} from "../../context/user/UserContext";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -24,6 +22,7 @@ import DeleteDialog from "../../components/deleteTools/DeleteDialog";
 import {deleteUser} from "../../utils/auth-utils";
 import {removeJWTToken} from "../../utils/jwt-utils";
 import {LOGIN_FAILED} from "../../context/user/UserContextProvider";
+import LoadingInfo from "../../components/loadingInfo/LoadingInfo";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -55,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
-        minHeight: '75vh',
+        minHeight: '78vh',
     },
     confirmAction: {
         fontFamily: "Open Sans",
@@ -111,18 +110,12 @@ export default function UserProfile() {
             <NannyAppBar colorStyle={"secondary"}/>
             <main>
                 <div className={classes.image}>
-                    <Paper className={classes.paperTop}>
+                    <Paper className={classes.paperTop} square={true} elevation={0}>
                         <Typography variant={"h4"} className={classes.heading}>
                             Nutzerprofil
                         </Typography>
                     </Paper>
-                    <Box m={4}>
-                        {fetchStatus === "PENDING" && <ProgressSpinner/>}
-                        {fetchStatus === "FAILED" && (
-                            <Typography className={classes.error}>
-                                Daten konnten nicht geladen werden
-                            </Typography>)}
-                    </Box>
+                    <LoadingInfo errorClass={classes.error} fetchStatus={fetchStatus}/>
                     <Grid container spacing={2}
                           direction="row"
                           justify="center"
