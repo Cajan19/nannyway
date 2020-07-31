@@ -68,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     error: {
         color: myTheme.palette.error.main,
     },
+    iconColor: {
+        color: myTheme.palette.primary.contrastText,
+    },
     deleteButton: {
         fontFamily: "Open Sans",
         fontWeight: "bold",
@@ -131,6 +134,7 @@ export default function UserProfile() {
                                         itemIcon={<LoyaltyOutlinedIcon/>}
                                         typoClass={classes.basictypo}
                                         typoValue={userData.username}
+                                        iconColor={classes.iconColor}
                                     />
                                     <Divider/>
                                     <ListItemComponentMultiline
@@ -138,12 +142,14 @@ export default function UserProfile() {
                                         typoClass={classes.basictypo}
                                         typoValueOne={userData.firstName}
                                         typoValueTwo={userData.lastName}
+                                        iconColor={classes.iconColor}
                                     />
                                     <Divider/>
                                     <ListItemComponent
                                         itemIcon={<MailOutlinedIcon/>}
                                         typoClass={classes.basictypo}
                                         typoValue={userData.email}
+                                        iconColor={classes.iconColor}
                                     />
                                     <Divider/>
                                 </CardContent>

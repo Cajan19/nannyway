@@ -5,11 +5,11 @@ import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import Grid from "@material-ui/core/Grid";
 
-export default function ListItemComponentMultiline({itemIcon, typoClass, typoValueOne, typoValueTwo}) {
+export default function ListItemComponentMultiline({itemIcon, typoClass, typoValueOne, typoValueTwo, iconColor}) {
     return (
         <List>
             <ListItem>
-                <ListItemIcon>
+                <ListItemIcon className={iconColor}>
                     {itemIcon}
                 </ListItemIcon>
                 <Grid>
