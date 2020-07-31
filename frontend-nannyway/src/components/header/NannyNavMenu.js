@@ -1,8 +1,11 @@
-import {Button, Menu, MenuItem} from "@material-ui/core";
+import {Menu, MenuItem} from "@material-ui/core";
 import React from "react";
 import {Link} from "react-router-dom";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
+import MenuOpenOutlinedIcon from '@material-ui/icons/MenuOpenOutlined';
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+
 
 const useStyles = makeStyles(() => ({
     menuTextPrimary: {
@@ -10,6 +13,18 @@ const useStyles = makeStyles(() => ({
     },
     menuTextSecondary: {
         color: myTheme.palette.secondary.dark,
+    },
+    menuIconColorPrimary: {
+        color: myTheme.palette.primary.dark,
+        '&:hover': {
+            color: myTheme.palette.primary.main,
+        }
+    },
+    menuIconColorSecondary: {
+        color: myTheme.palette.secondary.dark,
+        '&:hover': {
+            color: myTheme.palette.secondary.main,
+        }
     },
     buttonMenu: {
         display: "flex",
@@ -45,12 +60,18 @@ export default function NannyNavMenu({colorStyle}) {
         return classes.menuTextPrimary;
     }
 
+    const activeIconColor = () => {
+        if (colorStyle === "secondary") {
+            return classes.menuIconColorSecondary
+        }
+        return classes.menuIconColorPrimary;
+    }
+
     return (
         <div className={classes.buttonMenu}>
-            <Button color={colorStyle} className={classes.basicTypoButton} variant={"contained"} aria-controls="simple-menu" aria-haspopup="true"
-                    onClick={handleClick}>
-                Menü
-            </Button>
+            <ListItemIcon onClick={handleClick} className={activeIconColor()} aria-haspopup={"true"}>
+                <MenuOpenOutlinedIcon/>
+            </ListItemIcon>
             <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
