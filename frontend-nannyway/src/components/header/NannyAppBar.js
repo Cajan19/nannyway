@@ -7,8 +7,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import {UserStateContext} from "../../context/user/UserContext";
 import myTheme from "../../styling/muiTheme";
-import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,7 +48,6 @@ export default function NannyAppBar({colorStyle}) {
             <AppBar position={"static"} className={classes.root}>
                 <Toolbar className={classes.toolbar}>
                     <Grid container
-                          xs={12}
                           direction="row"
                           justify="space-evenly"
                           alignItems="center">
@@ -60,7 +57,6 @@ export default function NannyAppBar({colorStyle}) {
                         <Grid item xs={4}>
                             <Typography align={"center"} variant={"caption"} className={activeUserColor()}>
                                 Hallo {userData.firstName}
-                                <Icon><FavoriteBorderOutlinedIcon/></Icon>
                             </Typography>
                         </Grid>
                         <Grid item xs={1}/>
