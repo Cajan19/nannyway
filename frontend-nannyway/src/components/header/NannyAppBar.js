@@ -5,17 +5,23 @@ import Toolbar from "@material-ui/core/Toolbar";
 import NannyNavMenu from "./NannyNavMenu";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import myTheme from "../../styling/muiTheme";
 import {UserStateContext} from "../../context/user/UserContext";
+import myTheme from "../../styling/muiTheme";
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import Icon from "@material-ui/core/Icon";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         backgroundColor: '#dfe2e7',
     },
-    user: {
+    userDisplaySecondary: {
         fontFamily: "Open Sans",
-        color: myTheme.palette.info.dark,
+        color: myTheme.palette.secondary.dark,
+    },
+    userDisplayPrimary: {
+        fontFamily: "Open Sans",
+        color: myTheme.palette.primary.dark,
     },
     toolbar: {
         minHeight: 72,
@@ -30,6 +36,13 @@ const useStyles = makeStyles((theme) => ({
 export default function NannyAppBar({colorStyle}) {
     const classes = useStyles();
 
+    const activeUserColor = () => {
+        if (colorStyle === "secondary") {
+            return classes.userDisplaySecondary;
+        }
+        return classes.userDisplayPrimary;
+    }
+
     const {userData} = useContext(UserStateContext);
 
     return (
@@ -37,18 +50,22 @@ export default function NannyAppBar({colorStyle}) {
             <AppBar position={"static"} className={classes.root}>
                 <Toolbar className={classes.toolbar}>
                     <Grid container
+                          xs={12}
                           direction="row"
                           justify="space-evenly"
-                          alignItems="flex-start">
-                        <Grid item xs={3}>
+                          alignItems="center">
+                        <Grid item xs={1}>
                             <NannyNavMenu colorStyle={colorStyle}/>
                         </Grid>
-                        <Grid item xs={4}/>
-                        <Grid item xs={5}>
-                            <img src={"images/nwlogo6-200.png"} alt={"nannyway logo"} className={classes.logo}/>
+                        <Grid item xs={4}>
+                            <Typography align={"center"} variant={"caption"} className={activeUserColor()}>
+                                Hallo {userData.firstName}
+                                <Icon><FavoriteBorderOutlinedIcon/></Icon>
+                            </Typography>
                         </Grid>
-                        <Grid item xs={11} md={6}>
-                            <Typography variant={"caption"} className={classes.user}>Hallo {userData.firstName}</Typography>
+                        <Grid item xs={1}/>
+                        <Grid item xs={4}>
+                            <img src={"images/nwlogo6-200.png"} alt={"nannyway logo"} className={classes.logo}/>
                         </Grid>
                     </Grid>
                 </Toolbar>
