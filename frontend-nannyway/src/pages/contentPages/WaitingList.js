@@ -7,7 +7,6 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import myTheme from "../../styling/muiTheme";
 import Box from "@material-ui/core/Box";
-import ProgressSpinner from "../../components/spinner/ProgressSpinner";
 import {
     ChildOnWaitingListDispatchContext,
     ChildOnWaitingListStateContext
@@ -17,6 +16,7 @@ import ChildOnWaitingListAccordion from "../../components/accordion/ChildOnWaiti
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import AddChildOnWaitingListForm from "../../components/addDataForm/addChildOnWaitingListForm";
+import LoadingInfo from "../../components/loadingInfo/LoadingInfo";
 
 const useStyles = makeStyles((theme) => ({
     heading: {
@@ -31,17 +31,16 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
-        minHeight: '75vh',
+        minHeight: '78vh',
     },
     error: {
         color: myTheme.palette.error.main,
     },
     paperTop: {
-        padding: theme.spacing(2),
+        padding: theme.spacing(1),
         textAlign: 'center',
         backgroundColor: myTheme.palette.secondary.main,
         fontFamily: "Open Sans",
-        marginBottom: "20px",
     },
     button: {
         fontFamily: "Open Sans",
@@ -74,18 +73,12 @@ export default function WaitingList() {
             <NannyAppBar colorStyle={"secondary"}/>
             <main>
                 <div className={classes.image} >
-                    <Paper className={classes.paperTop}>
+                    <Paper className={classes.paperTop} square={true} elevation={0}>
                         <Typography variant={"h4"} className={classes.heading}>
                             WARTELISTE
                         </Typography>
                     </Paper>
-                    <Box m={4}>
-                        {fetchStatus === "PENDING" && <ProgressSpinner/>}
-                        {fetchStatus === "FAILED" && (
-                            <Typography className={classes.error}>
-                                Daten konnten nicht geladen werden
-                            </Typography>)}
-                    </Box>
+                    <LoadingInfo errorClass={classes.error} fetchStatus={fetchStatus}/>
                     <Grid container spacing={3}
                           direction="row"
                           justify="space-around"
@@ -95,7 +88,7 @@ export default function WaitingList() {
                                 <ChildOnWaitingListAccordion key={waitingKid.id} waitingKid={waitingKid} />
                             ))}
                         </Grid>
-                        <Box m={5}>
+                        <Box m={2}>
                             <Button
                                 variant="contained"
                                 className={classes.button}

@@ -51,7 +51,7 @@ export default function Imprint() {
             <NannyAppBar colorStyle={"primary"}/>
             <main>
                 <div className={classes.image}>
-                    <Paper className={classes.paperTop}>
+                    <Paper className={classes.paperTop} square={true} elevation={0}>
                         <Typography variant={"h4"} className={classes.heading}>
                             Impressum
                         </Typography>

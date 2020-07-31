@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
-        minHeight: '75vh',
+        minHeight: '78vh',
     },
     paper: {
         padding: theme.spacing(2),
@@ -47,7 +47,7 @@ export default function EmergencyNumbers() {
             <NannyAppBar colorStyle={"primary"}/>
             <main>
                 <div className={classes.image}>
-                    <Paper className={classes.paperTop}>
+                    <Paper className={classes.paperTop} square={true} elevation={0}>
                         <Typography variant={"h4"} className={classes.heading}>
                             NOTRUFNUMMERN
                         </Typography>

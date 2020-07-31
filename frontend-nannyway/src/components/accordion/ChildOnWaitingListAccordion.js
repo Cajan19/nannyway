@@ -31,7 +31,7 @@ import {deleteWaitingKid} from "../../context/childOnWaitingList/childOnWaitingL
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import ListItemComponent from "../listItems/ListItemComponent";
-import AccordionSummaryMultiline from "./AccordionSummaryMultiline";
+import AccordionSummaryTemplate from "./AccordionSummaryTemplate";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: theme.typography.pxToRem(15),
         fontFamily: "Finger Paint",
         color: myTheme.palette.info.dark,
+        letterSpacing: "1px",
     },
     accordionBackGround: {
         backgroundColor: myTheme.palette.info.main,
@@ -120,9 +121,9 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
     return (
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
-                <AccordionSummaryMultiline
+                <AccordionSummaryTemplate
                 typoClass={classes.heading}
-                typoValue={waitingKid.familyName}
+                typoValue={"Familie " + waitingKid.familyName}
                 expandClass={classes.expandIconColor}
                 />
                 <AccordionDetails>
