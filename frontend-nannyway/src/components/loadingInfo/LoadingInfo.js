@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 export default function LoadingInfo({errorClass, fetchStatus}) {
 
     return (
-        <Box m={1}>
+        <Box m={2}>
             {{fetchStatus} === "PENDING" && <ProgressSpinner/>}
             {{fetchStatus} === "FAILED" && (
                 <Typography className={errorClass}>
