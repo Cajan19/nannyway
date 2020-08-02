@@ -122,7 +122,7 @@ export default function ChildInCareAccordion({kid}) {
                 />
                 <AccordionDetails>
                     <div className={classes.list}>
-                        <Paper className={classes.listBackGround}>
+                        <Paper className={classes.listBackGround} square={true}>
                             <List>
                                 <ListItem>
                                     <ListItemIcon>
@@ -218,6 +218,7 @@ export default function ChildInCareAccordion({kid}) {
                                     classConfirmAction={classes.confirmAction}
                                     classDeleteButton={classes.deleteButton}
                                     openAction={open}
+                                    deleteContent={"diesen Eintrag"}
                                 />
                             </Grid>
                         </Paper>
