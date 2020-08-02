@@ -1,6 +1,4 @@
 import React, {useContext} from "react";
-import NannyAppBar from "../../components/header/NannyAppBar";
-import Footer from "../../components/footer/Footer";
 import {makeStyles} from "@material-ui/core/styles";
 import myTheme from "../../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
@@ -106,77 +104,73 @@ export default function UserProfile() {
     }
 
     return (
-        <div>
-            <NannyAppBar colorStyle={"secondary"}/>
-            <main>
-                <div className={classes.image}>
-                    <Paper className={classes.paperTop} square={true} elevation={0}>
-                        <Typography variant={"h4"} className={classes.heading}>
-                            Nutzerprofil
-                        </Typography>
-                    </Paper>
-                    <LoadingInfo errorClass={classes.error} fetchStatus={fetchStatus}/>
-                    <Grid container spacing={2}
-                          direction="row"
-                          justify="center"
-                          alignItems="baseline">
-                        <Grid item xs={11}>
-                            <Card className={classes.cardBackGround}>
-                                <CardContent>
-                                    <ListItemComponent
-                                        itemIcon={<LoyaltyOutlinedIcon/>}
-                                        typoClass={classes.basictypo}
-                                        typoValue={userData.username}
-                                        iconColor={classes.iconColor}
+        <main>
+            <div className={classes.image}>
+                <Paper className={classes.paperTop} square={true} elevation={0}>
+                    <Typography variant={"h4"} className={classes.heading}>
+                        Nutzerprofil
+                    </Typography>
+                </Paper>
+                <LoadingInfo errorClass={classes.error} fetchStatus={fetchStatus}/>
+                <Grid container spacing={2}
+                      direction="row"
+                      justify="center"
+                      alignItems="baseline">
+                    <Grid item xs={11}>
+                        <Card className={classes.cardBackGround}>
+                            <CardContent>
+                                <ListItemComponent
+                                    itemIcon={<LoyaltyOutlinedIcon/>}
+                                    typoClass={classes.basictypo}
+                                    typoValue={userData.username}
+                                    iconColor={classes.iconColor}
+                                />
+                                <Divider/>
+                                <ListItemComponentMultiline
+                                    itemIcon={<RecentActorsOutlinedIcon/>}
+                                    typoClass={classes.basictypo}
+                                    typoValueOne={userData.firstName}
+                                    typoValueTwo={userData.lastName}
+                                    iconColor={classes.iconColor}
+                                />
+                                <Divider/>
+                                <ListItemComponent
+                                    itemIcon={<MailOutlinedIcon/>}
+                                    typoClass={classes.basictypo}
+                                    typoValue={userData.email}
+                                    iconColor={classes.iconColor}
+                                />
+                                <Divider/>
+                            </CardContent>
+                            <CardActions>
+                                <Grid
+                                    container
+                                    direction="row"
+                                    justify="center"
+                                    alignItems="center"
+                                >
+                                    <DeleteButton
+                                        buttonSize={"small"}
+                                        classDeleteButton={classes.deleteButton}
+                                        handleClickOpenAction={handleClickOpen}
+                                        buttonVariant={"contained"}
+                                        matchingIcon={<DeleteForeverIcon/>}
+                                        showItemToDelete={"Account"}
                                     />
-                                    <Divider/>
-                                    <ListItemComponentMultiline
-                                        itemIcon={<RecentActorsOutlinedIcon/>}
-                                        typoClass={classes.basictypo}
-                                        typoValueOne={userData.firstName}
-                                        typoValueTwo={userData.lastName}
-                                        iconColor={classes.iconColor}
+                                    <DeleteDialog
+                                        handleDeleteAction={handleDelete}
+                                        handleCloseAction={handleClose}
+                                        classBasicTypo={classes.deleteText}
+                                        classConfirmAction={classes.confirmAction}
+                                        classDeleteButton={classes.deleteButton}
+                                        openAction={open}
                                     />
-                                    <Divider/>
-                                    <ListItemComponent
-                                        itemIcon={<MailOutlinedIcon/>}
-                                        typoClass={classes.basictypo}
-                                        typoValue={userData.email}
-                                        iconColor={classes.iconColor}
-                                    />
-                                    <Divider/>
-                                </CardContent>
-                                <CardActions>
-                                    <Grid
-                                        container
-                                        direction="row"
-                                        justify="center"
-                                        alignItems="center"
-                                    >
-                                        <DeleteButton
-                                            buttonSize={"small"}
-                                            classDeleteButton={classes.deleteButton}
-                                            handleClickOpenAction={handleClickOpen}
-                                            buttonVariant={"contained"}
-                                            matchingIcon={<DeleteForeverIcon/>}
-                                            showItemToDelete={"Account"}
-                                        />
-                                        <DeleteDialog
-                                            handleDeleteAction={handleDelete}
-                                            handleCloseAction={handleClose}
-                                            classBasicTypo={classes.deleteText}
-                                            classConfirmAction={classes.confirmAction}
-                                            classDeleteButton={classes.deleteButton}
-                                            openAction={open}
-                                        />
-                                    </Grid>
-                                </CardActions>
-                            </Card>
-                        </Grid>
+                                </Grid>
+                            </CardActions>
+                        </Card>
                     </Grid>
-                </div>
-            </main>
-            <Footer colorStyle={"secondary"}/>
-        </div>
+                </Grid>
+            </div>
+        </main>
     )
 }
