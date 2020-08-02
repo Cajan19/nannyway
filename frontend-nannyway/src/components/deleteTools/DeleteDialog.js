@@ -7,7 +7,7 @@ import Dialog from "@material-ui/core/Dialog";
 import React from "react";
 
 
-export default function DeleteDialog({openAction, handleDeleteAction, handleCloseAction, classBasicTypo, classConfirmAction, classDeleteButton}){
+export default function DeleteDialog({openAction, handleDeleteAction, handleCloseAction, classBasicTypo, classConfirmAction, classDeleteButton, deleteContent}){
     return(
         <Dialog
             open={openAction}
@@ -20,7 +20,7 @@ export default function DeleteDialog({openAction, handleDeleteAction, handleClos
                          className={classBasicTypo}>{"Daten wirklich löschen?"}</DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-description" className={classBasicTypo}>
-                    Bist Du sicher, dass du diesen Eintrag unwiderruflich löschen möchtest?
+                    Bist Du sicher, dass du {deleteContent} unwiderruflich löschen möchtest?
                 </DialogContentText>
             </DialogContent>
             <DialogActions>

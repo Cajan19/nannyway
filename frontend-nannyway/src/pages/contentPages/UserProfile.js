@@ -164,6 +164,7 @@ export default function UserProfile() {
                                         classConfirmAction={classes.confirmAction}
                                         classDeleteButton={classes.deleteButton}
                                         openAction={open}
+                                        deleteContent={"dieses Konto"}
                                     />
                                 </Grid>
                             </CardActions>

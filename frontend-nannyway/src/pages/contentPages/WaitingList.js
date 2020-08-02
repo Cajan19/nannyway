@@ -86,6 +86,7 @@ export default function WaitingList() {
                     </Grid>
                     <Box m={2}>
                         <Button
+                            size={"small"}
                             variant="contained"
                             className={classes.button}
                             onClick={() => setShowAddForm(true)}
