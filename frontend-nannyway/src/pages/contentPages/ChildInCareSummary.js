@@ -82,6 +82,7 @@ export default function ChildInCareSummary() {
                     </Grid>
                     <Box m={2}>
                         <Button
+                            size={"small"}
                             variant="contained"
                             className={classes.button}
                             onClick={() => setShowAddForm(true)}
