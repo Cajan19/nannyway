@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import MeetingRoomOutlinedIcon from '@material-ui/icons/MeetingRoomOutlined';
-import EventAvailableOutlinedIcon from '@material-ui/icons/EventAvailableOutlined';
+import TodayOutlinedIcon from '@material-ui/icons/TodayOutlined';
 import ArrowUpwardOutlinedIcon from '@material-ui/icons/ArrowUpwardOutlined';
 import {UserDispatchContext} from "../../context/user/UserContext";
 import {LOGOUT} from "../../context/user/UserContextProvider";
@@ -57,8 +57,8 @@ export default function BottomNav() {
             <BottomNavigationAction className={classes.bottomStylePrimary} label="Nach Oben"
                                     icon={<ArrowUpwardOutlinedIcon className={classes.bottomStylePrimary}/>}
                                     onClick={toTop}/>
-            <BottomNavigationAction className={classes.bottomStylePrimary} label="Planung"
-                                    icon={<EventAvailableOutlinedIcon className={classes.bottomStylePrimary}/>}
+            <BottomNavigationAction className={classes.bottomStylePrimary} label="Kalender"
+                                    icon={<TodayOutlinedIcon className={classes.bottomStylePrimary}/>}
                                     onClick={toTop}/>
             <BottomNavigationAction className={classes.bottomStylePrimary} label="Bis bald"
                                     icon={<MeetingRoomOutlinedIcon className={classes.bottomStylePrimary}/>}
