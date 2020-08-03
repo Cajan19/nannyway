@@ -107,6 +107,7 @@ export default function UserRegistrationForm({open, handleClose}) {
                     <TextField
                         className={classes.basicFont}
                         fullWidth={true}
+                        type={"password"}
                         label="Passwort"
                         name="password"
                         onChange={handleChange}
