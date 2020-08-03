@@ -27,6 +27,8 @@ import DeleteDialog from "../deleteTools/DeleteDialog";
 import DeleteButton from "../deleteTools/DeleteButton";
 import ListItemComponent from "../listItems/ListItemComponent";
 import AccordionSummaryTemplate from "./AccordionSummaryTemplate";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -125,9 +127,16 @@ export default function ChildInCareAccordion({kid}) {
                         <Paper className={classes.listBackGround} square={true}>
                             <List>
                                 <ListItem>
-                                    <ListItemIcon>
-                                        <ChildCareOutLinedIcon className={classes.iconColor}/>
-                                    </ListItemIcon>
+                                    <Tooltip
+                                        title="Name"
+                                        placement={"top-start"}
+                                        arrow={true}
+                                        disableFocusListener={true}
+                                        TransitionComponent={Zoom}>
+                                        <ListItemIcon>
+                                            <ChildCareOutLinedIcon className={classes.iconColor}/>
+                                        </ListItemIcon>
+                                    </Tooltip>
                                     <Grid>
                                         <Typography className={classes.basictypo}>
                                             {kid.firstName}
@@ -144,6 +153,7 @@ export default function ChildInCareAccordion({kid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={kid.birthDate}
                                 iconColor={classes.iconColor}
+                                toolTip={"Geburtsdatum"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -151,6 +161,7 @@ export default function ChildInCareAccordion({kid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={<a className={classes.linkColor} href={phoneNumber}>{kid.phoneNumber}</a>}
                                 iconColor={classes.iconColor}
+                                toolTip={"Kontaktnummer"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -158,13 +169,15 @@ export default function ChildInCareAccordion({kid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={kid.nameParents}
                                 iconColor={classes.iconColor}
+                                toolTip={"Eltern"}
                             />
                             <Divider/>
                             <ListItemComponent
                                 itemIcon={<MailOutlinedIcon/>}
                                 typoClass={classes.basictypo}
-                                typoValue={<a className={classes.linkColor}  href={mailAddress}>{kid.email}</a>}
+                                typoValue={<a className={classes.linkColor} href={mailAddress}>{kid.email}</a>}
                                 iconColor={classes.iconColor}
+                                toolTip={"E-Mail"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -172,6 +185,7 @@ export default function ChildInCareAccordion({kid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={kid.hoursInCarePerWeek}
                                 iconColor={classes.iconColor}
+                                toolTip={"Betreuungsstunden / Woche"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -179,6 +193,7 @@ export default function ChildInCareAccordion({kid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={kid.contractTerm}
                                 iconColor={classes.iconColor}
+                                toolTip={"Vertragslaufzeit bis"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -186,6 +201,7 @@ export default function ChildInCareAccordion({kid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={kid.pickUpPerson}
                                 iconColor={classes.iconColor}
+                                toolTip={"autorisierte Abholer"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -193,6 +209,7 @@ export default function ChildInCareAccordion({kid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={kid.infoText}
                                 iconColor={classes.iconColor}
+                                toolTip={"Freitext"}
                             />
                             <Divider/>
                             <Grid

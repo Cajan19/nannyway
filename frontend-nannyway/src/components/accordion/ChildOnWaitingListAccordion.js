@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
@@ -32,6 +32,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import ListItemComponent from "../listItems/ListItemComponent";
 import AccordionSummaryTemplate from "./AccordionSummaryTemplate";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -122,18 +124,25 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
         <div className={classes.root}>
             <Accordion className={classes.accordionBackGround}>
                 <AccordionSummaryTemplate
-                typoClass={classes.heading}
-                typoValue={"Familie " + waitingKid.familyName}
-                expandClass={classes.expandIconColor}
+                    typoClass={classes.heading}
+                    typoValue={"Familie " + waitingKid.familyName}
+                    expandClass={classes.expandIconColor}
                 />
                 <AccordionDetails>
                     <div className={classes.list}>
                         <Paper className={classes.listBackGround} square={true}>
                             <List>
                                 <ListItem>
-                                    <ListItemIcon>
-                                        <ChildCareIcon className={classes.iconColor}/>
-                                    </ListItemIcon>
+                                    <Tooltip
+                                        title="Name"
+                                        placement={"top-start"}
+                                        arrow={true}
+                                        disableFocusListener={true}
+                                        TransitionComponent={Zoom}>
+                                        <ListItemIcon>
+                                            <ChildCareIcon className={classes.iconColor}/>
+                                        </ListItemIcon>
+                                    </Tooltip>
                                     <Grid>
                                         <Typography className={classes.basictypo}>
                                             {waitingKid.firstName}
@@ -150,20 +159,24 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.birthDate}
                                 iconColor={classes.iconColor}
+                                toolTip={"Geburtsdatum"}
                             />
                             <Divider/>
                             <ListItemComponent
                                 itemIcon={<PhoneInTalkIcon/>}
                                 typoClass={classes.basictypo}
-                                typoValue={<a className={classes.linkColor} href={phoneNumber}>{waitingKid.phoneNumber}</a>}
+                                typoValue={<a className={classes.linkColor}
+                                              href={phoneNumber}>{waitingKid.phoneNumber}</a>}
                                 iconColor={classes.iconColor}
+                                toolTip={"Kontaktnummer"}
                             />
                             <Divider/>
                             <ListItemComponent
                                 itemIcon={<MailOutlineIcon/>}
                                 typoClass={classes.basictypo}
-                                typoValue={<a className={classes.linkColor}  href={mailAddress}>{waitingKid.email}</a>}
+                                typoValue={<a className={classes.linkColor} href={mailAddress}>{waitingKid.email}</a>}
                                 iconColor={classes.iconColor}
+                                toolTip={"E-Mail"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -171,6 +184,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.getToKnowDate}
                                 iconColor={classes.iconColor}
+                                toolTip={"Kennenlernen am"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -178,6 +192,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.startDateOfCare}
                                 iconColor={classes.iconColor}
+                                toolTip={"Betreuung gewünscht ab"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -185,6 +200,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.hoursInCarePerWeek}
                                 iconColor={classes.iconColor}
+                                toolTip={"Betreuungsstunden / Woche"}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -192,25 +208,33 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.prediction}
                                 iconColor={classes.iconColor}
+                                toolTip={"Prognose"}
                             />
                             <Divider/>
                             <List>
                                 <ListItem>
-                                    <ListItemIcon>
-                                        <OfflinePinOutlinedIcon className={classes.iconColor}/>
-                                    </ListItemIcon>
+                                    <Tooltip
+                                        title="Zusage"
+                                        placement={"top-start"}
+                                        arrow={true}
+                                        disableFocusListener={true}
+                                        TransitionComponent={Zoom}>
+                                        <ListItemIcon>
+                                            <OfflinePinOutlinedIcon className={classes.iconColor}/>
+                                        </ListItemIcon>
+                                    </Tooltip>
                                     <FormControlLabel className={classes.basictypo}
-                                        control={
-                                            <Switch
-                                                // checked={waitingKid.approval}
-                                                name={"approval"}
-                                                // onChange={handleChange}
-                                                color="primary"
-                                                // inputProps={{ 'aria-label': 'secondary checkbox' }}
-                                            />}
-                                        label="Zusage"
-                                        labelPlacement="start"
-                                        value="start"
+                                                      control={
+                                                          <Switch
+                                                              // checked={waitingKid.approval}
+                                                              name={"approval"}
+                                                              // onChange={handleChange}
+                                                              color="primary"
+                                                              // inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                                          />}
+                                                      label="Zusage"
+                                                      labelPlacement="start"
+                                                      value="start"
                                     />
                                 </ListItem>
                             </List>
@@ -220,6 +244,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.infoText}
                                 iconColor={classes.iconColor}
+                                toolTip={"Freitext"}
                             />
                             <Divider/>
                             <Grid

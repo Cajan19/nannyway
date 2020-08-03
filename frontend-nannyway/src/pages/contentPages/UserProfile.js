@@ -124,6 +124,7 @@ export default function UserProfile() {
                                     typoClass={classes.basictypo}
                                     typoValue={userData.username}
                                     iconColor={classes.iconColor}
+                                    toolTip={"Nutzername"}
                                 />
                                 <Divider/>
                                 <ListItemComponentMultiline
@@ -132,6 +133,7 @@ export default function UserProfile() {
                                     typoValueOne={userData.firstName}
                                     typoValueTwo={userData.lastName}
                                     iconColor={classes.iconColor}
+                                    toolTip={"Vor- und Nachname"}
                                 />
                                 <Divider/>
                                 <ListItemComponent
@@ -139,6 +141,7 @@ export default function UserProfile() {
                                     typoClass={classes.basictypo}
                                     typoValue={userData.email}
                                     iconColor={classes.iconColor}
+                                    toolTip={"E-Mail"}
                                 />
                                 <Divider/>
                             </CardContent>
