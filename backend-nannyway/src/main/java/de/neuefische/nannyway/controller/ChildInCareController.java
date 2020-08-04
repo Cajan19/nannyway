@@ -2,6 +2,7 @@ package de.neuefische.nannyway.controller;
 
 import de.neuefische.nannyway.model.AddChildInCareDto;
 import de.neuefische.nannyway.model.ChildInCare;
+import de.neuefische.nannyway.model.EditChildInCareDto;
 import de.neuefische.nannyway.service.ChildInCareService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +38,10 @@ public class ChildInCareController {
     @GetMapping
     public List<ChildInCare> getMyKidsInCare(Principal principal) {
         return childInCareService.getChildByNanny(principal.getName());
+    }
+
+    @PostMapping("{id}/{key}")
+    public ChildInCare editKid(@PathVariable String id, @PathVariable String key, @RequestBody EditChildInCareDto editChildInCareDto) {
+        return childInCareService.updateKid(id, key, editChildInCareDto);
     }
 }
