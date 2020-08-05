@@ -6,7 +6,7 @@ import List from "@material-ui/core/List";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
 
-export default function ListItemComponent({itemIcon, typoClass, typoValue, iconColor, toolTip}) {
+export default function ListItemComponent({itemIcon, typoClass, typoValue, iconColor, toolTip, handleClickEdit}) {
     return (
         <List>
             <ListItem>
@@ -16,7 +16,7 @@ export default function ListItemComponent({itemIcon, typoClass, typoValue, iconC
                     arrow={true}
                     disableFocusListener={true}
                     TransitionComponent={Zoom}>
-                <ListItemIcon className={iconColor}>
+                <ListItemIcon className={iconColor} onClick={handleClickEdit}>
                     {itemIcon}
                 </ListItemIcon>
                 </Tooltip>
