@@ -2,6 +2,7 @@ package de.neuefische.nannyway.controller;
 
 import de.neuefische.nannyway.model.AddChildOnWaitingListDto;
 import de.neuefische.nannyway.model.ChildOnWaitingList;
+import de.neuefische.nannyway.model.EditChildOnWaitingListDto;
 import de.neuefische.nannyway.service.ChildOnWaitingListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +37,10 @@ public class ChildOnWaitingListController {
     @GetMapping
     public List<ChildOnWaitingList> getMyKidsOnWaitinglist(Principal principal) {
         return childOnWaitingListService.getWaitingChildByNanny(principal.getName());
+    }
+
+    @PostMapping("{id}/{key}")
+    public ChildOnWaitingList editWaitingKid(@PathVariable String id, @PathVariable String key, @RequestBody EditChildOnWaitingListDto editChildOnWaitingListDto) {
+        return childOnWaitingListService.updateWaitingKid(id, key, editChildOnWaitingListDto);
     }
 }
