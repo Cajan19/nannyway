@@ -10,10 +10,10 @@ import {
     ChildOnWaitingListStateContext
 } from "../../context/childOnWaitingList/ChildOnWaitingListContext";
 import {fetchWaitingKids} from "../../context/childOnWaitingList/childOnWaitingListActions";
-import ChildOnWaitingListAccordion from "../../components/accordion/ChildOnWaitingListAccordion";
+import ChildOnWaitingListAccordion from "../../components/overview/ChildOnWaitingListAccordion";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
-import AddChildOnWaitingListForm from "../../components/addDataForm/addChildOnWaitingListForm";
+import AddChildOnWaitingListForm from "../../components/forms/addChildOnWaitingListForm";
 import LoadingInfo from "../../components/loadingInfo/LoadingInfo";
 
 const useStyles = makeStyles((theme) => ({
