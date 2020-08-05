@@ -2,12 +2,16 @@ package de.neuefische.nannyway.service;
 
 import de.neuefische.nannyway.database.ChildOnWaitingListMongoDb;
 import de.neuefische.nannyway.model.ChildOnWaitingList;
+import de.neuefische.nannyway.model.EditChildOnWaitingListDto;
 import de.neuefische.nannyway.utils.RandomIdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChildOnWaitingListService {
@@ -44,8 +48,29 @@ public class ChildOnWaitingListService {
         waitingListDb.deleteById(id);
     }
 
-    public List<ChildOnWaitingList> getWaitingChildByNanny (String nannyUsername){
+    public List<ChildOnWaitingList> getWaitingChildByNanny(String nannyUsername) {
         return waitingListDb.findByNanny(nannyUsername);
+    }
+
+    public ChildOnWaitingList getWaitingChildById(String id) {
+        Optional<ChildOnWaitingList> optionalChildOnWaitingList = waitingListDb.findById(id);
+        if (optionalChildOnWaitingList.isPresent()) return optionalChildOnWaitingList.get();
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
+    public ChildOnWaitingList updateWaitingKid(String id, String key, EditChildOnWaitingListDto editWaitingListDto) {
+        ChildOnWaitingList childOnWaitingListUpdate = getWaitingChildById(id);
+        switch (key) {
+            case "phoneNumber" -> childOnWaitingListUpdate.setPhoneNumber(editWaitingListDto.getPhoneNumber());
+            case "email" -> childOnWaitingListUpdate.setEmail(editWaitingListDto.getEmail());
+            case "getToKnowDate" -> childOnWaitingListUpdate.setGetToKnowDate(editWaitingListDto.getGetToKnowDate());
+            case "startDateOfCare" -> childOnWaitingListUpdate.setStartDateOfCare(editWaitingListDto.getStartDateOfCare());
+            case "hoursInCarePerWeek" -> childOnWaitingListUpdate.setHoursInCarePerWeek(editWaitingListDto.getHoursInCarePerWeek());
+            case "prediction" -> childOnWaitingListUpdate.setPrediction(editWaitingListDto.getPrediction());
+            case "infoText" -> childOnWaitingListUpdate.setInfoText(editWaitingListDto.getInfoText());
+            default -> throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "updateKey not valid");
+        }
+        return waitingListDb.save(childOnWaitingListUpdate);
     }
 }
 
