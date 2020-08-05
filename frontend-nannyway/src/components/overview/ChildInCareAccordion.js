@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -21,14 +21,15 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import {Box} from "@material-ui/core";
-import {ChildInCareDispatchContext} from "../../context/childInCare/ChildInCareContext";
-import {deleteKid} from "../../context/childInCare/childInCareActions";
+import {ChildInCareDispatchContext, ChildInCareStateContext} from "../../context/childInCare/ChildInCareContext";
+import {deleteKid, editKid} from "../../context/childInCare/childInCareActions";
 import DeleteDialog from "../deleteTools/DeleteDialog";
 import DeleteButton from "../deleteTools/DeleteButton";
 import ListItemComponent from "../listItems/ListItemComponent";
 import AccordionSummaryTemplate from "./AccordionSummaryTemplate";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
+import EditChildInCareForm from "../forms/EditChildInCareForm";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,8 +56,17 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Open Sans",
         color: myTheme.palette.info.light,
     },
+    basictypoForm: {
+        fontFamily: "Open Sans",
+    },
     iconColor: {
         color: myTheme.palette.primary.contrastText,
+    },
+    iconColorHover: {
+        color: myTheme.palette.primary.contrastText,
+        '&:hover': {
+            color: myTheme.palette.secondary.light
+        },
     },
     deleteText: {
         color: myTheme.palette.info.dark,
@@ -93,6 +103,11 @@ const useStyles = makeStyles((theme) => ({
 export default function ChildInCareAccordion({kid}) {
     const classes = useStyles();
 
+    const [showAddFormPickUp, setShowAddFormPickUp] = useState(false);
+    const [showAddFormInfotext, setShowAddFormInfoText] = useState(false);
+    const [showAddFormHoursInCare, setShowAddFormHoursInCare] = useState(false);
+    const [showAddFormEmail, setShowAddFormEmail] = useState(false);
+    const [showAddFormPhoneNumber, setShowAddFormPhoneNumber] = useState(false);
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -113,6 +128,39 @@ export default function ChildInCareAccordion({kid}) {
 
     const mailAddress = "mailto:" + kid.email.toString();
     const phoneNumber = "tel:" + kid.phoneNumber.toString();
+
+    const [update, setUpdate] = useState("")
+    const {editStatus} = useContext(ChildInCareStateContext)
+
+    useEffect(() => {
+        if (editStatus === `SUCCESS`) {
+            setUpdate("");
+        }
+    }, [editStatus]);
+
+    function handleSubmitPickUp() {
+        editKid(dispatch, kid.id, "pickUpPerson", update).then(() => setShowAddFormPickUp(false));
+    }
+
+    function handleSubmitInfoText() {
+        editKid(dispatch, kid.id, "infoText", update).then(() => setShowAddFormInfoText(false));
+    }
+
+    function handleSubmitHoursInCare() {
+        editKid(dispatch, kid.id, "hoursInCarePerWeek", update).then(() => setShowAddFormHoursInCare(false));
+    }
+
+    function handleSubmitEmail() {
+        editKid(dispatch, kid.id, "email", update).then(() => setShowAddFormEmail(false));
+    }
+
+    function handleSubmitPhoneNumber() {
+        editKid(dispatch, kid.id, "phoneNumber", update).then(() => setShowAddFormPhoneNumber(false));
+    }
+
+    function handleUpdateKid(event) {
+        setUpdate(event.target.value);
+    }
 
     return (
         <div className={classes.root}>
@@ -160,8 +208,21 @@ export default function ChildInCareAccordion({kid}) {
                                 itemIcon={<PhoneInTalkOutlinedIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={<a className={classes.linkColor} href={phoneNumber}>{kid.phoneNumber}</a>}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"Kontaktnummer"}
+                                handleClickEdit={() => setShowAddFormPhoneNumber(true)}
+                            />
+                            <EditChildInCareForm
+                                open={showAddFormPhoneNumber}
+                                handleClose={() => setShowAddFormPhoneNumber(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"Kontaktnummer"}
+                                fieldType={"tel"}
+                                shrinkBoolean={false}
+                                multilineBoolean={false}
+                                handleSubmitAction={handleSubmitPhoneNumber}
+                                handleChangeAction={handleUpdateKid}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -176,16 +237,42 @@ export default function ChildInCareAccordion({kid}) {
                                 itemIcon={<MailOutlinedIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={<a className={classes.linkColor} href={mailAddress}>{kid.email}</a>}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"E-Mail"}
+                                handleClickEdit={() => setShowAddFormEmail(true)}
+                            />
+                            <EditChildInCareForm
+                                open={showAddFormEmail}
+                                handleClose={() => setShowAddFormEmail(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"E-Mail"}
+                                fieldType={"email"}
+                                shrinkBoolean={false}
+                                multilineBoolean={false}
+                                handleSubmitAction={handleSubmitEmail}
+                                handleChangeAction={handleUpdateKid}
                             />
                             <Divider/>
                             <ListItemComponent
                                 itemIcon={<QueryBuilderOutlinedIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={kid.hoursInCarePerWeek}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"Betreuungsstunden / Woche"}
+                                handleClickEdit={() => setShowAddFormHoursInCare(true)}
+                            />
+                            <EditChildInCareForm
+                                open={showAddFormHoursInCare}
+                                handleClose={() => setShowAddFormHoursInCare(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"Betreuungsstunden / Woche"}
+                                fieldType={"number"}
+                                shrinkBoolean={false}
+                                multilineBoolean={false}
+                                handleSubmitAction={handleSubmitHoursInCare}
+                                handleChangeAction={handleUpdateKid}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -200,16 +287,40 @@ export default function ChildInCareAccordion({kid}) {
                                 itemIcon={<EmojiPeopleOutlinedIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={kid.pickUpPerson}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"autorisierte Abholer"}
+                                handleClickEdit={() => setShowAddFormPickUp(true)}
+                            />
+                            <EditChildInCareForm
+                                open={showAddFormPickUp}
+                                handleClose={() => setShowAddFormPickUp(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"Abholer"}
+                                shrinkBoolean={false}
+                                multilineBoolean={false}
+                                handleSubmitAction={handleSubmitPickUp}
+                                handleChangeAction={handleUpdateKid}
                             />
                             <Divider/>
                             <ListItemComponent
                                 itemIcon={<DescriptionOutlinedIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={kid.infoText}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"Freitext"}
+                                handleClickEdit={() => setShowAddFormInfoText(true)}
+                            />
+                            <EditChildInCareForm
+                                open={showAddFormInfotext}
+                                handleClose={() => setShowAddFormInfoText(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"Freitext"}
+                                shrinkBoolean={false}
+                                multilineBoolean={true}
+                                handleSubmitAction={handleSubmitInfoText}
+                                handleChangeAction={handleUpdateKid}
                             />
                             <Divider/>
                             <Grid

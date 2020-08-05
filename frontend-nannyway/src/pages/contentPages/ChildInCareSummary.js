@@ -6,11 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {ChildInCareDispatchContext, ChildInCareStateContext} from "../../context/childInCare/ChildInCareContext";
 import {fetchKids} from "../../context/childInCare/childInCareActions";
-import ChildInCareAccordion from "../../components/accordion/ChildInCareAccordion";
+import ChildInCareAccordion from "../../components/overview/ChildInCareAccordion";
 import AddIcon from '@material-ui/icons/Add';
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
-import AddChildInCareForm from "../../components/addDataForm/AddChildInCareForm";
+import AddChildInCareForm from "../../components/forms/AddChildInCareForm";
 import LoadingInfo from "../../components/loadingInfo/LoadingInfo";
 
 const useStyles = makeStyles((theme) => ({
@@ -76,7 +76,7 @@ export default function ChildInCareSummary() {
                       justify="space-around"
                       alignItems="center">
                     <Grid item xs={11}>
-                        {kids.map((kid) => (
+                        {kids.sort((kid1,kid2)=> kid1.firstName.localeCompare(kid2.firstName)).map((kid) => (
                             <ChildInCareAccordion key={kid.id} kid={kid}/>
                         ))}
                     </Grid>

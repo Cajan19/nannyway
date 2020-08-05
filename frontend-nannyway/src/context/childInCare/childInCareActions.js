@@ -1,4 +1,4 @@
-import {fetchAllKids, postKid, removeKid} from "../../utils/childInCareUtils";
+import {fetchAllKids, postKid, removeKid, updateKid} from "../../utils/childInCareUtils";
 
 export const FETCH_KIDS = `FETCH_KIDS`;
 export const FETCH_KIDS_SUCCESS = `FETCH_KIDS_SUCCESS`;
@@ -9,6 +9,9 @@ export const ADD_KID_FAIL = `ADD_KID_FAIL`;
 export const DELETE_KID = `DELETE_KID`;
 export const DELETE_KID_SUCCESS = `DELETE_KID_SUCCESS`;
 export const DELETE_KID_FAIL = `DELETE_KID_FAIL`;
+export const EDIT_KID = `EDIT_KID`;
+export const EDIT_KID_SUCCESS = `EDIT_KID_SUCCESS`;
+export const EDIT_KID_FAIL = `EDIT_KID_FAIL`;
 
 
 export async function fetchKids(dispatch) {
@@ -42,3 +45,14 @@ export async function deleteKid(dispatch, id) {
         dispatch({type: DELETE_KID_FAIL});
     }
 }
+
+export async function editKid(dispatch, id, key, value){
+    dispatch({type: EDIT_KID});
+    try {
+        const updatedKid = await updateKid(id, key, value);
+        dispatch({type: EDIT_KID_SUCCESS, payload: updatedKid});
+    } catch (error) {
+        dispatch({type: EDIT_KID_FAIL, payload: error});
+    }
+}
+
