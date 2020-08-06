@@ -11,8 +11,8 @@ import EmergencyNumbers from "../../pages/contentPages/EmergencyNumbers";
 import ChildInCareSummary from "../../pages/contentPages/ChildInCareSummary";
 import Imprint from "../../pages/imprint/Imprint";
 import UserProfile from "../../pages/contentPages/UserProfile";
-import BottomNav from "../footer/BottomNav";
 import Header from "../header/Header";
+import Footer from "../footer/Footer";
 
 export default function Navigation() {
     const dispatch = useContext(UserDispatchContext);
@@ -39,6 +39,6 @@ export default function Navigation() {
                 <LandingPage/>
             </Route>
         </Switch>
-        <BottomNav/>
+        <Footer/>
     </BrowserRouter>;
 }
