@@ -30,7 +30,19 @@ const useStyles = makeStyles({
     },
 });
 
-export default function BottomNav() {
+const stylesPrimary = {
+    selected: {
+        color: myTheme.palette.primary.dark,
+    }
+};
+
+const stylesSecondary = {
+    selected: {
+        color: myTheme.palette.secondary.dark,
+    }
+};
+
+export default function BottomNav({colorStyle}) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
@@ -45,6 +57,20 @@ export default function BottomNav() {
         removeJWTToken()
     }
 
+    const activeColor = () => {
+        if (colorStyle === "secondary") {
+            return classes.bottomStyleSecondary;
+        }
+        return classes.bottomStylePrimary;
+    }
+
+    const activeStyle = () => {
+        if (colorStyle === "secondary") {
+            return stylesSecondary.selected;
+        }
+        return stylesPrimary.selected;
+    }
+
     return (
         <BottomNavigation
             value={value}
@@ -54,14 +80,14 @@ export default function BottomNav() {
             showLabels
             className={classes.root}
         >
-            <BottomNavigationAction className={classes.bottomStylePrimary} label="Nach Oben"
-                                    icon={<ArrowUpwardOutlinedIcon className={classes.bottomStylePrimary}/>}
+            <BottomNavigationAction className={activeColor()} label="Nach Oben" style={activeStyle()}
+                                    icon={<ArrowUpwardOutlinedIcon className={activeColor()}/>}
                                     onClick={toTop}/>
-            <BottomNavigationAction className={classes.bottomStylePrimary} label="Kalender"
-                                    icon={<TodayOutlinedIcon className={classes.bottomStylePrimary}/>}
+            <BottomNavigationAction className={activeColor()} label="Kalender" style={activeStyle()}
+                                    icon={<TodayOutlinedIcon className={activeColor()}/>}
                                     onClick={toTop}/>
-            <BottomNavigationAction className={classes.bottomStylePrimary} label="Bis bald"
-                                    icon={<MeetingRoomOutlinedIcon className={classes.bottomStylePrimary}/>}
+            <BottomNavigationAction className={activeColor()} label="Bis bald" style={activeStyle()}
+                                    icon={<MeetingRoomOutlinedIcon className={activeColor()}/>}
                                     onClick={logout}/>
         </BottomNavigation>
     );
