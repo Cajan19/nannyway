@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -25,15 +25,16 @@ import DeleteButton from "../deleteTools/DeleteButton";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import DeleteDialog from "../deleteTools/DeleteDialog";
 import {
-    ChildOnWaitingListDispatchContext,
+    ChildOnWaitingListDispatchContext, ChildOnWaitingListStateContext,
 } from "../../context/childOnWaitingList/ChildOnWaitingListContext";
-import {deleteWaitingKid} from "../../context/childOnWaitingList/childOnWaitingListActions";
+import {deleteWaitingKid, editWaitingKid} from "../../context/childOnWaitingList/childOnWaitingListActions";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import ListItemComponent from "../listItems/ListItemComponent";
 import AccordionSummaryTemplate from "./AccordionSummaryTemplate";
 import Tooltip from "@material-ui/core/Tooltip";
 import Zoom from "@material-ui/core/Zoom";
+import EditChildOnWaitingListForm from "../forms/EditChildOnWaitingListForm";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,6 +42,12 @@ const useStyles = makeStyles((theme) => ({
     },
     iconColor: {
         color: myTheme.palette.primary.contrastText,
+    },
+    iconColorHover: {
+        color: myTheme.palette.primary.contrastText,
+        '&:hover': {
+            color: myTheme.palette.secondary.light
+        },
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -100,6 +107,11 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
     const classes = useStyles();
 
     const [open, setOpen] = React.useState(false);
+    const [showAddFormPhoneNumber, setShowAddFormPhoneNumber] = useState(false);
+    const [showAddFormEmail, setShowAddFormEmail] = useState(false);
+    const [showAddFormHoursInCare, setShowAddFormHoursInCare] = useState(false);
+    const [showAddFormPrediction, setShowAddFormPrediction] = useState(false);
+    const [showAddFormInfoText, setShowAddFormInfoText] = useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -119,6 +131,40 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
 
     const mailAddress = "mailto:" + waitingKid.email.toString();
     const phoneNumber = "tel:" + waitingKid.phoneNumber.toString();
+
+    const [update, setUpdate] = useState("")
+    const {editStatus} = useContext(ChildOnWaitingListStateContext)
+
+    useEffect(() => {
+        if (editStatus === `SUCCESS`) {
+            setUpdate("");
+        }
+    }, [editStatus]);
+
+    function handleSubmitPhoneNumber() {
+        editWaitingKid(dispatch, waitingKid.id, "phoneNumber", update).then(() => setShowAddFormPhoneNumber(false));
+    }
+
+    function handleSubmitEmail() {
+        editWaitingKid(dispatch, waitingKid.id, "email", update).then(() => setShowAddFormEmail(false));
+    }
+
+    function handleSubmitHoursInCare() {
+        editWaitingKid(dispatch, waitingKid.id, "hoursInCarePerWeek", update).then(() => setShowAddFormHoursInCare(false));
+    }
+
+    function handleSubmitPrediction() {
+        editWaitingKid(dispatch, waitingKid.id, "prediction", update).then(() => setShowAddFormPrediction(false));
+    }
+
+    function handleSubmitInfoText() {
+        editWaitingKid(dispatch, waitingKid.id, "infoText", update).then(() => setShowAddFormInfoText(false));
+    }
+
+    function handleUpdateWaitingKid(event){
+        setUpdate(event.target.value);
+    }
+
 
     return (
         <div className={classes.root}>
@@ -167,16 +213,42 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 typoClass={classes.basictypo}
                                 typoValue={<a className={classes.linkColor}
                                               href={phoneNumber}>{waitingKid.phoneNumber}</a>}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"Kontaktnummer"}
+                                handleClickEdit={() => setShowAddFormPhoneNumber(true)}
+                            />
+                            <EditChildOnWaitingListForm
+                                open={showAddFormPhoneNumber}
+                                handleClose={() => setShowAddFormPhoneNumber(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"Kontaktnummer"}
+                                fieldType={"tel"}
+                                shrinkBoolean={false}
+                                multilineBoolean={false}
+                                handleSubmitAction={handleSubmitPhoneNumber}
+                                handleChangeAction={handleUpdateWaitingKid}
                             />
                             <Divider/>
                             <ListItemComponent
                                 itemIcon={<MailOutlineIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={<a className={classes.linkColor} href={mailAddress}>{waitingKid.email}</a>}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"E-Mail"}
+                                handleClickEdit={() => setShowAddFormEmail(true)}
+                            />
+                            <EditChildOnWaitingListForm
+                                open={showAddFormEmail}
+                                handleClose={() => setShowAddFormEmail(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"E-Mail"}
+                                fieldType={"email"}
+                                shrinkBoolean={false}
+                                multilineBoolean={false}
+                                handleSubmitAction={handleSubmitEmail}
+                                handleChangeAction={handleUpdateWaitingKid}
                             />
                             <Divider/>
                             <ListItemComponent
@@ -199,16 +271,41 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 itemIcon={<QueryBuilderIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.hoursInCarePerWeek}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"Betreuungsstunden / Woche"}
+                                handleClickEdit={() => setShowAddFormHoursInCare(true)}
+                            />
+                            <EditChildOnWaitingListForm
+                                open={showAddFormHoursInCare}
+                                handleClose={() => setShowAddFormHoursInCare(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"Betreuungsstunden pro Woche"}
+                                fieldType={"number"}
+                                shrinkBoolean={false}
+                                multilineBoolean={false}
+                                handleSubmitAction={handleSubmitHoursInCare}
+                                handleChangeAction={handleUpdateWaitingKid}
                             />
                             <Divider/>
                             <ListItemComponent
                                 itemIcon={<HelpOutlineIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.prediction}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"Prognose"}
+                                handleClickEdit={() => setShowAddFormPrediction(true)}
+                            />
+                            <EditChildOnWaitingListForm
+                                open={showAddFormPrediction}
+                                handleClose={() => setShowAddFormPrediction(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"Prognose"}
+                                shrinkBoolean={false}
+                                multilineBoolean={true}
+                                handleSubmitAction={handleSubmitPrediction}
+                                handleChangeAction={handleUpdateWaitingKid}
                             />
                             <Divider/>
                             <List>
@@ -243,8 +340,20 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
                                 itemIcon={<DescriptionOutlinedIcon/>}
                                 typoClass={classes.basictypo}
                                 typoValue={waitingKid.infoText}
-                                iconColor={classes.iconColor}
+                                iconColor={classes.iconColorHover}
                                 toolTip={"Freitext"}
+                                handleClickEdit={() => setShowAddFormInfoText(true)}
+                            />
+                            <EditChildOnWaitingListForm
+                                open={showAddFormInfoText}
+                                handleClose={() => setShowAddFormInfoText(false)}
+                                basicFontClass={classes.basictypoForm}
+                                fullWidthBoolean={true}
+                                labelText={"Freitext"}
+                                shrinkBoolean={false}
+                                multilineBoolean={true}
+                                handleSubmitAction={handleSubmitInfoText}
+                                handleChangeAction={handleUpdateWaitingKid}
                             />
                             <Divider/>
                             <Grid

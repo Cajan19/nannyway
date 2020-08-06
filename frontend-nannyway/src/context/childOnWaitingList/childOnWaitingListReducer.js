@@ -2,7 +2,10 @@ import {
     ADD_WAITINGKID, ADD_WAITINGKID_FAIL, ADD_WAITINGKID_SUCCESS, DELETE_WAITINGKID_SUCCESS,
     FETCH_WAITINGKIDS,
     FETCH_WAITINGKIDS_FAIL,
-    FETCH_WAITINGKIDS_SUCCESS
+    FETCH_WAITINGKIDS_SUCCESS,
+    EDIT_WAITINGKID,
+    EDIT_WAITINGKID_SUCCESS,
+    EDIT_WAITINGKID_FAIL,
 } from "./childOnWaitingListActions";
 
 export default function childOnWaitingListReducer(state, action) {
@@ -25,6 +28,16 @@ export default function childOnWaitingListReducer(state, action) {
                     return waitingKid.id !== action.payload;
                 }),
             };
+        case EDIT_WAITINGKID:
+            return {...state, editStatus: `PENDING`};
+        case EDIT_WAITINGKID_SUCCESS:
+            return {
+                ...state, editStatus: `SUCCESS`, waitingKids: [...state.waitingKids.filter((waitingKid) => {
+                    return waitingKid.id !== action.payload.id;
+                }), action.payload]
+            };
+        case EDIT_WAITINGKID_FAIL:
+            return {...state, editStatus: `FAILED`};
         default:
             return state;
     }

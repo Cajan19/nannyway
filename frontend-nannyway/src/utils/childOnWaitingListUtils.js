@@ -57,3 +57,21 @@ export function removeWaitingKid(id) {
     });
 }
 
+export function updateWaitingKid(id, key, value) {
+    const token = getJWTToken();
+
+    return fetch(`/api/waitinglist/${id}/${key}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({[key]:value}),
+    }).then((response) => {
+        if (response.status !== 200) {
+            throw new Error(response.statusText);
+        }
+        return response.json();
+    });
+}
+
