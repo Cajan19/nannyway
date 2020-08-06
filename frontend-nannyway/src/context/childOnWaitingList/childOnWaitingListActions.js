@@ -1,4 +1,9 @@
-import {fetchAllWaitingKids, postWaitingKid, removeWaitingKid} from "../../utils/childOnWaitingListUtils";
+import {
+    fetchAllWaitingKids,
+    postWaitingKid,
+    removeWaitingKid,
+    updateWaitingKid
+} from "../../utils/childOnWaitingListUtils";
 
 export const FETCH_WAITINGKIDS = `FETCH_WAITINGKIDS`;
 export const FETCH_WAITINGKIDS_SUCCESS = `FETCH_WAITINGKIDS_SUCCESS`;
@@ -9,6 +14,9 @@ export const ADD_WAITINGKID_FAIL = `ADD_WAITINGKID_FAIL`;
 export const DELETE_WAITINGKID = `DELETE_WAITINGKID`;
 export const DELETE_WAITINGKID_SUCCESS = `DELETE_WAITINGKID_SUCCESS`;
 export const DELETE_WAITINGKID_FAIL = `DELETE_WAITINGKID_FAIL`;
+export const EDIT_WAITINGKID = `EDIT_WAITINGKID`;
+export const EDIT_WAITINGKID_SUCCESS = `EDIT_WAITINGKID_SUCCESS`;
+export const EDIT_WAITINGKID_FAIL = `EDIT_WAITINGKID_FAIL`;
 
 export async function fetchWaitingKids(dispatch) {
     dispatch({type: FETCH_WAITINGKIDS});
@@ -39,5 +47,15 @@ export async function deleteWaitingKid(dispatch, id) {
         dispatch({type: DELETE_WAITINGKID_SUCCESS, payload: id});
     } catch (error) {
         dispatch({type: DELETE_WAITINGKID_FAIL});
+    }
+}
+
+export async function editWaitingKid(dispatch, id, key, value){
+    dispatch({type: EDIT_WAITINGKID});
+    try {
+        const updatedWaitingKid = await updateWaitingKid(id, key, value);
+        dispatch({type: EDIT_WAITINGKID_SUCCESS, payload: updatedWaitingKid});
+    } catch (error) {
+        dispatch({type: EDIT_WAITINGKID_FAIL, payload: error});
     }
 }
