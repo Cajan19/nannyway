@@ -66,7 +66,7 @@ export function updateWaitingKid(id, key, value) {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({[key]:value}),
+        body: JSON.stringify({[key]: value}),
     }).then((response) => {
         if (response.status !== 200) {
             throw new Error(response.statusText);
