@@ -50,7 +50,7 @@ export async function deleteWaitingKid(dispatch, id) {
     }
 }
 
-export async function editWaitingKid(dispatch, id, key, value){
+export async function editWaitingKid(dispatch, id, key, value) {
     dispatch({type: EDIT_WAITINGKID});
     try {
         const updatedWaitingKid = await updateWaitingKid(id, key, value);

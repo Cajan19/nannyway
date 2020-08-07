@@ -8,7 +8,7 @@ export default function ChildOnWaitingListContextProvider({children}) {
         fetchStatus: undefined,
     });
 
-    return(
+    return (
         <ChildOnWaitingListStateContext.Provider value={state}>
             <ChildOnWaitingListDispatchContext.Provider value={dispatch}>
                 {children}
