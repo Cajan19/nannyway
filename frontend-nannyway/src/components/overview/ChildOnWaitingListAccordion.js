@@ -161,7 +161,7 @@ export default function ChildOnWaitingListAccordion({waitingKid}) {
         editWaitingKid(dispatch, waitingKid.id, "infoText", update).then(() => setShowAddFormInfoText(false));
     }
 
-    function handleUpdateWaitingKid(event){
+    function handleUpdateWaitingKid(event) {
         setUpdate(event.target.value);
     }
 

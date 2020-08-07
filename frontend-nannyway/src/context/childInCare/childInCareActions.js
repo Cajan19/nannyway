@@ -46,7 +46,7 @@ export async function deleteKid(dispatch, id) {
     }
 }
 
-export async function editKid(dispatch, id, key, value){
+export async function editKid(dispatch, id, key, value) {
     dispatch({type: EDIT_KID});
     try {
         const updatedKid = await updateKid(id, key, value);

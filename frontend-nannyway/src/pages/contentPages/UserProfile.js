@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: "center",
-        minHeight: '78vh',
+        minHeight: '80vh',
     },
     confirmAction: {
         fontFamily: "Open Sans",

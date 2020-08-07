@@ -11,7 +11,6 @@ import myTheme from "../../styling/muiTheme";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
@@ -89,7 +88,7 @@ export default function LandingPage() {
                     <Grid item container xs={12} justify={"center"}>
                         <Grid item xs={11} p={3}>
                             <Paper className={classes.paper}>
-                             <Box m={1}/>
+                                <Box m={1}/>
                                 <Typography variant="h6" align={"center"} className={classes.basictypo}>
                                     Der digitale KTP-Planer
                                 </Typography>

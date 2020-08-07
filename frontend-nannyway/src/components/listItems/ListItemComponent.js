@@ -16,13 +16,13 @@ export default function ListItemComponent({itemIcon, typoClass, typoValue, iconC
                     arrow={true}
                     disableFocusListener={true}
                     TransitionComponent={Zoom}>
-                <ListItemIcon className={iconColor} onClick={handleClickEdit}>
-                    {itemIcon}
-                </ListItemIcon>
+                    <ListItemIcon className={iconColor} onClick={handleClickEdit}>
+                        {itemIcon}
+                    </ListItemIcon>
                 </Tooltip>
-                    <Typography className={typoClass} gutterBottom={false}>
-                        {typoValue}
-                    </Typography>
+                <Typography className={typoClass} gutterBottom={false}>
+                    {typoValue}
+                </Typography>
             </ListItem>
         </List>
     )

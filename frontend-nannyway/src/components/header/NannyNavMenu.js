@@ -6,7 +6,6 @@ import myTheme from "../../styling/muiTheme";
 import MenuOpenOutlinedIcon from '@material-ui/icons/MenuOpenOutlined';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 
-
 const useStyles = makeStyles(() => ({
     menuTextPrimary: {
         color: myTheme.palette.primary.dark,

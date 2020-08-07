@@ -135,7 +135,8 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:0551 19240" className={classes.linkColor}>Bremen, Hamburg, Schleswig-Holstein, Niedersachsen</a>
+                            <a href="tel:0551 19240" className={classes.linkColor}>Bremen, Hamburg, Schleswig-Holstein,
+                                Niedersachsen</a>
                         </Typography>
                     </ListItem>
                     <Divider/>
@@ -153,7 +154,8 @@ export default function PoisonCard() {
                             <PhoneInTalkOutlinedIcon/>
                         </ListItemIcon>
                         <Typography className={classes.basicTypo}>
-                            <a href="tel:0361 730730" className={classes.linkColor}>Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt, Thüringen</a>
+                            <a href="tel:0361 730730" className={classes.linkColor}>Mecklenburg-Vorpommern, Sachsen,
+                                Sachsen-Anhalt, Thüringen</a>
                         </Typography>
                     </ListItem>
                     <Divider/>

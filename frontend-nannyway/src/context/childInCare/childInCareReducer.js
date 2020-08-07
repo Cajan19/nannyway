@@ -33,9 +33,11 @@ export default function childInCareReducer(state, action) {
         case EDIT_KID:
             return {...state, editStatus: `PENDING`};
         case EDIT_KID_SUCCESS:
-            return {...state, editStatus: `SUCCESS`, kids: [...state.kids.filter((kid) => {
+            return {
+                ...state, editStatus: `SUCCESS`, kids: [...state.kids.filter((kid) => {
                     return kid.id !== action.payload.id;
-                }), action.payload]};
+                }), action.payload]
+            };
         case EDIT_KID_FAIL:
             return {...state, editStatus: `FAILED`};
         default:

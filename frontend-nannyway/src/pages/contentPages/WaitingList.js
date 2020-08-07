@@ -80,7 +80,7 @@ export default function WaitingList() {
                       justify="space-around"
                       alignItems="center">
                     <Grid item xs={11}>
-                        {waitingKids.sort((waitingKid1,waitingKid2)=> waitingKid1.familyName.localeCompare(waitingKid2.familyName)).map((waitingKid) => (
+                        {waitingKids.sort((waitingKid1, waitingKid2) => waitingKid1.familyName.localeCompare(waitingKid2.familyName)).map((waitingKid) => (
                             <ChildOnWaitingListAccordion key={waitingKid.id} waitingKid={waitingKid}/>
                         ))}
                     </Grid>

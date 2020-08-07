@@ -16,11 +16,11 @@ export function setJWTToken(token) {
 
 export function isJWTTokenValid() {
     const jwtToken = getJWTToken();
-    if(!jwtToken){
+    if (!jwtToken) {
         return false;
     }
     const decodedToken = getDecodedJWTToken();
-    return  (new Date().getTime() / 1000) < decodedToken.exp;
+    return (new Date().getTime() / 1000) < decodedToken.exp;
 }
 
 export function getDecodedJWTToken() {
