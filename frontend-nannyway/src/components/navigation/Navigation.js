@@ -18,7 +18,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles(() => ({
     container: {
-        height: "80vh",
+        minHeight: "80vh",
         overflowY: "scroll"
     }
 }));
