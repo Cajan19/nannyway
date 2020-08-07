@@ -2,9 +2,7 @@ package de.neuefische.nannyway.utils;
 
 import de.neuefische.nannyway.database.UserDb;
 import de.neuefische.nannyway.model.NannywayUser;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
