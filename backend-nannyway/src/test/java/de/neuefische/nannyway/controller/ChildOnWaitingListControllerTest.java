@@ -163,7 +163,7 @@ class ChildOnWaitingListControllerTest {
 
     @Test
     public void deleteFunctionShouldDeleteKidById() {
-        //        given
+//        given
         String token = loginUser();
 
         waitingListDb.save(waitingKidInDb);
