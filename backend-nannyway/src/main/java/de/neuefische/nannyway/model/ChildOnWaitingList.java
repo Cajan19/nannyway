@@ -12,7 +12,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "waitinglist")
-
 public class ChildOnWaitingList {
     @Id
     private String id;
