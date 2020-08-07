@@ -1,4 +1,5 @@
 package de.neuefische.nannyway.security;
+
 import de.neuefische.nannyway.database.UserDb;
 import de.neuefische.nannyway.model.NannywayUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,4 @@ public class MongoUserDetailsService implements UserDetailsService {
         return new User(nannywayUser.getUsername(), nannywayUser.getPassword(),
                 List.of(new SimpleGrantedAuthority("admin")));
     }
-
 }
