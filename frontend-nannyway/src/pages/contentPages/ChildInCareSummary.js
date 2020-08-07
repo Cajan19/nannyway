@@ -76,7 +76,7 @@ export default function ChildInCareSummary() {
                       justify="space-around"
                       alignItems="center">
                     <Grid item xs={11}>
-                        {kids.sort((kid1,kid2)=> kid1.firstName.localeCompare(kid2.firstName)).map((kid) => (
+                        {kids.sort((kid1, kid2) => kid1.firstName.localeCompare(kid2.firstName)).map((kid) => (
                             <ChildInCareAccordion key={kid.id} kid={kid}/>
                         ))}
                     </Grid>
