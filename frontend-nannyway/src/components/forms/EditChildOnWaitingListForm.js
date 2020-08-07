@@ -41,10 +41,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function EditChildOnWaitingListForm({
-                                                open, handleClose, basicFontClass, displaySubtitle,
-                                                fullWidthBoolean, labelText, handleSubmitAction, handleChangeAction,
-                                                fieldType, shrinkBoolean, multilineBoolean,
-                                            }) {
+                                                       open, handleClose, basicFontClass, displaySubtitle,
+                                                       fullWidthBoolean, labelText, handleSubmitAction, handleChangeAction,
+                                                       fieldType, shrinkBoolean, multilineBoolean,
+                                                   }) {
     const classes = useStyles();
 
     const {editStatus} = useContext(ChildOnWaitingListStateContext);
