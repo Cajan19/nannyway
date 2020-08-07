@@ -1,4 +1,5 @@
 package de.neuefische.nannyway.controller;
+
 import de.neuefische.nannyway.database.UserDb;
 import de.neuefische.nannyway.model.LoginData;
 import de.neuefische.nannyway.model.NannywayUser;
@@ -35,7 +36,7 @@ class LoginControllerTest {
     public JwtUtils jwtUtils;
 
     @BeforeEach
-    public void resetDb(){
+    public void resetDb() {
         userDb.deleteAll();
     }
 
@@ -44,7 +45,7 @@ class LoginControllerTest {
     }
 
     @Test
-    public void loginWithValidCredentials(){
+    public void loginWithValidCredentials() {
 //        given
         NannywayUser testUser = new NannywayUser("madonna", encoder.encode("music99999"), "Karl", "Quark", "karl@quark.de");
         userDb.save(testUser);
@@ -54,11 +55,12 @@ class LoginControllerTest {
 
 //        then
         assertEquals(HttpStatus.OK, tokenResponse.getStatusCode());
-        assertTrue(jwtUtils.validateToken(tokenResponse.getBody(),"madonna"));
+        assertTrue(jwtUtils.validateToken(tokenResponse.getBody(), "madonna"));
     }
+
     @Test
     @DisplayName("login with wrong password should return bad request")
-    public void loginWithInvalidCredentials(){
+    public void loginWithInvalidCredentials() {
 //        given
         NannywayUser testUser = new NannywayUser("madonna", encoder.encode("music99999"), "Karl", "Quark", "karl@quark.de");
         userDb.save(testUser);

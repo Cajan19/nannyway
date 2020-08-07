@@ -73,7 +73,6 @@ class ChildInCareControllerTest {
             "Oma Lotte", "35", LocalDate.of(2021, 8, 31),
             "77777", "Peter und Petra", "kid@nannyway.de", "madonna");
 
-
     @Test
     public void addFunctionShouldAddNewChildInCareToOverview() {
 //    given
@@ -91,7 +90,6 @@ class ChildInCareControllerTest {
         ResponseEntity<ChildInCare> postResponse = restTemplate.exchange(apiUrl("kids"), HttpMethod.POST, requestEntity, ChildInCare.class);
 
 //    then
-
         ChildInCare expectedChild = kidInDb;
         assertEquals(HttpStatus.OK, postResponse.getStatusCode());
         assertNotNull(postResponse.getBody());
