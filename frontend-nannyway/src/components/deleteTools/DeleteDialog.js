@@ -6,9 +6,8 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import React from "react";
 
-
-export default function DeleteDialog({openAction, handleDeleteAction, handleCloseAction, classBasicTypo, classConfirmAction, classDeleteButton, deleteContent}){
-    return(
+export default function DeleteDialog({openAction, handleDeleteAction, handleCloseAction, classBasicTypo, classConfirmAction, classDeleteButton, deleteContent}) {
+    return (
         <Dialog
             open={openAction}
             onClose={handleCloseAction}
@@ -35,5 +34,4 @@ export default function DeleteDialog({openAction, handleDeleteAction, handleClos
             </DialogActions>
         </Dialog>
     )
-
 }
