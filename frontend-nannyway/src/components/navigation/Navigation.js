@@ -13,19 +13,8 @@ import Imprint from "../../pages/imprint/Imprint";
 import UserProfile from "../../pages/contentPages/UserProfile";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
-import Box from "@material-ui/core/Box";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-
-const useStyles = makeStyles(() => ({
-    container: {
-        minHeight: "80vh",
-        overflowY: "scroll"
-    }
-}));
 
 export default function Navigation() {
-    const classes = useStyles();
-
     const dispatch = useContext(UserDispatchContext);
 
     useEffect(() => {
@@ -38,20 +27,18 @@ export default function Navigation() {
 
     return <BrowserRouter>
         <Header/>
-        <Box className={classes.container}>
-            <Switch>
-                <PrivateRoute path="/waitinglist" component={WaitingList}/>
-                <PrivateRoute path="/emergency" component={EmergencyNumbers}/>
-                <PrivateRoute path="/profile" component={UserProfile} exact/>
-                <PrivateRoute path="/" component={ChildInCareSummary} exact/>
-                <Route path="/impr" exact>
-                    <Imprint/>
-                </Route>
-                <Route path="/login" exact>
-                    <LandingPage/>
-                </Route>
-            </Switch>
-        </Box>
+        <Switch>
+            <PrivateRoute path="/waitinglist" component={WaitingList}/>
+            <PrivateRoute path="/emergency" component={EmergencyNumbers}/>
+            <PrivateRoute path="/profile" component={UserProfile} exact/>
+            <PrivateRoute path="/" component={ChildInCareSummary} exact/>
+            <Route path="/impr" exact>
+                <Imprint/>
+            </Route>
+            <Route path="/login" exact>
+                <LandingPage/>
+            </Route>
+        </Switch>
         <Footer/>
     </BrowserRouter>;
 }

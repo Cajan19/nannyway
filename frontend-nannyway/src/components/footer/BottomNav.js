@@ -4,7 +4,7 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import MeetingRoomOutlinedIcon from '@material-ui/icons/MeetingRoomOutlined';
 import TodayOutlinedIcon from '@material-ui/icons/TodayOutlined';
-import AssignmentIndOutlinedIcon from '@material-ui/icons/AssignmentIndOutlined';
+import ArrowUpwardOutlinedIcon from '@material-ui/icons/ArrowUpwardOutlined';
 import {UserDispatchContext} from "../../context/user/UserContext";
 import {LOGOUT} from "../../context/user/UserContextProvider";
 import {removeJWTToken} from "../../utils/jwt-utils";
@@ -50,10 +50,6 @@ export default function BottomNav({colorStyle}) {
         document.documentElement.scrollTop = 0;
     }
 
-    function toProfile() {
-        window.location.assign("/profile")
-    }
-
     const dispatch = useContext(UserDispatchContext);
 
     function logout() {
@@ -84,9 +80,9 @@ export default function BottomNav({colorStyle}) {
             showLabels
             className={classes.root}
         >
-            <BottomNavigationAction className={activeColor()} label="Profil" style={activeStyle()}
-                                    icon={<AssignmentIndOutlinedIcon className={activeColor()}/>}
-                                    onClick={toProfile}/>
+            <BottomNavigationAction className={activeColor()} label="Nach oben" style={activeStyle()}
+                                    icon={<ArrowUpwardOutlinedIcon className={activeColor()}/>}
+                                    onClick={toTop}/>
             <BottomNavigationAction className={activeColor()} label="Kalender" style={activeStyle()}
                                     icon={<TodayOutlinedIcon className={activeColor()}/>}
                                     onClick={toTop}/>
