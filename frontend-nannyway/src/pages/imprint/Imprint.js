@@ -5,7 +5,6 @@ import myTheme from "../../styling/muiTheme";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
-
 const useStyles = makeStyles((theme) => ({
     heading: {
         fontFamily: "Finger Paint",
