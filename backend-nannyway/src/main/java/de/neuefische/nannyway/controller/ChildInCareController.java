@@ -11,7 +11,6 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/kids")
 public class ChildInCareController {
