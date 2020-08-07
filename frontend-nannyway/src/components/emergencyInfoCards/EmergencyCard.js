@@ -4,7 +4,6 @@ import myTheme from "../../styling/muiTheme";
 import CardTemplate from "./CardTemplate";
 import EmergencyQuestions from "./EmergencyQuestions";
 
-
 const useStyles = makeStyles(() => ({
     root: {
         maxWidth: 345,
